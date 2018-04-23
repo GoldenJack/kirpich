@@ -1,0 +1,14 @@
+<svg id="arrow.svg" xmlns="http://www.w3.org/2000/svg" width="37" height="31" viewBox="0 0 37 31">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #959595;
+        stroke-width: 5px;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="Прямоугольник_10" data-name="Прямоугольник 10" class="cls-1" d="M671.507,5090L685,5103l-13.494,13" transform="translate(-650.5 -5087.5)"/>
+  <path id="Прямоугольник_11" data-name="Прямоугольник 11" class="cls-1" d="M653,5100.59h30.345" transform="translate(-650.5 -5087.5)"/>
+</svg>

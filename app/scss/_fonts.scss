@@ -1,0 +1,34 @@
+@font-face {
+    font-family: 'RubickLight';
+    src: local('Rubik Light'), local('Rubik-Light'), url('../fonts/Rubiklight.woff2') format('woff2'), url('../fonts/Rubiklight.woff') format('woff'), url('../fonts/Rubiklight.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'RubickReg';
+    src: local('Rubik'), local('Rubik-Regular'), url('../fonts/Rubik.woff2') format('woff2'), url('../fonts/Rubik.woff') format('woff'), url('../fonts/Rubik.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'RubickMed';
+    src: local('Rubik Medium'), local('Rubik-Medium'), url('../fonts/Rubikmedium.woff2') format('woff2'), url('../fonts/Rubikmedium.woff') format('woff'), url('../fonts/Rubikmedium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'RubickBold';
+    src: local('Rubik Bold'), local('Rubik-Bold'), url('../fonts/Rubikbold.woff2') format('woff2'), url('../fonts/Rubikbold.woff') format('woff'), url('../fonts/Rubikbold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'RubickBlack';
+    src: local('Rubik Black'), local('Rubik-Black'), url('Rubikblack.woff2') format('woff2'), url('Rubikblack.woff') format('woff'), url('Rubikblack.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}

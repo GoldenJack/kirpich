@@ -1,0 +1,19 @@
+p {
+    color: $main;
+}
+
+a {
+    color: $main;
+    text-decoration: none;
+}
+
+h2 {
+    @include font($rblack, 48px);
+    font-weight: 900;
+}
+h3 {
+    @include font($rblack, 36px);
+}
+h4 {
+    @include font($rbold, 24px);
+}

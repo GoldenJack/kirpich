@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60" height="84" viewBox="0 0 60 84">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f4d773;
+        stroke: #555;
+        stroke-width: 1px;
+        filter: url(#filter);
+      }
+    </style>
+    <filter id="filter" x="963" y="1414" width="59" height="83" filterUnits="userSpaceOnUse">
+      <feOffset result="offset" dy="8" in="SourceAlpha"/>
+      <feGaussianBlur result="blur" stdDeviation="3.606"/>
+      <feFlood result="flood" flood-color="#f4d773" flood-opacity="0.6"/>
+      <feComposite result="composite" operator="in" in2="blur"/>
+      <feBlend result="blend" in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g style="fill: #f4d773; filter: url(#filter)">
+    <rect id="brick.svg" class="cls-1" x="12.5" y="4.5" width="34" height="58" rx="2" ry="2" style="stroke: inherit; filter: none; fill: inherit"/>
+  </g>
+  <use xlink:href="#brick.svg" style="stroke: #555; filter: none; fill: none"/>
+</svg>
