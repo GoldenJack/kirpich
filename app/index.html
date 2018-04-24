@@ -2,27 +2,92 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>КирпичЬ</title>
-
+    <title>КирпичЪ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/app.css">
 </head>
 <body>
     <div class="main">
         <header class="header" id="header">
             <div class="container">
-                <div class="row">
+                <div class="row header__top">
                     <div class="col">
-                        
+                        <div class="logo">
+                            <h2 class="logo__caption">КИРПИЧЪ</h2>
+                            <p class="logo__subtitle">Производство и продажа <br> облицовочного кирпича</p>
+                        </div>
+                    </div>
+                    <div class="col-md-auto">
+                        <div class="menu">
+                            <div class="geolocation">
+                                <img src="images/geolocation.svg">
+                                <p class="geolocation__city">г. Ижевск</p>
+                            </div>
+                            <nav class="nav">
+                                <a href="#" class="nav__link">Преимущества</a>
+                                <a href="#" class="nav__link">Купить</a>
+                                <a href="#" class="nav__link">Отзывы</a>
+                                <a href="#" class="nav__link">Гарантия</a>
+                                <a href="#" class="nav__link">Контакты</a>
+                            </nav>
+                        </div>
                     </div>
                     <div class="col">
-                        
+                        <div class="header__callback">
+                            <p class="callback__caption">звонок по России бесплатно</p>
+                            <a href="tel: 88000123456" class="callback__number">8 800 0123 456</a>
+                            <a href="#" class="btn callback__btn">ПЕРЕЗВОНИТЕ МНЕ</a>
+                        </div>
                     </div>
-                    <div class="col">
-                        
+                </div>
+                <div class="row header__content">
+                    <div class="col-6">
+                        <h2 class="content__caption">
+                            <span class="yellow">Закажите бесплатную пробную партию кирпича</span> и убедитесь в нашем качестве
+                        </h2>
+                    </div>
+                    <div class="col-6">
+                        <div class="header__form__box">
+                            <form action="" method="POST" class="header__form">
+                                <h4 class="header__form__caption">Заказать пробную партию</h4>
+                                <input class="form__input" type="text" name="name" placeholder="Ваше имя">
+                                <input class="form__input" type="text" name="phone" placeholder="Ваше номер телефона">
+
+                                <input class="btn header__form__btn" type="submit"  name="submit" value="Заказать бесплатно">
+                                <p class="form__politics">Нажимая на кнопку, вы даете свое согласие на обработку персональных данных. <a href="#">Узнать больше</a></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row header__slider slider">
+                    <div class="slider__controls">
+                        <a class="slider__left" href="#"><img src="images/left.svg" alt=""></a>
+                        <a class="slider__right" href="#"><img src="images/right.svg" alt=""></a>
+                    </div>
+                    <div class="row slider__content">
+                        <div class="col header__slider__elem">
+                            <img src="images/icon_01.png" alt="" class="header__slider__image">
+                            <p class="header__slider__text">Индивидуальный подход <br> к каждому клиенту</p>
+                        </div>
+                        <div class="col header__slider__elem">
+                            <img src="images/icon_02.png" alt="" class="header__slider__image">
+                            <p class="header__slider__text">Доставка товара за 5 дней <br> до строительной площадки <br> заказчика</p>
+                        </div>
+                        <div class="col header__slider__elem">
+                            <img src="images/icon_03.png" alt="" class="header__slider__image">
+                            <p class="header__slider__text">Яркие и насыщенные <br> цвета</p>
+                        </div>
+                        <div class="col header__slider__elem">
+                            <img src="images/icon_04.png" alt="" class="header__slider__image">
+                            <p class="header__slider__text">Собственное <br>производство</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </header>
     </div>
+
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
 </body>
 </html>

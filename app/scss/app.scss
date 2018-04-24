@@ -15,16 +15,129 @@ html, body {
 @import "mixins";
 @import "typography";
 @import "common";
-
+@import "grid";
+@import "buttons";
+@import "forms";
 
 .header {
     width: 100%;
-    height: 1086px;
+    background: url('../images/header_bg.png') no-repeat top center;
+    background-size: cover;
+    padding-bottom: 200px;
+}
+.header__top {
+    padding-top: 24px;
+    margin-bottom: 220px;
+}
+.logo {
+
+}
+.logo__caption {
+    color: $yellow;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+.logo__subtitle {
+    font-family: $rlight;
+    color:  #ffffff;
+    font-size: 13px;
+    font-weight: 300;
+    text-align: left;
+}
+
+.menu {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+.geolocation {
+    display: flex;
+    align-items: center;
+}
+.geolocation__city {
+    margin-left: 13px;
+    @include font($rbold, 16px, #fff);
+    font-weight: 700;
+}
+
+.nav {
+    margin-top: auto;
+}
+.nav__link {
+    @include font($rbold, 14px, #fff);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-right: 24px;
+    &:nth-last-child(1) {
+        margin-right: 0;
+    }
 }
 
 
+.header__callback {
+    display: flex;
+    flex-flow: column;
+    max-width: 217px;
+    width: 100%;
+    margin-left: auto;
+}
+.callback__caption {
+    @include font($rreg, 12px, #fff);
+    font-weight: 400;
+}
+.callback__number {
+    @extend h4;
+    color: #fff;
+    font-weight: 900;
+}
+.callback__btn {
+    @include btn(14px 0, #fff600);
+}
 
+.header__content {
+    margin-bottom: 95px;
+}
+.content__caption {
+    color: #fff;
+}
+.header__form__box {
+    position: relative;
+    border-radius: 3px;
+    box-shadow: 12px 20px 20px 0px rgba(0, 0, 0, 0.45);
+    background: url(../images/header_form.png) no-repeat left top;
+    background-size: cover;
+}
+.header__form {
+    display: flex;
+    flex-flow: column;
+    position: relative;
+    max-width: 381px;
+    width: 100%;
+    margin: 0 auto;
+    background-color:  #009501;
+    padding: 0 15px;
+}
+.header__form__caption {
+    @include font($rbold, 25px, #fff);
+    margin: 20px 0 15px 0;
+    text-align: center;
+}
+.header__form__btn {
+    @include btn(14px 0, $yellow);
+    font-size: 14px;
+    margin-top: 10px;
+}
 
-
+.header__slider__elem {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+.header__slider__text {
+    margin-top: 8px;
+    @include font($rbold, 16px, #fff);
+    font-weight: 700;
+    text-align: center;
+}
 
 @import "media";
