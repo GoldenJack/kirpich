@@ -21,9 +21,13 @@ html, body {
 
 .header {
     width: 100%;
-    background: url('../images/header_bg.png') no-repeat top center;
-    background-size: cover;
     padding-bottom: 200px;
+    background-color:  #ff8000;
+    background-color:  rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 11px 49px 0px rgba(0, 0, 0, 0.36);
+    background-image: url('../images/header_bg.png');
+    background-position: top center;
+    background-size: cover;
 }
 .header__top {
     padding-top: 24px;
@@ -138,6 +142,247 @@ html, body {
     @include font($rbold, 16px, #fff);
     font-weight: 700;
     text-align: center;
+}
+
+
+//products 
+.products__wrap {
+    margin-top: -140px;
+    border-radius: 10px;
+    background-color:  #ffffff;
+    box-shadow: 0px 13px 68px 0px rgba(0, 0, 0, 0.18);
+    padding-top: 45px;
+    padding-bottom: 30px;
+}
+.products__menu {
+    display: flex;
+    margin: 0 auto;
+    background: #f4f4f4;
+    border-radius: 10px;
+    width: max-content;
+    margin-bottom: 48px;
+}
+.products__punkt {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    height: 60px;
+    justify-content: center;
+    @include font($rreg, 18px, #333);
+    font-weight: 400;
+    cursor: pointer;
+}
+.active__products {
+    border-radius: 10px;
+    background-color:  #ffcc00;
+    font-family: $rblack;
+    font-weight: 900;
+}
+
+.products__content {
+    width: 100%;
+}
+.products__caption {
+    text-align: center;
+    margin-bottom: 72px;
+}
+
+.stone__size__box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 27px;
+    padding-bottom: 37px;
+    border-bottom: 1px solid #e8e8e8;
+}
+.stone__size__elem {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    border: 1px solid #e8e8e8;
+    background-color:  #ffffff;
+    width: 123px;
+    height: 65px;
+    text-align: center;
+}
+.stone__size__bold {
+    @include font($rblack, 30px);
+    font-weight: 900;
+}
+.stone__size__name {
+    @include font($rlight, 12px);
+    font-weight: 300;
+}
+.select__size {
+    background: url(../images/polnotel_act.png) no-repeat top left;
+    background-size: cover;
+    background-color:  #ffcc00;
+    box-shadow: 0px 13px 21px 0px rgba(255, 204, 0, 0.47);
+}
+
+.stone__color {
+    padding: 21px 0 34px;
+    border-bottom: 1px solid #e8e8e8;
+}
+.stone__color__box {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 17px;
+}
+.select__color {
+    border: 1px solid #555555;
+    box-shadow: 0px 8px 13px 0px rgba(244, 215, 115, 0.6);
+    &:after {
+        content: ' ';
+        background: url(../images/chk.svg) no-repeat;
+        position: absolute;
+        top: 19px;
+        left: 7px;
+        width: 22px;
+        height: 22px;
+    }
+}
+//colors select
+.stone__color__elem {
+    display: flex;
+    position: relative;
+}
+.stone__color__elem:nth-child(1) {
+    background: #f4d773;
+}
+.stone__color__elem:nth-child(2) {
+    background: #c7b65c;
+}
+.stone__color__elem:nth-child(3) {
+    background: #9b7f69;
+}
+.stone__color__elem:nth-child(4) {
+    background: #8c6d58;
+}
+.stone__color__elem:nth-child(5) {
+    background: #ede1b9;
+}
+.stone__color__elem:nth-child(6) {
+    background: #545452;
+}
+.stone__color__elem:nth-child(7) {
+    background: #b25840;
+}
+.stone__color__elem:nth-child(8) {
+    background: #95a26a;
+}
+.stone__color__elem:nth-child(9) {
+    background: #c6c5ba;
+}
+.stone__color__elem:nth-child(10) {
+    background: #ecb678;
+}
+
+//end colors select
+
+.stone__view {
+    padding: 24px 0 31px;
+    border-bottom: 1px solid #e8e8e8;
+}
+.stone__view__box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 23px;
+}
+.stone__view__elem {
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    text-align: center;
+}
+.stone__view__img-close {
+    position: absolute;
+    top: 0;
+}
+.stone__view__name {
+    margin-top: 10px;
+    @include font($rmed, 14px);
+    font-weight: 500;
+}
+.select__view {
+    &:after {
+        content: ' ';
+        background: url(../images/chk.svg) no-repeat;
+        width: 22px;
+        height: 22px;
+        position: absolute;
+        top: 23px;
+        left: 52px;
+    }
+}
+.stone__form {
+    border-bottom: 1px solid #e8e8e8;
+    padding: 27px 0 40px;
+}
+.stone__form__box {
+    padding-top: 32px;
+}
+.stone__form__elem {
+    display: flex;
+    flex-flow: column;
+    padding: 0;
+    justify-content: flex-end;
+    align-items: center;
+}
+.stone__img__wrap {
+    position: relative;
+}
+.stone__form__img-close {
+    position: absolute;
+}
+.stone__form__img {
+    opacity: 0;
+}
+.stone__form__name {
+    @include font($rmed, 14px);
+    font-weight: 500;
+    text-align: center;
+    margin: 26px 0 44px;
+}
+
+.stone__type {
+    padding: 30px;
+    background-color:  rgba(232, 232, 232, 0.5); 
+    border-radius: 2px;
+}
+.stone__type__box {
+    margin-top: 34px;
+    display: flex;
+}
+.stone__values {
+    margin-left: 91px;
+}
+.stone__name {
+    @include font($rmed, 14px, $main, 30px);
+    font-weight: 500;
+}
+.stone__value {
+    @include font($rreg, 14px, $main, 30px);
+    font-weight: 500;
+}
+
+.stone__total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 23px;
+}
+.stone__total__btn {
+    @include btn(22px 87px 20px);
+    font-size: 14px;
+}
+.price__low {
+    @include font($rlight, 24px, $main, 30px);
+    font-weight: 300;
 }
 
 @import "media";
