@@ -325,6 +325,9 @@ html, body {
         top: 23px;
         left: 52px;
     }
+    .stone__view__img-close {
+        opacity: 1;
+    }
 }
 .stone__form {
     border-bottom: 1px solid #e8e8e8;
@@ -354,6 +357,14 @@ html, body {
     font-weight: 500;
     text-align: center;
     margin: 26px 0 44px;
+}
+.select__form {
+    .stone__form__img-close {
+        opacity: 0;
+    }
+    .stone__form__img {
+        opacity: 1;
+    }
 }
 
 .stone__type {
@@ -410,6 +421,37 @@ html, body {
     box-shadow: 0px 13px 21px 0px rgba(0, 0, 0, 0.19);
 }
 
+.plit, .elements {
+    display: none;
+}
+.plit__caption {
+    text-align: center;
+    margin-bottom: 73px;
+}
+.plit__elem {
+    padding: 34px 34px 25px 34px;
+    border: 1px solid #e8e8e8;
+    border-radius: 3px;
+}
+.plit__elem__img {
+    width: 100%;
+    margin-bottom: 24px;
+}
+.plit__elem__caption {
+    margin-bottom: 15px;
+}
+.plit__elem__stat {
+    @include font($rreg, 14px, #666);
+    margin-bottom: 30px;
+}
+.price__low {
+    @include font($rlight, 18px);
+}
+.plit__elem__btn {
+    margin-top: 16px;
+    @include btn(14px 54px, $yellow);
+    font-size: 14px;
+}
 
 .sertifics {
     padding: 61px 0 70px;
