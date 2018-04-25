@@ -479,5 +479,21 @@ html, body {
 }
 
 
+.guarant__box {
+    border-radius: 10px;
+    background-color:  #ffffff;
+    box-shadow: 0px 13px 68px 0px rgba(0, 0, 0, 0.18);
+    padding-top: 65px;
+}
+.guarant__caption {
+    margin-bottom: 50px;
+}
+.guarant__text {
+    max-width: 321px;
+    @include font($rreg, 18px);
+    line-height: 30px;
+    margin-top: 130px;
+}
+
 
 @import "media";
