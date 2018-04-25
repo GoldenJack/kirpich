@@ -19,6 +19,12 @@ html, body {
 @import "buttons";
 @import "forms";
 
+.main {
+    background: url(../images/main-bg.jpg) no-repeat center;
+    background-size: cover;
+
+}
+
 .header {
     width: 100%;
     padding-bottom: 200px;
@@ -112,8 +118,6 @@ html, body {
     background-size: cover;
 }
 .header__form {
-    display: flex;
-    flex-flow: column;
     position: relative;
     max-width: 381px;
     width: 100%;
@@ -362,12 +366,14 @@ html, body {
     margin-left: 91px;
 }
 .stone__name {
-    @include font($rmed, 14px, $main, 30px);
+    @include font($rmed, 14px, $main);
     font-weight: 500;
+    line-height: 30px;
 }
 .stone__value {
-    @include font($rreg, 14px, $main, 30px);
+    @include font($rreg, 14px, $main);
     font-weight: 500;
+    line-height: 30px;
 }
 
 .stone__total {
@@ -381,8 +387,9 @@ html, body {
     font-size: 14px;
 }
 .price__low {
-    @include font($rlight, 24px, $main, 30px);
+    @include font($rlight, 24px, $main);
     font-weight: 300;
+    line-height: 30px;
 }
 
 .stone__demo {
@@ -417,6 +424,60 @@ html, body {
 .sertific__image {
     box-shadow: 0px 13px 21px 0px rgba(0, 0, 0, 0.2);
 }
+
+.calc__wrap {
+    padding: 0;
+}
+.calc__form__box {
+    padding: 71px 0 0;
+    width: 100%;
+    background: url(../images/calc_bg.png) no-repeat;
+    border-radius: 10px;
+}
+.calc__form {
+    display: flex;
+    border-radius: 10px;
+    box-shadow: 0px 13px 68px 0px rgba(0, 0, 0, 0.32);
+    width: 100%;
+    height: 100%;
+    .form__double {
+        max-width: 474px;
+    }
+}
+.calc__content {
+    max-width: 510px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: 58px;
+    margin-top: 76px;
+    margin-bottom: 75px;
+}
+.calc__text {
+    margin: 26px 0 34px;
+    @include font($rreg, 14px, #fff);
+    font-weight: 400;
+}
+.calc__form__input {
+    max-width: 474px;
+    margin-bottom: 26px;
+}
+
+.partners__caption {
+    width: 100%;
+    margin: 80px 0 100px;
+}
+.partners__box {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.partner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 64px;
+}
+
 
 
 @import "media";
