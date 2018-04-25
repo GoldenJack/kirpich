@@ -385,4 +385,38 @@ html, body {
     font-weight: 300;
 }
 
+.stone__demo {
+    display: flex;
+    flex-flow: column;
+}
+.stone__demo__slider__caption {
+    margin-bottom: 25px;
+}
+.stone__demo__slider {
+    margin-top: auto;
+}
+.stone__demo__slider__image {
+    background-color:  #ffffff;
+    box-shadow: 0px 13px 21px 0px rgba(0, 0, 0, 0.19);
+}
+
+
+.sertifics {
+    padding: 61px 0 70px;
+}
+.sertifics__box {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 95px;
+    width: 100%;
+}
+.sertific__item {
+    margin: 0 47px;
+}
+.sertific__image {
+    box-shadow: 0px 13px 21px 0px rgba(0, 0, 0, 0.2);
+}
+
+
 @import "media";

@@ -4,6 +4,19 @@
 .yellow {
     color: $yellow;
 }
+.cap__snake {
+    position: relative;
+    text-align: center;
+    &:after {
+        content: ' ';
+        background: url(../images/zigzag.svg) no-repeat;
+        position: absolute;
+        width: 180px;
+        height: 15px;
+        bottom: -36px;
+        left: calc(50% - 90px);
+    }
+}
 
 
 
