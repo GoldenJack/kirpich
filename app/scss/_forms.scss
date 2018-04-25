@@ -8,10 +8,9 @@ input {
 }
 .form__btn__polit {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     .btn {
-        width: 100%;
         margin-right: 10px;
     }
     .form__politics {
@@ -36,13 +35,12 @@ input {
 .form__input {
     border-radius: 3px;
     background-color:  #ffffff;
-    padding: 14px 20px;
+    padding: 11px 20px;
     @include font($rlight, 14px, #666);
     font-weight: 300;
     margin-bottom: 10px;
 }
 .form__politics {
-    margin: 8px 0 17px;
     @include font($rreg, 12px, #fff);
     a {
         color: #fff;
