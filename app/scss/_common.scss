@@ -17,7 +17,11 @@
         left: calc(50% - 90px);
     }
 }
-
+.btn__wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 
 //slider
