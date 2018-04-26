@@ -9,6 +9,7 @@ var imageminJpegRecompress = require('imagemin-jpeg-recompress');
 var pngquant = require('pngquant');
 var htmlmin = require('gulp-htmlmin');
 var cache = require('gulp-cache');
+var rigger = require('gulp-rigger');
 
 
 gulp.task('sass', function(){
@@ -69,7 +70,8 @@ gulp.task('js', function(){
 });
 
 gulp.task('html', function() {
-  return gulp.src('app/*.html')
+  return gulp.src(['app/*.html', 'app/_blocks/*.html'])
+    .pipe(rigger())
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest('dist/'))
     .pipe(browserSync.reload({stream:true}))
@@ -86,7 +88,7 @@ gulp.task('browserSync', function(){
 gulp.task('watch', ['browserSync', 'sass', 'images', 'fonts', 'js', 'html', 'common', 'css'], function(){
     gulp.watch('app/scss/**/*.scss', ['sass']);
     gulp.watch('app/js/*.js', ['js']);
-    gulp.watch('app/*.html', ['html']);
+    gulp.watch(['app/*.html', 'app/_blocks/**/*.html'], ['html']);
     gulp.watch('app/images/', ['images']);
 });
 
