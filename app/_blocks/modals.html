@@ -1,0 +1,39 @@
+<div class="modals">
+    <div class="region modal" id="region">
+        <div class="modal__caption">
+            <h3 class="modal__title close">Ваш регион</h3>
+        </div>
+        <div class="modal__body">
+            <div class="region__screen__start">
+                <h4 class="region__mb">Ижевск</h4>
+                <div class="btn__double">
+                    <a href="#" class="btn region__btn" id="regionYes">Да, всё верно</a>
+                    <a href="#" class="btn region__btn region__btn__grey" id="regionAny">Выбрать другой</a>
+                </div>
+            </div>
+            <div class="region__screen__select">
+                <form action="" method="POST" class="default__form">
+                    <div class="region__form__group">
+                        <input type="text" class="form__input region__input border__input" placeholder="Введите название города">
+                        <input type="text" class="btn region__btn" value="Выбрать">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="callback modal" id="callback">
+        <div class="modal__caption">
+            <h3 class="modal__title close">Обратный звонок</h3>
+        </div>
+        <div class="modal__body">
+            <form action="" method="POST" class="callback__form form__default">
+                <input type="text" class="form__input border__input" placeholder="Ваше имя">
+                <input type="text" class="form__input border__input" placeholder="Ваш номер телефона">
+                <div class="form__btn__polit">
+                    <input class="btn callback__form__btn" type="submit" name="submit" value="Рассчитать стоимость">
+                    <p class="form__politics callback__polit">Нажимая на кнопку, вы даете свое согласие на обработку персональных данных. <a href="#">Узнать больше</a></p>
+                </div>
+            </form>    
+        </div>
+    </div>
+</div>

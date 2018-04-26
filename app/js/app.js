@@ -53,4 +53,35 @@ $(document).ready(function() {
         selectStat($(this), 'select__view');
     })
 
+
+
+    //modal region
+
+    $('#region').iziModal({
+        width: 505,
+        padding: 30
+    });
+
+    $('.modal__region').click(function(e){
+        $('#region').iziModal('open');
+    });
+
+    $('#regionAny').click(function(e){
+        e.preventDefault();
+        $('.region__screen__start').hide(500);
+        $('.region__screen__select').show(500);
+        $('#region').find('.modal__title').text('Выбрать регион');
+    });
+
+    //modal callback
+
+    $('#callback').iziModal({
+        width: 505,
+        padding: 30
+    });
+    
+    $('.callback__btn').click(function(e){
+        $('#callback').iziModal('open');
+    });
+
 });

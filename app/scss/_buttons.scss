@@ -3,4 +3,16 @@
     align-items: center;
     justify-content: center;
     border-radius: 3px;
+    text-align: center;
+}
+.btn__double {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .btn:nth-child(1) {
+        margin-right: 13px;
+    }
+    .btn:nth-child(2) {
+        margin-left: 13px;
+    }
 }

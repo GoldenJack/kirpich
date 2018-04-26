@@ -1,0 +1,67 @@
+.modals {
+    display: none;
+}
+.modal__title {
+    font-size: 30px;
+}
+.modal__body {
+    padding-top: 30px;
+}
+.close {
+    position: relative;
+    width: 100%;
+    &:after {
+        content: ' ';
+        position: absolute;
+        right: 0;
+        top: calc(50% - 9px);
+        width: 19px;
+        height: 18px;
+        background: url(../images/close.png) no-repeat;
+        cursor: pointer;
+    }
+}
+
+
+//region
+.modal__region {
+    cursor: pointer;
+}
+.region__mb {
+    color: #666;
+    margin-bottom: 30px;
+}
+.region__btn {
+    width: 100%;
+    @include btn(14px 0, $yellow);
+    font-size: 14px;
+}
+.region__btn__grey {
+    background: #cccccc;
+}
+.region__screen__select {
+    display: none;
+}
+.region__form__group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.region__input {
+    max-width: 255px;
+    width: 100%;
+    margin-right: 24px;
+    margin-bottom: 0;
+}
+
+//callback 
+.callback__form__btn {
+    @extend .region__btn;
+}
+.callback__polit {
+    color: #666;
+    a {
+        color: #666;
+        border-color: #666;
+    }
+}
