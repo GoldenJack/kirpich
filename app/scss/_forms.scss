@@ -50,3 +50,21 @@ input[type="submit"] {
         border-bottom: 1px solid #fff;
     }
 }
+
+@media screen and (max-width: 480px) {
+    .form__btn__polit {
+        flex-wrap: wrap;
+        .form__politics {
+            margin: 0;
+            margin-top: 15px;
+        }
+    }
+    .form__double {
+        flex-wrap: wrap;
+        .form__input {
+            margin-right: 0!important;
+            margin-left: 0!important;
+        }
+    }
+
+}

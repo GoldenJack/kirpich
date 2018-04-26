@@ -1,0 +1,153 @@
+@media screen and (max-width: 1200px) {
+    .menu__pc {
+        display: none;
+    }
+    .stone__demo {
+        margin-bottom: 30px;
+    }
+    .work__elem {
+        margin-bottom: 20px;
+    }
+    .ask__box {
+        flex-wrap: wrap;
+    }
+    .ask__form__content {
+        margin-right: 0;
+        padding: 75px 15px;
+    }
+    .ask__name {
+        width: 100%;
+        text-align: center;
+    }
+    .manager__img {
+        position: relative;
+        left: 0;
+    }
+    .ask__name__caption {
+        margin: -220px 0 0;
+    }
+    .ask__name__stat {
+        margin: 0;
+    }
+    .ask__form__content {
+        margin: 0 auto;
+    }
+    .footer__city {
+        margin: 15px 0;
+    }
+    .footer__dev__link {
+        padding-top: 20px;
+    }
+}
+@media screen and (max-width: 992px) {
+    .content__caption {
+        margin-bottom: 50px;
+    }
+    .stone__demo__slider__caption {
+        text-align: center;
+    }
+    .sertific__item {
+        margin-bottom: 20px;
+    }
+    .calc__form {
+        justify-content: center;
+    }
+    .calc__content {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0 15px;
+    }
+    .calc__form__box {
+        background-size: cover;
+    }
+    .offer {
+        margin-bottom: 30px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .products__punkt {
+        width: 150px;
+    }
+    .calc__form__box {
+            background-size: cover;
+        background: url(../images/calc_bg_768.png) no-repeat bottom right;
+    }
+}
+@media screen and (max-width: 480px) {
+    .logo__box {
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+    .products__punkt {
+        width: 95px;
+        font-size: 16px;
+    }
+    .stone__size__box {
+        flex-wrap: wrap;
+    }
+    .stone__size__elem { 
+        flex: 0 0 calc(50% - 30px);
+        margin: 15px;
+    }
+    .stone__color__box {
+        flex-wrap: wrap;
+    }
+    .stone__color__elem {
+        margin-right: 15px;
+        margin-bottom: 15px;
+    }
+    .stone__view__box {
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .stone__view__elem {
+        margin-bottom: 15px;
+        margin-right: 10px;
+    }
+    .header__cb__hidden {
+        display: none;
+    }
+    .stone__type {
+        margin: 0 -15px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .stone__values {
+        margin-left: auto;
+    }
+    .stone__price {
+        margin-bottom: 14px;
+    }
+    .stone__total {
+        justify-content: center;
+        flex-flow: column;
+    }
+    .calc__form__box {
+        padding-top: 0;
+    }
+    .calc__content {
+        margin-top: 0;
+        padding-top: 30px;
+        margin-bottom: 30px;
+        background: url(../images/calc_bg_768.png) no-repeat bottom right;
+        background-size: cover;
+    }
+    .ask__form__caption {
+        text-align: center;
+    }
+    .ask__form__desc {
+        text-align: center;
+    }
+    .footer__city {
+        text-align: center;
+    }
+    .footer__callback {
+        flex-flow: column;
+    }
+    .footer__phone {
+        margin-bottom: 15px;
+    }
+    .footer__dev__link {
+        justify-content: center;
+    }
+}
