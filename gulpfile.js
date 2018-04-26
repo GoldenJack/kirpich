@@ -44,9 +44,15 @@ gulp.task('fonts', function(){
     .pipe(gulp.dest('dist/fonts'))
 });
 
+gulp.task('css', function(){
+    return gulp.src('node_modules/izimodal/css/iziModal.min.css')
+    .pipe(gulp.dest('dist/css'))
+});
+
 gulp.task('common', function(){
     return gulp.src([
-            'node_modules/jquery/dist/jquery.min.js'
+            'node_modules/jquery/dist/jquery.min.js',
+            'node_modules/izimodal/js/iziModal.min.js'
         ])
     .pipe(concat('common.js'))
     .pipe(uglify())
@@ -77,7 +83,7 @@ gulp.task('browserSync', function(){
     })
 });
 
-gulp.task('watch', ['browserSync', 'sass', 'images', 'fonts', 'js', 'html', 'common'], function(){
+gulp.task('watch', ['browserSync', 'sass', 'images', 'fonts', 'js', 'html', 'common', 'css'], function(){
     gulp.watch('app/scss/**/*.scss', ['sass']);
     gulp.watch('app/js/*.js', ['js']);
     gulp.watch('app/*.html', ['html']);

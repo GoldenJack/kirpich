@@ -305,6 +305,7 @@ html, body {
     flex-flow: column;
     justify-content: center;
     text-align: center;
+    cursor: pointer;
 }
 .stone__view__img-close {
     position: absolute;
@@ -326,7 +327,7 @@ html, body {
         left: 52px;
     }
     .stone__view__img-close {
-        opacity: 1;
+        opacity: 0;
     }
 }
 .stone__form {
@@ -342,6 +343,7 @@ html, body {
     padding: 0;
     justify-content: flex-end;
     align-items: center;
+    cursor: pointer;
 }
 .stone__img__wrap {
     position: relative;
@@ -451,6 +453,22 @@ html, body {
     margin-top: 16px;
     @include btn(14px 54px, $yellow);
     font-size: 14px;
+}
+.plit__slider__image {
+    width: 100%;
+}
+.plit__slider__caption {
+    margin: 30px 0;
+}
+.plit__slider__controls {
+    .slider__left {
+        left: 35px;
+        top: 100px;
+    }
+    .slider__right {
+        right: 35px;
+        top: 100px;
+    }
 }
 
 .sertifics {
@@ -578,14 +596,29 @@ html, body {
     @include btn(16px 55px, $yellow);
 }
 
-.offers {
-    padding-bottom: 20px;
+.slider__content__offers {
+    padding-bottom: 133px;
+    overflow: visible;
 }
 .offer {
     border-radius: 10px;
     background-color:  #ffffff;
-    box-shadow: 0px 13px 68px 0px rgba(0, 0, 0, 0.18);
     padding: 40px 40px 30px 40px;
+}
+.shadow__offer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    &:after {
+        display: block;
+        content: ' ';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        box-shadow: 0px 13px 68px 0px rgba(0, 0, 0, 0.18);
+    }
 }
 .offers__caption {
     margin-bottom: 85px;
@@ -615,7 +648,6 @@ html, body {
     padding: 0;
     background-size: cover;
     border-radius: 10px;
-    margin-top: 113px;
 }
 .ask__box {
     height: 100%;

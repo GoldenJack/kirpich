@@ -32,6 +32,8 @@
 }
 .slider__controls {
     height: 0;
+    z-index: 999;
+    position: relative;
 }
 .slider__left {
     display: flex;
@@ -48,4 +50,6 @@
 .slider__content {
     width: 100%;
     overflow: hidden;
+    z-index: 888;
+    position: relative;
 }

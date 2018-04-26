@@ -1,6 +1,6 @@
 $(document).ready(function() {
     
-    var switchTab = function(self, content, selector) {
+    var switchTab = function(self, selector) {
         var id = self.data('to');
         
         $(id).fadeIn(500).siblings('div').fadeOut(500);
@@ -30,7 +30,7 @@ $(document).ready(function() {
 
     $('.products__menu').on('click', 'a', function(e){
         e.preventDefault();
-        switchTab($(this), '.products__content', 'active__products');
+        switchTab($(this), 'active__products');
     });
 
     $('.stone__color__box').on('click', 'a', function(e){
