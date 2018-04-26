@@ -63,6 +63,9 @@
     .offer {
         margin-bottom: 30px;
     }
+    .guarant__text {
+        margin-top: 0;
+    }
 }
 @media screen and (max-width: 767px) {
     .products__punkt {
@@ -71,6 +74,11 @@
     .calc__form__box {
             background-size: cover;
         background: url(../images/calc_bg_768.png) no-repeat bottom right;
+    }
+    .guarant__text {
+        text-align: center;
+        margin: 0 auto;
+        margin-bottom: 30px;
     }
 }
 @media screen and (max-width: 480px) {
