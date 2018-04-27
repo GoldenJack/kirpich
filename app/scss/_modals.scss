@@ -7,9 +7,15 @@
 .modal__body {
     padding-top: 30px;
 }
+.modal__caption {
+    display: flex;
+    align-items: center;
+}
 .close {
     position: relative;
-    width: 100%;
+    margin-left: auto;
+    width: 19px;
+    height: 18px;
     &:after {
         content: ' ';
         position: absolute;

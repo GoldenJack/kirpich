@@ -1,4 +1,9 @@
 @media screen and (max-width: 1200px) {
+    .menu__btn {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
     .menu__pc {
         display: none;
     }
@@ -84,7 +89,11 @@
 @media screen and (max-width: 480px) {
     .logo__box {
         max-width: 100%;
-        flex: 0 0 100%;
+        flex: 0 0 90%;
+    }
+    .menu__btn {
+        max-width: 10%;
+        flex: 0 0 10%;
     }
     .products__punkt {
         width: 95px;
