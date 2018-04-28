@@ -341,65 +341,20 @@
 							<h2 class="cap__snake plit__caption">Плитка</h2>
 						</div>
 						<div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col">
-							<div class="plit__elem">
-								<img src="assets/images/plit_1.png" class="plit__elem__img">
-								<h5 class="plit__elem__caption">Цокольная плитка</h5>
-								<p class="plit__elem__stat">
-									Цвет: Серый <br>
-									Размер: 250x20x120 мм <br>
-									Вес: 1,7 кг <br>
-									В поддоне: 576 шт <br>
-									Вес поддона: 950 <br>
-								</p>
-								<h4>544,00 <span class="price__low">руб./м2</span></h4>
-								<a href="" class="plit__elem__btn btn">ЗАКАЗАТЬ</a>
-							</div>
-						</div>
-						<div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col">
-							<div class="plit__elem">
-								<img src="assets/images/plit_1.png" class="plit__elem__img">
-								<h5 class="plit__elem__caption">Цокольная плитка</h5>
-								<p class="plit__elem__stat">
-									Цвет: Серый <br>
-									Размер: 250x20x120 мм <br>
-									Вес: 1,7 кг <br>
-									В поддоне: 576 шт <br>
-									Вес поддона: 950 <br>
-								</p>
-								<h4>544,00 <span class="price__low">руб./м2</span></h4>
-								<a href="" class="plit__elem__btn btn">ЗАКАЗАТЬ</a>
-							</div>
-						</div>
-						<div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col">
-							<div class="plit__elem">
-								<img src="assets/images/plit_1.png" class="plit__elem__img">
-								<h5 class="plit__elem__caption">Цокольная плитка</h5>
-								<p class="plit__elem__stat">
-									Цвет: Серый <br>
-									Размер: 250x20x120 мм <br>
-									Вес: 1,7 кг <br>
-									В поддоне: 576 шт <br>
-									Вес поддона: 950 <br>
-								</p>
-								<h4>544,00 <span class="price__low">руб./м2</span></h4>
-								<a href="" class="plit__elem__btn btn">ЗАКАЗАТЬ</a>
-							</div>
-						</div>
-						<div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col">
-							<div class="plit__elem">
-								<img src="assets/images/plit_1.png" class="plit__elem__img">
-								<h5 class="plit__elem__caption">Цокольная плитка</h5>
-								<p class="plit__elem__stat">
-									Цвет: Серый <br>
-									Размер: 250x20x120 мм <br>
-									Вес: 1,7 кг <br>
-									В поддоне: 576 шт <br>
-									Вес поддона: 950 <br>
-								</p>
-								<h4>544,00 <span class="price__low">руб./м2</span></h4>
-								<a href="" class="plit__elem__btn btn">ЗАКАЗАТЬ</a>
-							</div>
-						</div>
+	<div class="plit__elem">
+		<img src="assets/images/plit_1.png" class="plit__elem__img">
+		<h5 class="plit__elem__caption">Цокольная плитка</h5>
+		<p class="plit__elem__stat">
+			Цвет: Серый <br>
+			Размер: 250x20x120 мм <br>
+			Вес: 1,7 кг <br>
+			В поддоне: 576 шт <br>
+			Вес поддона: 950 <br>
+		</p>
+		<h4>544,00 <span class="price__low">руб./м2</span></h4>
+		<a href="" class="plit__elem__btn btn">ЗАКАЗАТЬ</a>
+	</div>
+</div>
 					</div>
 					<div class="row">
 						<div class="col-12">
