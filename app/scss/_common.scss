@@ -27,6 +27,9 @@
 //slider
 
 //slick global
+    .slick-list {
+        width: 100%;
+    }
     .slick-initialized .slick-slide {
         display: flex;
     }

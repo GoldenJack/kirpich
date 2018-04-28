@@ -63,6 +63,7 @@ $(document).ready(function() {
     });
 
     $('.modal__region').click(function(e){
+        e.preventDefault();
         $('#region').iziModal('open');
     });
 
@@ -81,6 +82,7 @@ $(document).ready(function() {
     });
     
     $('.callback__btn').click(function(e){
+        e.preventDefault();
         $('#callback').iziModal('open');
     });
 
