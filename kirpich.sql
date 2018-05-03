@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Апр 28 2018 г., 23:39
+-- Время создания: Май 03 2018 г., 00:27
 -- Версия сервера: 5.7.18
 -- Версия PHP: 7.1.3
 
@@ -28,6 +28,7 @@ SET time_zone = "+00:00";
 -- Структура таблицы `evo_active_users`
 --
 
+DROP TABLE IF EXISTS `evo_active_users`;
 CREATE TABLE `evo_active_users` (
   `sid` varchar(32) NOT NULL DEFAULT '',
   `internalKey` int(9) NOT NULL DEFAULT '0',
@@ -42,7 +43,7 @@ CREATE TABLE `evo_active_users` (
 --
 
 INSERT INTO `evo_active_users` (`sid`, `internalKey`, `username`, `lasthit`, `action`, `id`) VALUES
-('cdpo66arovbgnjd5du9ee8eteu', 1, 'admin', 1524958498, '27', 1);
+('cdpo66arovbgnjd5du9ee8eteu', 1, 'admin', 1525307094, '67', 52);
 
 -- --------------------------------------------------------
 
@@ -50,6 +51,7 @@ INSERT INTO `evo_active_users` (`sid`, `internalKey`, `username`, `lasthit`, `ac
 -- Структура таблицы `evo_active_user_locks`
 --
 
+DROP TABLE IF EXISTS `evo_active_user_locks`;
 CREATE TABLE `evo_active_user_locks` (
   `id` int(10) NOT NULL,
   `sid` varchar(32) NOT NULL DEFAULT '',
@@ -64,9 +66,7 @@ CREATE TABLE `evo_active_user_locks` (
 --
 
 INSERT INTO `evo_active_user_locks` (`id`, `sid`, `internalKey`, `elementType`, `elementId`, `lasthit`) VALUES
-(309, 'cdpo66arovbgnjd5du9ee8eteu', 1, 1, 9, 1524928810),
-(417, 'cdpo66arovbgnjd5du9ee8eteu', 1, 7, 1, 1524958498),
-(416, 'cdpo66arovbgnjd5du9ee8eteu', 1, 3, 34, 1524958426);
+(246, 'cdpo66arovbgnjd5du9ee8eteu', 1, 3, 51, 1525307009);
 
 -- --------------------------------------------------------
 
@@ -74,6 +74,7 @@ INSERT INTO `evo_active_user_locks` (`id`, `sid`, `internalKey`, `elementType`, 
 -- Структура таблицы `evo_active_user_sessions`
 --
 
+DROP TABLE IF EXISTS `evo_active_user_sessions`;
 CREATE TABLE `evo_active_user_sessions` (
   `sid` varchar(32) NOT NULL DEFAULT '',
   `internalKey` int(9) NOT NULL DEFAULT '0',
@@ -86,7 +87,7 @@ CREATE TABLE `evo_active_user_sessions` (
 --
 
 INSERT INTO `evo_active_user_sessions` (`sid`, `internalKey`, `lasthit`, `ip`) VALUES
-('cdpo66arovbgnjd5du9ee8eteu', 1, 1524958509, '::1');
+('cdpo66arovbgnjd5du9ee8eteu', 1, 1525307094, '::1');
 
 -- --------------------------------------------------------
 
@@ -94,6 +95,7 @@ INSERT INTO `evo_active_user_sessions` (`sid`, `internalKey`, `lasthit`, `ip`) V
 -- Структура таблицы `evo_categories`
 --
 
+DROP TABLE IF EXISTS `evo_categories`;
 CREATE TABLE `evo_categories` (
   `id` int(11) NOT NULL,
   `category` varchar(45) NOT NULL DEFAULT '',
@@ -124,6 +126,7 @@ INSERT INTO `evo_categories` (`id`, `category`, `rank`) VALUES
 -- Структура таблицы `evo_documentgroup_names`
 --
 
+DROP TABLE IF EXISTS `evo_documentgroup_names`;
 CREATE TABLE `evo_documentgroup_names` (
   `id` int(10) NOT NULL,
   `name` varchar(245) NOT NULL DEFAULT '',
@@ -144,6 +147,7 @@ INSERT INTO `evo_documentgroup_names` (`id`, `name`, `private_memgroup`, `privat
 -- Структура таблицы `evo_document_groups`
 --
 
+DROP TABLE IF EXISTS `evo_document_groups`;
 CREATE TABLE `evo_document_groups` (
   `id` int(10) NOT NULL,
   `document_group` int(10) NOT NULL DEFAULT '0',
@@ -163,6 +167,7 @@ INSERT INTO `evo_document_groups` (`id`, `document_group`, `document`) VALUES
 -- Структура таблицы `evo_event_log`
 --
 
+DROP TABLE IF EXISTS `evo_event_log`;
 CREATE TABLE `evo_event_log` (
   `id` int(11) NOT NULL,
   `eventid` int(11) DEFAULT '0',
@@ -174,12 +179,20 @@ CREATE TABLE `evo_event_log` (
   `description` text
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Stores event and error logs';
 
+--
+-- Дамп данных таблицы `evo_event_log`
+--
+
+INSERT INTO `evo_event_log` (`id`, `eventid`, `createdon`, `type`, `user`, `usertype`, `source`, `description`) VALUES
+(1, 0, 1525118020, 3, 1, 0, 'Системные файлы были изменены.', 'Вы включили проверку системных файлов на наличие изменений, характерных для взломанных сайтов. Это не значит, что сайт был взломан, но желательно просмотреть измененные файлы.(index.php, .htaccess, manager/index.php, manager/includes/config.inc.php) index.php, .htaccess, manager/index.php, manager/includes/config.inc.php');
+
 -- --------------------------------------------------------
 
 --
 -- Структура таблицы `evo_jot_content`
 --
 
+DROP TABLE IF EXISTS `evo_jot_content`;
 CREATE TABLE `evo_jot_content` (
   `id` int(10) NOT NULL,
   `title` varchar(255) DEFAULT NULL,
@@ -223,6 +236,7 @@ INSERT INTO `evo_jot_content` (`id`, `title`, `tagid`, `published`, `uparent`, `
 -- Структура таблицы `evo_jot_subscriptions`
 --
 
+DROP TABLE IF EXISTS `evo_jot_subscriptions`;
 CREATE TABLE `evo_jot_subscriptions` (
   `id` mediumint(10) NOT NULL,
   `uparent` mediumint(10) NOT NULL DEFAULT '0',
@@ -236,6 +250,7 @@ CREATE TABLE `evo_jot_subscriptions` (
 -- Структура таблицы `evo_manager_log`
 --
 
+DROP TABLE IF EXISTS `evo_manager_log`;
 CREATE TABLE `evo_manager_log` (
   `id` int(10) NOT NULL,
   `timestamp` int(20) NOT NULL DEFAULT '0',
@@ -1154,7 +1169,938 @@ INSERT INTO `evo_manager_log` (`id`, `timestamp`, `internalKey`, `username`, `ac
 (895, 1524958426, 1, 'admin', 79, '34', 'product_plit', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36'),
 (896, 1524958426, 1, 'admin', 78, '34', 'product_plit', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36'),
 (897, 1524958495, 1, 'admin', 17, '-', '-', 'Editing settings', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36'),
-(898, 1524958498, 1, 'admin', 27, '1', 'Кирпич', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36');
+(898, 1524958498, 1, 'admin', 27, '1', 'Кирпич', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36'),
+(899, 1525015524, 1, 'admin', 58, '-', 'MODX', 'Logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(900, 1525015528, 1, 'admin', 17, '-', '-', 'Editing settings', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(901, 1525033208, 1, 'admin', 17, '-', '-', 'Editing settings', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(902, 1525033455, 1, 'admin', 17, '-', '-', 'Editing settings', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(903, 1525087185, 1, 'admin', 17, '-', '-', 'Editing settings', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(904, 1525087202, 1, 'admin', 17, '-', '-', 'Editing settings', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(905, 1525091085, 1, 'admin', 8, '-', '-', 'Logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(906, 1525091096, 1, 'admin', 58, '-', 'MODX', 'Logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(907, 1525091098, 1, 'admin', 17, '-', '-', 'Editing settings', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(908, 1525091701, 1, 'admin', 8, '-', '-', 'Logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(909, 1525096880, 1, 'admin', 58, '-', 'MODX', 'Logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(910, 1525096883, 1, 'admin', 17, '-', '-', 'Editing settings', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(911, 1525097472, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(912, 1525097485, 1, 'admin', 5, '-', 'Кирпич', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(913, 1525097485, 1, 'admin', 3, '78', 'Кирпич', 'Viewing data for resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(914, 1525097489, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(915, 1525097538, 1, 'admin', 5, '-', 'Размеры', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(916, 1525097538, 1, 'admin', 3, '79', 'Размеры', 'Viewing data for resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(917, 1525097542, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(918, 1525097593, 1, 'admin', 5, '-', '1.4', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(919, 1525097593, 1, 'admin', 3, '80', '1.4', 'Viewing data for resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(920, 1525097604, 1, 'admin', 19, '-', 'Новый шаблон', 'Creating a new template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(921, 1525097645, 1, 'admin', 20, '-', 'Размер кирпича', 'Saving template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(922, 1525097646, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(923, 1525097650, 1, 'admin', 27, '80', '1.4', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(924, 1525100587, 1, 'admin', 27, '80', '1.4', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(925, 1525100594, 1, 'admin', 16, '14', 'Размер кирпича', 'Editing template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(926, 1525100602, 1, 'admin', 20, '14', 'Размер кирпича', 'Saving template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(927, 1525100603, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(928, 1525100613, 1, 'admin', 5, '80', '1.4', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(929, 1525100613, 1, 'admin', 3, '80', '1.4', 'Viewing data for resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(930, 1525100616, 1, 'admin', 27, '79', 'Размеры', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(931, 1525100632, 1, 'admin', 77, '-', 'Новый чанк', 'Creating a new Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(932, 1525100670, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(933, 1525100745, 1, 'admin', 79, '-', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(934, 1525100745, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(935, 1525100750, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(936, 1525100807, 1, 'admin', 78, '16', 'header', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(937, 1525100881, 1, 'admin', 79, '19', 'products', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(938, 1525100881, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(939, 1525101144, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(940, 1525101144, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(941, 1525101235, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(942, 1525101239, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(943, 1525101239, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(944, 1525101241, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(945, 1525101245, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(946, 1525101245, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(947, 1525101278, 1, 'admin', 5, '79', 'Размеры', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(948, 1525101278, 1, 'admin', 3, '79', 'Размеры', 'Viewing data for resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(949, 1525101283, 1, 'admin', 27, '80', '1.4', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(950, 1525101286, 1, 'admin', 5, '80', '1.4', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(951, 1525101286, 1, 'admin', 27, '80', '1.4', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(952, 1525101293, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(953, 1525101293, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(954, 1525101369, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(955, 1525101369, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(956, 1525101405, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(957, 1525101405, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(958, 1525101417, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(959, 1525101417, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(960, 1525101422, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(961, 1525101793, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(962, 1525101796, 1, 'admin', 5, '-', '1.0', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(963, 1525101796, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(964, 1525101818, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(965, 1525101821, 1, 'admin', 5, '-', '0.7', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(966, 1525101821, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(967, 1525101835, 1, 'admin', 5, '-', '0.5', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(968, 1525101836, 1, 'admin', 27, '83', '0.5', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(969, 1525102299, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(970, 1525102311, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(971, 1525102311, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(972, 1525102337, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(973, 1525102337, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(974, 1525102359, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(975, 1525102360, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(976, 1525102365, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(977, 1525102365, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(978, 1525102369, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(979, 1525102369, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36');
+INSERT INTO `evo_manager_log` (`id`, `timestamp`, `internalKey`, `username`, `action`, `itemid`, `itemname`, `message`, `ip`, `useragent`) VALUES
+(980, 1525102373, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(981, 1525102373, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(982, 1525102414, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(983, 1525102414, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(984, 1525102436, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(985, 1525102437, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(986, 1525102542, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(987, 1525102542, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(988, 1525102572, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(989, 1525102572, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(990, 1525102603, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(991, 1525102604, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(992, 1525102634, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(993, 1525102634, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(994, 1525102686, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(995, 1525102687, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(996, 1525102704, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(997, 1525102704, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(998, 1525105410, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(999, 1525105411, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1000, 1525105479, 1, 'admin', 16, '13', 'Товар (плитка)', 'Editing template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1001, 1525105486, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1002, 1525105504, 1, 'admin', 79, '19', 'products', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1003, 1525105504, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1004, 1525105531, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1005, 1525105532, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1006, 1525105539, 1, 'admin', 79, '19', 'products', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1007, 1525105539, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1008, 1525105652, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1009, 1525105653, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1010, 1525105679, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1011, 1525105679, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1012, 1525105762, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1013, 1525105763, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1014, 1525105784, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1015, 1525105784, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1016, 1525105799, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1017, 1525105799, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1018, 1525105814, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1019, 1525105814, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1020, 1525105967, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1021, 1525105967, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1022, 1525106436, 1, 'admin', 79, '19', 'products', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1023, 1525106437, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1024, 1525106453, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1025, 1525106453, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1026, 1525106699, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1027, 1525106699, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1028, 1525107060, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1029, 1525107060, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1030, 1525107076, 1, 'admin', 79, '19', 'products', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1031, 1525107077, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1032, 1525107086, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1033, 1525107086, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1034, 1525107437, 1, 'admin', 79, '19', 'products', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1035, 1525107437, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1036, 1525107578, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1037, 1525107578, 1, 'admin', 77, '-', 'Новый чанк', 'Creating a new Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1038, 1525107646, 1, 'admin', 79, '-', 'stone_color', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1039, 1525107646, 1, 'admin', 78, '36', 'stone_color', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1040, 1525107654, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1041, 1525107666, 1, 'admin', 5, '-', 'Цвета', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1042, 1525107666, 1, 'admin', 27, '84', 'Цвета', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1043, 1525107670, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1044, 1525109071, 1, 'admin', 79, '36', 'stone_color', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1045, 1525109072, 1, 'admin', 78, '36', 'stone_color', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1046, 1525109090, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1047, 1525109163, 1, 'admin', 5, '-', 'Золотистый', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1048, 1525109164, 1, 'admin', 27, '85', 'Золотистый', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1049, 1525109173, 1, 'admin', 79, '36', 'stone_color', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1050, 1525109173, 1, 'admin', 78, '36', 'stone_color', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1051, 1525109182, 1, 'admin', 5, '85', 'Золотистый', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1052, 1525109182, 1, 'admin', 27, '85', 'Золотистый', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1053, 1525109255, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1054, 1525112765, 1, 'admin', 5, '-', 'Полузолотой', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1055, 1525112766, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1056, 1525112788, 1, 'admin', 5, '-', 'Светло серый', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1057, 1525112788, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1058, 1525112820, 1, 'admin', 5, '-', 'Коричневый', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1059, 1525112820, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1060, 1525112832, 1, 'admin', 5, '-', 'Светло бежевый', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1061, 1525112833, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1062, 1525112844, 1, 'admin', 5, '-', 'Серый', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1063, 1525112844, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1064, 1525112855, 1, 'admin', 5, '-', 'Темно оранжевый', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1065, 1525112855, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1066, 1525112865, 1, 'admin', 5, '-', 'Болотный', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1067, 1525112865, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1068, 1525112875, 1, 'admin', 5, '-', 'Светло серый', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1069, 1525112876, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1070, 1525112896, 1, 'admin', 5, '-', 'Светло золотой', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1071, 1525112896, 1, 'admin', 27, '94', 'Светло золотой', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1072, 1525112899, 1, 'admin', 27, '87', 'Светло серый', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1073, 1525112914, 1, 'admin', 5, '87', 'Светло коричневый', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1074, 1525112914, 1, 'admin', 27, '87', 'Светло коричневый', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1075, 1525112960, 1, 'admin', 19, '-', 'Новый шаблон', 'Creating a new template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1076, 1525112987, 1, 'admin', 79, '36', 'stone_color', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1077, 1525112987, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1078, 1525113020, 1, 'admin', 20, '-', 'Вид кирпича', 'Saving template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1079, 1525113020, 1, 'admin', 16, '15', 'Вид кирпича', 'Editing template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1080, 1525113024, 1, 'admin', 300, '-', 'Новый параметр (TV)', 'Create Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1081, 1525113094, 1, 'admin', 302, '-', 'Изображение черно белое', 'Save Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1082, 1525113094, 1, 'admin', 300, '-', 'Новый параметр (TV)', 'Create Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1083, 1525113119, 1, 'admin', 78, '36', 'stone_color', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1084, 1525113138, 1, 'admin', 79, '36', 'stone_color', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1085, 1525113138, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1086, 1525113168, 1, 'admin', 16, '14', 'Размер кирпича', 'Editing template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1087, 1525113183, 1, 'admin', 20, '14', 'Размер кирпича', 'Saving template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1088, 1525113183, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1089, 1525113189, 1, 'admin', 16, '15', 'Вид кирпича', 'Editing template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1090, 1525113198, 1, 'admin', 20, '15', 'Вид кирпича', 'Saving template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1091, 1525113198, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1092, 1525113265, 1, 'admin', 302, '-', 'Изображение вида кирпича - цветное', 'Save Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1093, 1525113266, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1094, 1525113305, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1095, 1525113319, 1, 'admin', 301, '21', 'Изображение вида кирпича - цветное', 'Edit Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1096, 1525113328, 1, 'admin', 302, '21', 'Изображение вида кирпича - цветное', 'Save Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1097, 1525113328, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1098, 1525113331, 1, 'admin', 301, '20', 'Изображение черно белое', 'Edit Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1099, 1525113335, 1, 'admin', 302, '20', 'Изображение черно белое', 'Save Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1100, 1525113335, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1101, 1525113355, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1102, 1525113375, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1103, 1525113378, 1, 'admin', 5, '-', 'Вид', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1104, 1525113379, 1, 'admin', 3, '95', 'Вид', 'Viewing data for resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1105, 1525113397, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1106, 1525113452, 1, 'admin', 77, '-', 'Новый чанк', 'Creating a new Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1107, 1525113489, 1, 'admin', 301, '21', 'Изображение вида кирпича - цветное', 'Edit Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1108, 1525113519, 1, 'admin', 301, '20', 'Изображение черно белое', 'Edit Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1109, 1525113535, 1, 'admin', 301, '21', 'Изображение вида кирпича - цветное', 'Edit Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1110, 1525113541, 1, 'admin', 301, '21', 'Изображение вида кирпича - цветное', 'Edit Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1111, 1525113545, 1, 'admin', 301, '20', 'Изображение черно белое', 'Edit Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1112, 1525113556, 1, 'admin', 302, '20', 'Изображение вида кирпича - черно белое', 'Save Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1113, 1525113556, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1114, 1525113592, 1, 'admin', 79, '-', 'stone_view', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1115, 1525113592, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1116, 1525113600, 1, 'admin', 16, '5', 'electron', 'Editing template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1117, 1525113604, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1118, 1525113618, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1119, 1525113670, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1120, 1525113688, 1, 'admin', 79, '19', 'products', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1121, 1525113689, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1122, 1525113707, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1123, 1525113745, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1124, 1525113782, 1, 'admin', 17, '-', '-', 'Editing settings', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1125, 1525113809, 1, 'admin', 30, '-', '-', 'Saving settings', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1126, 1525113829, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1127, 1525113942, 1, 'admin', 26, '-', '-', 'Refreshing site', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1128, 1525113994, 1, 'admin', 93, '-', '-', 'Backup Manager', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1129, 1525114032, 1, 'admin', 67, '-', '-', 'Removing locks', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1130, 1525114126, 1, 'admin', 17, '-', '-', 'Editing settings', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1131, 1525114130, 1, 'admin', 30, '-', '-', 'Saving settings', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1132, 1525114142, 1, 'admin', 17, '-', '-', 'Editing settings', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1133, 1525114148, 1, 'admin', 30, '-', '-', 'Saving settings', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1134, 1525117369, 1, 'admin', 17, '-', '-', 'Editing settings', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1135, 1525117411, 1, 'admin', 30, '-', '-', 'Saving settings', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1136, 1525117419, 1, 'admin', 17, '-', '-', 'Editing settings', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1137, 1525117436, 1, 'admin', 30, '-', '-', 'Saving settings', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1138, 1525117442, 1, 'admin', 27, '95', 'Вид', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1139, 1525117449, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1140, 1525117562, 1, 'admin', 5, '-', 'Полнотелый', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1141, 1525117562, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1142, 1525117615, 1, 'admin', 5, '-', 'Пустотелый', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1143, 1525117615, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1144, 1525117649, 1, 'admin', 5, '-', 'Фасонный', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1145, 1525117649, 1, 'admin', 27, '98', 'Фасонный', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1146, 1525117653, 1, 'admin', 27, '96', 'Полнотелый', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1147, 1525117672, 1, 'admin', 5, '96', 'Полнотелый', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1148, 1525117672, 1, 'admin', 27, '96', 'Полнотелый', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1149, 1525118019, 1, 'admin', 58, '-', 'MODX', 'Logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1150, 1525118057, 1, 'admin', 17, '-', '-', 'Editing settings', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1151, 1525118067, 1, 'admin', 30, '-', '-', 'Saving settings', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1152, 1525118072, 1, 'admin', 17, '-', '-', 'Editing settings', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1153, 1525118083, 1, 'admin', 30, '-', '-', 'Saving settings', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1154, 1525118130, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1155, 1525118343, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1156, 1525118356, 1, 'admin', 301, '21', 'Изображение вида кирпича - цветное', 'Edit Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1157, 1525118367, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1158, 1525118371, 1, 'admin', 301, '20', 'Изображение вида кирпича - черно белое', 'Edit Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1159, 1525118377, 1, 'admin', 79, '19', 'products', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1160, 1525118377, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1161, 1525118393, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1162, 1525118403, 1, 'admin', 78, '37', 'stone_view', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1163, 1525118412, 1, 'admin', 79, '37', 'stone_view', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1164, 1525118413, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1165, 1525121410, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1166, 1525121438, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1167, 1525121441, 1, 'admin', 5, '-', 'Форма', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1168, 1525121441, 1, 'admin', 3, '99', 'Форма', 'Viewing data for resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1169, 1525121448, 1, 'admin', 19, '-', 'Новый шаблон', 'Creating a new template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1170, 1525121467, 1, 'admin', 20, '-', 'Форма крипича', 'Saving template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1171, 1525121468, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1172, 1525121471, 1, 'admin', 300, '-', 'Новый параметр (TV)', 'Create Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1173, 1525121511, 1, 'admin', 302, '-', 'Изображение формы кирпича - черно белое', 'Save Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1174, 1525121511, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1175, 1525121513, 1, 'admin', 300, '-', 'Новый параметр (TV)', 'Create Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1176, 1525121549, 1, 'admin', 302, '-', 'Изображение формы кирпича - цветное', 'Save Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1177, 1525121549, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1178, 1525121564, 1, 'admin', 301, '23', 'Изображение формы кирпича - цветное', 'Edit Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1179, 1525121573, 1, 'admin', 302, '23', 'Изображение формы кирпича - цветное', 'Save Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1180, 1525121573, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1181, 1525121575, 1, 'admin', 301, '22', 'Изображение формы кирпича - черно белое', 'Edit Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1182, 1525121582, 1, 'admin', 302, '22', 'Изображение формы кирпича - черно белое', 'Save Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1183, 1525121582, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1184, 1525121653, 1, 'admin', 77, '-', 'Новый чанк', 'Creating a new Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1185, 1525121674, 1, 'admin', 78, '33', 'successTpl', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1186, 1525121681, 1, 'admin', 79, '33', 'successTpl', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1187, 1525121681, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1188, 1525121685, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1189, 1525121902, 1, 'admin', 79, '-', 'stone_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1190, 1525121903, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1191, 1525121913, 1, 'admin', 301, '22', 'Изображение формы кирпича - черно белое', 'Edit Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1192, 1525121921, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1193, 1525121924, 1, 'admin', 301, '21', 'Изображение вида кирпича - цветное', 'Edit Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1194, 1525121928, 1, 'admin', 79, '19', 'products', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1195, 1525121928, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1196, 1525121930, 1, 'admin', 302, '21', 'Изображение вида кирпича - цветное', 'Save Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1197, 1525121931, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1198, 1525121943, 1, 'admin', 78, '38', 'stone_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1199, 1525121963, 1, 'admin', 301, '20', 'Изображение вида кирпича - черно белое', 'Edit Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1200, 1525121993, 1, 'admin', 79, '38', 'stone_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1201, 1525121993, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1202, 1525121998, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1203, 1525122003, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1204, 1525122083, 1, 'admin', 5, '-', 'Угловой', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1205, 1525122083, 1, 'admin', 3, '100', 'Угловой', 'Viewing data for resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1206, 1525122087, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1207, 1525122099, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1208, 1525122166, 1, 'admin', 5, '-', 'Брусок угловой', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1209, 1525122166, 1, 'admin', 3, '101', 'Брусок угловой', 'Viewing data for resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1210, 1525122169, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1211, 1525122174, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1212, 1525122199, 1, 'admin', 5, '-', 'Двусторонный', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1213, 1525122199, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1214, 1525122221, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1215, 1525122235, 1, 'admin', 5, '-', 'Фигурный №1', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1216, 1525122235, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1217, 1525122239, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1218, 1525122262, 1, 'admin', 5, '-', 'Фигурный №2', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1219, 1525122262, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1220, 1525122274, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1221, 1525122296, 1, 'admin', 5, '-', 'Трапеция №1', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36');
+INSERT INTO `evo_manager_log` (`id`, `timestamp`, `internalKey`, `username`, `action`, `itemid`, `itemname`, `message`, `ip`, `useragent`) VALUES
+(1222, 1525122296, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1223, 1525122313, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1224, 1525122328, 1, 'admin', 5, '-', 'Трапеция №2', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1225, 1525122328, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1226, 1525122342, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1227, 1525122362, 1, 'admin', 5, '-', 'Трапеция №3', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1228, 1525122362, 1, 'admin', 3, '107', 'Трапеция №3', 'Viewing data for resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1229, 1525122399, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1230, 1525122419, 1, 'admin', 79, '19', 'products', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1231, 1525122419, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1232, 1525122464, 1, 'admin', 79, '19', 'products', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1233, 1525122465, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1234, 1525122492, 1, 'admin', 78, '38', 'stone_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1235, 1525122503, 1, 'admin', 78, '38', 'stone_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1236, 1525122505, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1237, 1525122508, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1238, 1525122512, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1239, 1525122517, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1240, 1525122523, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1241, 1525122523, 1, 'admin', 78, '35', 'stone_size', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1242, 1525122528, 1, 'admin', 79, '35', 'stone_size', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1243, 1525122529, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1244, 1525122536, 1, 'admin', 78, '37', 'stone_view', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1245, 1525122553, 1, 'admin', 79, '37', 'stone_view', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1246, 1525122553, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1247, 1525122558, 1, 'admin', 78, '38', 'stone_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1248, 1525122567, 1, 'admin', 79, '38', 'stone_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1249, 1525122567, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1250, 1525122588, 1, 'admin', 78, '22', 'partners', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1251, 1525122590, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1252, 1525122593, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1253, 1525122619, 1, 'admin', 27, '100', 'Угловой', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1254, 1525122646, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1255, 1525122652, 1, 'admin', 78, '38', 'stone_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1256, 1525122664, 1, 'admin', 79, '38', 'stone_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1257, 1525122665, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1258, 1525122684, 1, 'admin', 78, '38', 'stone_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1259, 1525122688, 1, 'admin', 79, '38', 'stone_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1260, 1525122688, 1, 'admin', 78, '38', 'stone_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1261, 1525122695, 1, 'admin', 79, '38', 'stone_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1262, 1525122695, 1, 'admin', 78, '38', 'stone_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1263, 1525122705, 1, 'admin', 79, '38', 'stone_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1264, 1525122705, 1, 'admin', 78, '38', 'stone_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1265, 1525122724, 1, 'admin', 79, '38', 'stone_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1266, 1525122724, 1, 'admin', 78, '38', 'stone_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1267, 1525122759, 1, 'admin', 79, '38', 'stone_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1268, 1525122759, 1, 'admin', 78, '38', 'stone_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1269, 1525122781, 1, 'admin', 79, '38', 'stone_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1270, 1525122781, 1, 'admin', 78, '38', 'stone_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1271, 1525122784, 1, 'admin', 79, '38', 'stone_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1272, 1525122784, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1273, 1525122789, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1274, 1525122799, 1, 'admin', 79, '19', 'products', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1275, 1525122799, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1276, 1525122846, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1277, 1525122900, 1, 'admin', 5, '-', 'Как можно использовать нашу продукцию - слайдер', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1278, 1525122900, 1, 'admin', 3, '108', 'Как можно использовать нашу продукцию - слайдер', 'Viewing data for resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1279, 1525122908, 1, 'admin', 19, '-', 'Новый шаблон', 'Creating a new template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1280, 1525122944, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1281, 1525122967, 1, 'admin', 20, '-', 'Слайд в слайдере (кирпич)', 'Saving template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1282, 1525122967, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1283, 1525122970, 1, 'admin', 77, '-', 'Новый чанк', 'Creating a new Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1284, 1525123041, 1, 'admin', 79, '-', 'stone_slide', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1285, 1525123041, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1286, 1525123044, 1, 'admin', 300, '-', 'Новый параметр (TV)', 'Create Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1287, 1525123088, 1, 'admin', 302, '-', 'Слайд в слайдере \\\"Как можно использовать нашу продукцию\\\"  (кирпич)', 'Save Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1288, 1525123088, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1289, 1525123099, 1, 'admin', 78, '39', 'stone_slide', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1290, 1525123109, 1, 'admin', 79, '39', 'stone_slide', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1291, 1525123109, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1292, 1525123121, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1293, 1525123136, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1294, 1525123142, 1, 'admin', 5, '-', 'Слайд 1', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1295, 1525123142, 1, 'admin', 3, '109', 'Слайд 1', 'Viewing data for resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1296, 1525123146, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1297, 1525123158, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1298, 1525123163, 1, 'admin', 5, '-', 'Слайд 2', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1299, 1525123163, 1, 'admin', 3, '110', 'Слайд 2', 'Viewing data for resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1300, 1525123166, 1, 'admin', 27, '108', 'Как можно использовать нашу продукцию - слайдер', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1301, 1525123182, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1302, 1525123264, 1, 'admin', 79, '19', 'products', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1303, 1525123264, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1304, 1525123304, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1305, 1525123311, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1306, 1525123320, 1, 'admin', 78, '39', 'stone_slide', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1307, 1525123371, 1, 'admin', 27, '108', 'Как можно использовать нашу продукцию - слайдер', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1308, 1525123374, 1, 'admin', 5, '108', 'Как можно использовать нашу продукцию - слайдер', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1309, 1525123374, 1, 'admin', 3, '108', 'Как можно использовать нашу продукцию - слайдер', 'Viewing data for resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1310, 1525123408, 1, 'admin', 16, '8', 'Слайд в слайдере (шапка)', 'Editing template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1311, 1525123413, 1, 'admin', 16, '17', 'Слайд в слайдере (кирпич)', 'Editing template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1312, 1525123422, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1313, 1525123516, 1, 'admin', 27, '110', 'Слайд 2', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1314, 1525123534, 1, 'admin', 5, '110', 'Слайд 2', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1315, 1525123534, 1, 'admin', 3, '110', 'Слайд 2', 'Viewing data for resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1316, 1525123558, 1, 'admin', 27, '2', 'Blog', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1317, 1525123558, 1, 'admin', 27, '110', 'Слайд 2', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1318, 1525123580, 1, 'admin', 5, '110', 'Слайд 2', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1319, 1525123580, 1, 'admin', 3, '110', 'Слайд 2', 'Viewing data for resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1320, 1525124036, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1321, 1525124048, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1322, 1525124051, 1, 'admin', 5, '-', 'Как можно использовать нашу продукцию - слайдер', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1323, 1525124051, 1, 'admin', 3, '111', 'Как можно использовать нашу продукцию - слайдер', 'Viewing data for resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1324, 1525124065, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1325, 1525124074, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1326, 1525124078, 1, 'admin', 5, '-', 'Товары', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1327, 1525124078, 1, 'admin', 3, '112', 'Товары', 'Viewing data for resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1328, 1525124095, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1329, 1525124106, 1, 'admin', 79, '19', 'products', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1330, 1525124106, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1331, 1525124155, 1, 'admin', 27, '111', 'Как можно использовать нашу продукцию - слайдер', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1332, 1525124157, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1333, 1525124162, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1334, 1525124177, 1, 'admin', 16, '17', 'Слайд в слайдере (кирпич)', 'Editing template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1335, 1525124194, 1, 'admin', 20, '17', 'Слайд в слайдере (кирпич + плитка + элементы)', 'Saving template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1336, 1525124194, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1337, 1525124200, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1338, 1525124205, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1339, 1525124223, 1, 'admin', 5, '-', 'Слайд 1', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1340, 1525124224, 1, 'admin', 3, '113', 'Слайд 1', 'Viewing data for resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1341, 1525124227, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1342, 1525124242, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1343, 1525124264, 1, 'admin', 5, '-', 'Слайд 2', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1344, 1525124264, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1345, 1525124268, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1346, 1525124285, 1, 'admin', 5, '-', 'Слайд 3', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1347, 1525124285, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1348, 1525124300, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1349, 1525124320, 1, 'admin', 5, '-', 'Слайд 4', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1350, 1525124321, 1, 'admin', 3, '116', 'Слайд 4', 'Viewing data for resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1351, 1525124333, 1, 'admin', 77, '-', 'Новый чанк', 'Creating a new Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1352, 1525124335, 1, 'admin', 3, '116', 'Слайд 4', 'Viewing data for resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1353, 1525124345, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1354, 1525124395, 1, 'admin', 79, '19', 'products', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1355, 1525124395, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1356, 1525124436, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1357, 1525124495, 1, 'admin', 78, '39', 'stone_slide', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1358, 1525124501, 1, 'admin', 97, '39', 'stone_slide Копия', 'Duplicate Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1359, 1525124501, 1, 'admin', 78, '40', 'stone_slide Копия', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1360, 1525124550, 1, 'admin', 79, '19', 'products', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1361, 1525124550, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1362, 1525124576, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1363, 1525124607, 1, 'admin', 79, '40', 'plit_slide', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1364, 1525124607, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1365, 1525124627, 1, 'admin', 79, '19', 'products', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1366, 1525124627, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1367, 1525124667, 1, 'admin', 78, '39', 'stone_slide', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1368, 1525124673, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1369, 1525124679, 1, 'admin', 78, '39', 'stone_slide', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1370, 1525124688, 1, 'admin', 79, '39', 'stone_slide', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1371, 1525124688, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1372, 1525124692, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1373, 1525124706, 1, 'admin', 79, '19', 'products', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1374, 1525124707, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1375, 1525124751, 1, 'admin', 27, '113', 'Слайд 1', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1376, 1525124769, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1377, 1525124827, 1, 'admin', 16, '17', 'Слайд в слайдере (кирпич + плитка + элементы)', 'Editing template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1378, 1525124866, 1, 'admin', 27, '113', 'Слайд 1', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1379, 1525124872, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1380, 1525124873, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1381, 1525124881, 1, 'admin', 301, '24', 'Слайд в слайдере \"Как можно использовать нашу продукцию\"  (кирпич)', 'Edit Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1382, 1525124896, 1, 'admin', 302, '24', 'Слайд в слайдере \\\"Как можно использовать нашу продукцию\\\"  (кирпич)', 'Save Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1383, 1525124896, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1384, 1525124919, 1, 'admin', 301, '24', 'Слайд в слайдере \"Как можно использовать нашу продукцию\"  (кирпич)', 'Edit Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1385, 1525124921, 1, 'admin', 27, '113', 'Слайд 1', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1386, 1525124943, 1, 'admin', 78, '39', 'stone_slide', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1387, 1525124948, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1388, 1525124978, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1389, 1525124992, 1, 'admin', 78, '39', 'stone_slide', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1390, 1525124997, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1391, 1525125000, 1, 'admin', 78, '40', 'plit_slide', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1392, 1525125014, 1, 'admin', 79, '40', 'plit_slide', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1393, 1525125014, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1394, 1525125073, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1395, 1525125108, 1, 'admin', 79, '19', 'products', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1396, 1525125108, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1397, 1525127740, 1, 'admin', 78, '33', 'successTpl', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1398, 1525175514, 1, 'admin', 78, '33', 'successTpl', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1399, 1525175528, 1, 'admin', 27, '113', 'Слайд 1', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1400, 1525175605, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1401, 1525175613, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1402, 1525175616, 1, 'admin', 5, '-', 'Элементы', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1403, 1525175617, 1, 'admin', 3, '117', 'Элементы', 'Viewing data for resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1404, 1525175620, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1405, 1525175628, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1406, 1525175631, 1, 'admin', 5, '-', 'Товары', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1407, 1525175631, 1, 'admin', 3, '118', 'Товары', 'Viewing data for resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1408, 1525175636, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1409, 1525175844, 1, 'admin', 5, '-', 'Колпак из гладкого кирпича', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1410, 1525175845, 1, 'admin', 3, '119', 'Колпак из гладкого кирпича', 'Viewing data for resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1411, 1525175911, 1, 'admin', 19, '-', 'Новый шаблон', 'Creating a new template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1412, 1525175958, 1, 'admin', 20, '-', 'Товар (елемент)', 'Saving template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1413, 1525175959, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1414, 1525175964, 1, 'admin', 300, '-', 'Новый параметр (TV)', 'Create Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1415, 1525176052, 1, 'admin', 302, '-', 'Размер товара (элемент)', 'Save Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1416, 1525176052, 1, 'admin', 300, '-', 'Новый параметр (TV)', 'Create Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1417, 1525176114, 1, 'admin', 302, '-', 'Размер товара (элемент)', 'Save Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1418, 1525176114, 1, 'admin', 300, '-', 'Новый параметр (TV)', 'Create Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1419, 1525176157, 1, 'admin', 301, '25', 'Размер товара (элемент)', 'Edit Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1420, 1525176157, 1, 'admin', 301, '26', 'Размер товара (элемент)', 'Edit Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1421, 1525176180, 1, 'admin', 302, '25', 'Изображение товара (элемент)', 'Save Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1422, 1525176180, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1423, 1525176200, 1, 'admin', 302, '26', 'Размер товара (элемент)', 'Save Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1424, 1525176201, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1425, 1525176236, 1, 'admin', 302, '-', 'Вес товара (элемент)', 'Save Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1426, 1525176236, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1427, 1525176286, 1, 'admin', 27, '119', 'Колпак из гладкого кирпича', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1428, 1525176295, 1, 'admin', 27, '119', 'Колпак из гладкого кирпича', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1429, 1525176298, 1, 'admin', 5, '119', 'Колпак из гладкого кирпича', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1430, 1525176298, 1, 'admin', 3, '119', 'Колпак из гладкого кирпича', 'Viewing data for resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1431, 1525176304, 1, 'admin', 16, '18', 'Товар (елемент)', 'Editing template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1432, 1525176309, 1, 'admin', 20, '18', 'Товар (элемент)', 'Saving template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1433, 1525176309, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1434, 1525176313, 1, 'admin', 77, '-', 'Новый чанк', 'Creating a new Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1435, 1525176322, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1436, 1525176383, 1, 'admin', 79, '33', 'successTpl', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1437, 1525176383, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1438, 1525176420, 1, 'admin', 78, '34', 'product_plit', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1439, 1525176428, 1, 'admin', 79, '34', 'product_plit', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1440, 1525176429, 1, 'admin', 77, '-', 'Новый чанк', 'Creating a new Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1441, 1525176471, 1, 'admin', 79, '-', 'product_elem', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1442, 1525176471, 1, 'admin', 78, '41', 'product_elem', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1443, 1525176492, 1, 'admin', 77, '-', 'Новый чанк', 'Creating a new Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1444, 1525176497, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1445, 1525176717, 1, 'admin', 79, '19', 'products', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1446, 1525176717, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1447, 1525176760, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1448, 1525176774, 1, 'admin', 79, '19', 'products', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1449, 1525176774, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1450, 1525176785, 1, 'admin', 79, '41', 'product_elem', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1451, 1525176785, 1, 'admin', 78, '41', 'product_elem', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1452, 1525192115, 1, 'admin', 78, '41', 'product_elem', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1453, 1525192126, 1, 'admin', 27, '119', 'Колпак из гладкого кирпича', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1454, 1525192878, 1, 'admin', 79, '41', 'product_elem', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1455, 1525192879, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1456, 1525192899, 1, 'admin', 301, '19', 'Стоимость товара (плитка)', 'Edit Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1457, 1525192905, 1, 'admin', 302, '19', 'Стоимость товара (плитка)', 'Save Template Variable', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1458, 1525192905, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1459, 1525192908, 1, 'admin', 5, '119', 'Колпак из гладкого кирпича', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1460, 1525192908, 1, 'admin', 27, '119', 'Колпак из гладкого кирпича', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36');
+INSERT INTO `evo_manager_log` (`id`, `timestamp`, `internalKey`, `username`, `action`, `itemid`, `itemname`, `message`, `ip`, `useragent`) VALUES
+(1461, 1525192915, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1462, 1525192925, 1, 'admin', 5, '119', 'Колпак из гладкого кирпича', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1463, 1525192925, 1, 'admin', 27, '119', 'Колпак из гладкого кирпича', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1464, 1525192950, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1465, 1525192955, 1, 'admin', 5, '-', 'Как можно использовать нашу продукцию - слайдер', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1466, 1525192956, 1, 'admin', 27, '120', 'Как можно использовать нашу продукцию - слайдер', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1467, 1525192959, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1468, 1525192971, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1469, 1525193217, 1, 'admin', 5, '-', 'Слайд 1', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1470, 1525193218, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1471, 1525193269, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1472, 1525193285, 1, 'admin', 5, '-', 'Слайд 2', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1473, 1525193286, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1474, 1525193297, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1475, 1525193321, 1, 'admin', 5, '-', 'Слайд 3', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1476, 1525193321, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1477, 1525193361, 1, 'admin', 4, '-', 'Новый ресурс', 'Creating a resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1478, 1525193382, 1, 'admin', 5, '-', 'Слайд 4', 'Saving resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1479, 1525193382, 1, 'admin', 27, '124', 'Слайд 4', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1480, 1525193396, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1481, 1525193425, 1, 'admin', 79, '19', 'products', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1482, 1525193425, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1483, 1525193466, 1, 'admin', 79, '19', 'products', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1484, 1525193466, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1485, 1525193790, 1, 'admin', 78, '32', 'form_callme_tpl', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1486, 1525193814, 1, 'admin', 78, '16', 'header', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1487, 1525193825, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1488, 1525193842, 1, 'admin', 78, '30', 'footer', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1489, 1525193847, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1490, 1525193859, 1, 'admin', 78, '32', 'form_callme_tpl', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1491, 1525193861, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1492, 1525193873, 1, 'admin', 78, '30', 'footer', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1493, 1525193881, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1494, 1525193890, 1, 'admin', 78, '16', 'header', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1495, 1525193960, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1496, 1525193967, 1, 'admin', 16, '5', 'electron', 'Editing template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1497, 1525193982, 1, 'admin', 20, '5', 'electron', 'Saving template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1498, 1525193983, 1, 'admin', 16, '5', 'electron', 'Editing template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1499, 1525194030, 1, 'admin', 20, '5', 'electron', 'Saving template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1500, 1525194030, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1501, 1525194035, 1, 'admin', 77, '-', 'Новый чанк', 'Creating a new Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1502, 1525194067, 1, 'admin', 79, '-', 'header_callback_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1503, 1525194068, 1, 'admin', 78, '42', 'header_callback_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1504, 1525194156, 1, 'admin', 79, '32', 'form_callme_tpl', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1505, 1525194156, 1, 'admin', 78, '32', 'form_callme_tpl', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1506, 1525194264, 1, 'admin', 79, '42', 'header_callback_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1507, 1525194264, 1, 'admin', 78, '42', 'header_callback_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1508, 1525194281, 1, 'admin', 79, '32', 'form_callme_tpl', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1509, 1525194281, 1, 'admin', 78, '32', 'form_callme_tpl', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1510, 1525194286, 1, 'admin', 79, '16', 'header', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1511, 1525194286, 1, 'admin', 78, '16', 'header', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1512, 1525194318, 1, 'admin', 79, '16', 'header', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1513, 1525194318, 1, 'admin', 78, '16', 'header', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1514, 1525194327, 1, 'admin', 79, '42', 'header_callback_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1515, 1525194327, 1, 'admin', 78, '42', 'header_callback_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1516, 1525194334, 1, 'admin', 79, '42', 'header_callback_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1517, 1525194334, 1, 'admin', 78, '42', 'header_callback_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1518, 1525194485, 1, 'admin', 79, '42', 'header_callback_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1519, 1525194485, 1, 'admin', 78, '42', 'header_callback_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1520, 1525194498, 1, 'admin', 79, '42', 'header_callback_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1521, 1525194499, 1, 'admin', 78, '42', 'header_callback_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1522, 1525199554, 1, 'admin', 78, '42', 'header_callback_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1523, 1525199937, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1524, 1525199951, 1, 'admin', 22, '6', 'FormLister', 'Editing Snippet', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1525, 1525256387, 1, 'admin', 22, '6', 'FormLister', 'Editing Snippet', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1526, 1525256397, 1, 'admin', 27, '79', 'Размеры', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1527, 1525262072, 1, 'admin', 58, '-', 'MODX', 'Logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1528, 1525262139, 1, 'admin', 99, '-', '-', 'Manage Web Users', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1529, 1525263035, 1, 'admin', 78, '14', 'ContactForm', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1530, 1525263062, 1, 'admin', 16, '4', 'EVO startup - Bootstrap', 'Editing template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1531, 1525263337, 1, 'admin', 78, '42', 'header_callback_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1532, 1525263338, 1, 'admin', 78, '16', 'header', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1533, 1525263386, 1, 'admin', 16, '3', 'Minimal Template', 'Editing template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1534, 1525263396, 1, 'admin', 78, '9', 'Comments_tplForm', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1535, 1525263696, 1, 'admin', 78, '16', 'header', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1536, 1525263775, 1, 'admin', 16, '5', 'electron', 'Editing template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1537, 1525263801, 1, 'admin', 20, '5', 'electron', 'Saving template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1538, 1525263801, 1, 'admin', 16, '5', 'electron', 'Editing template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1539, 1525263805, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1540, 1525263808, 1, 'admin', 77, '-', 'Новый чанк', 'Creating a new Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1541, 1525263945, 1, 'admin', 79, '-', 'modals', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1542, 1525263946, 1, 'admin', 78, '43', 'modals', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1543, 1525263956, 1, 'admin', 20, '5', 'electron', 'Saving template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1544, 1525263956, 1, 'admin', 16, '5', 'electron', 'Editing template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1545, 1525263967, 1, 'admin', 77, '-', 'Новый чанк', 'Creating a new Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1546, 1525263972, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1547, 1525263990, 1, 'admin', 79, '43', 'modals', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1548, 1525263990, 1, 'admin', 78, '43', 'modals', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1549, 1525263994, 1, 'admin', 78, '32', 'form_callme_tpl', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1550, 1525264036, 1, 'admin', 79, '43', 'modals', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1551, 1525264036, 1, 'admin', 78, '43', 'modals', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1552, 1525264105, 1, 'admin', 79, '43', 'modals', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1553, 1525264105, 1, 'admin', 78, '43', 'modals', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1554, 1525264150, 1, 'admin', 79, '32', 'form_callme_tpl', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1555, 1525264150, 1, 'admin', 78, '32', 'form_callme_tpl', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1556, 1525264190, 1, 'admin', 79, '32', 'form_modal_cb', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1557, 1525264190, 1, 'admin', 78, '32', 'form_modal_cb', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1558, 1525264209, 1, 'admin', 79, '43', 'modals', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1559, 1525264209, 1, 'admin', 78, '43', 'modals', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1560, 1525264215, 1, 'admin', 79, '32', 'form_modal_cb', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1561, 1525264215, 1, 'admin', 78, '32', 'form_modal_cb', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1562, 1525264274, 1, 'admin', 79, '32', 'form_modal_cb', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1563, 1525264274, 1, 'admin', 78, '32', 'form_modal_cb', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1564, 1525265897, 1, 'admin', 27, '78', 'Кирпич', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1565, 1525266582, 1, 'admin', 79, '43', 'modals', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1566, 1525266582, 1, 'admin', 78, '43', 'modals', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1567, 1525266592, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1568, 1525266598, 1, 'admin', 78, '33', 'successTpl', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1569, 1525266604, 1, 'admin', 79, '33', 'form_modal_cb_success', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1570, 1525266604, 1, 'admin', 78, '33', 'form_modal_cb_success', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1571, 1525273185, 1, 'admin', 78, '43', 'modals', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1572, 1525273193, 1, 'admin', 79, '43', 'modals', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1573, 1525273193, 1, 'admin', 78, '43', 'modals', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1574, 1525273357, 1, 'admin', 79, '43', 'modals', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1575, 1525273358, 1, 'admin', 78, '43', 'modals', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1576, 1525273452, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1577, 1525273498, 1, 'admin', 79, '43', 'modals', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1578, 1525273498, 1, 'admin', 78, '43', 'modals', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1579, 1525273573, 1, 'admin', 78, '42', 'header_callback_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1580, 1525273580, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1581, 1525273585, 1, 'admin', 78, '32', 'form_modal_cb', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1582, 1525273609, 1, 'admin', 79, '42', 'header_callback_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1583, 1525273609, 1, 'admin', 78, '42', 'header_callback_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1584, 1525273619, 1, 'admin', 78, '16', 'header', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1585, 1525273646, 1, 'admin', 79, '16', 'header', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1586, 1525273646, 1, 'admin', 78, '16', 'header', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1587, 1525273658, 1, 'admin', 78, '33', 'form_modal_cb_success', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1588, 1525273669, 1, 'admin', 79, '16', 'header', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1589, 1525273669, 1, 'admin', 78, '16', 'header', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1590, 1525273729, 1, 'admin', 79, '16', 'header', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1591, 1525273729, 1, 'admin', 78, '16', 'header', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1592, 1525273757, 1, 'admin', 79, '42', 'header_callback_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1593, 1525273757, 1, 'admin', 77, '-', 'Новый чанк', 'Creating a new Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1594, 1525273763, 1, 'admin', 78, '21', 'calc', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1595, 1525273814, 1, 'admin', 79, '-', 'calc_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1596, 1525273814, 1, 'admin', 78, '44', 'calc_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1597, 1525273969, 1, 'admin', 79, '21', 'calc', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1598, 1525273969, 1, 'admin', 77, '-', 'Новый чанк', 'Creating a new Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1599, 1525273975, 1, 'admin', 79, '-', 'Untitled chunk', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1600, 1525273976, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1601, 1525273983, 1, 'admin', 78, '44', 'calc_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1602, 1525273988, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1603, 1525273991, 1, 'admin', 78, '21', 'calc', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1604, 1525274091, 1, 'admin', 79, '44', 'calc_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1605, 1525274091, 1, 'admin', 78, '44', 'calc_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1606, 1525274188, 1, 'admin', 79, '44', 'calc_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1607, 1525274188, 1, 'admin', 78, '44', 'calc_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1608, 1525274205, 1, 'admin', 97, '33', 'form_modal_cb_success Копия', 'Duplicate Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1609, 1525274205, 1, 'admin', 78, '46', 'form_modal_cb_success Копия', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1610, 1525274219, 1, 'admin', 79, '21', 'calc', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1611, 1525274219, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1612, 1525274269, 1, 'admin', 79, '46', 'calc_success', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1613, 1525274270, 1, 'admin', 78, '46', 'calc_success', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1614, 1525274283, 1, 'admin', 80, '45', 'Untitled chunk', 'Deleting Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1615, 1525274283, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1616, 1525274301, 1, 'admin', 78, '44', 'calc_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1617, 1525274332, 1, 'admin', 79, '44', 'calc_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1618, 1525274332, 1, 'admin', 78, '44', 'calc_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1619, 1525274475, 1, 'admin', 78, '21', 'calc', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1620, 1525274490, 1, 'admin', 79, '21', 'calc', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1621, 1525274490, 1, 'admin', 78, '21', 'calc', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1622, 1525274553, 1, 'admin', 79, '21', 'calc', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1623, 1525274553, 1, 'admin', 78, '21', 'calc', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1624, 1525274583, 1, 'admin', 79, '44', 'calc_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1625, 1525274583, 1, 'admin', 78, '44', 'calc_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1626, 1525274761, 1, 'admin', 79, '44', 'calc_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1627, 1525274761, 1, 'admin', 78, '44', 'calc_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1628, 1525274841, 1, 'admin', 79, '46', 'calc_success', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1629, 1525274841, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1630, 1525274849, 1, 'admin', 78, '32', 'form_modal_cb', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1631, 1525274851, 1, 'admin', 78, '42', 'header_callback_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1632, 1525274866, 1, 'admin', 79, '32', 'form_modal_cb', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1633, 1525274867, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1634, 1525274872, 1, 'admin', 78, '42', 'header_callback_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1635, 1525274893, 1, 'admin', 79, '42', 'header_callback_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1636, 1525274893, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1637, 1525275130, 1, 'admin', 79, '44', 'calc_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1638, 1525275130, 1, 'admin', 78, '44', 'calc_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1639, 1525275133, 1, 'admin', 78, '32', 'form_modal_cb', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1640, 1525275147, 1, 'admin', 79, '32', 'form_modal_cb', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1641, 1525275147, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1642, 1525275152, 1, 'admin', 78, '42', 'header_callback_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1643, 1525275160, 1, 'admin', 79, '42', 'header_callback_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1644, 1525275160, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1645, 1525277360, 1, 'admin', 79, '21', 'calc', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1646, 1525277360, 1, 'admin', 77, '-', 'Новый чанк', 'Creating a new Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1647, 1525277367, 1, 'admin', 79, '44', 'calc_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1648, 1525277367, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1649, 1525277374, 1, 'admin', 78, '29', 'ask', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1650, 1525277462, 1, 'admin', 79, '-', 'ask_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1651, 1525277462, 1, 'admin', 78, '47', 'ask_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1652, 1525277490, 1, 'admin', 78, '21', 'calc', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1653, 1525277522, 1, 'admin', 79, '29', 'ask', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1654, 1525277522, 1, 'admin', 78, '29', 'ask', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1655, 1525277536, 1, 'admin', 79, '29', 'ask', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1656, 1525277536, 1, 'admin', 78, '29', 'ask', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1657, 1525277549, 1, 'admin', 79, '29', 'ask', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1658, 1525277549, 1, 'admin', 78, '29', 'ask', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1659, 1525277563, 1, 'admin', 77, '-', 'Новый чанк', 'Creating a new Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1660, 1525277592, 1, 'admin', 79, '-', 'ask_success', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1661, 1525277592, 1, 'admin', 78, '48', 'ask_success', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1662, 1525277609, 1, 'admin', 79, '21', 'calc', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1663, 1525277609, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1664, 1525277628, 1, 'admin', 78, '46', 'calc_success', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1665, 1525277657, 1, 'admin', 79, '48', 'ask_success', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1666, 1525277657, 1, 'admin', 78, '48', 'ask_success', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1667, 1525277719, 1, 'admin', 79, '42', 'header_callback_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1668, 1525277719, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1669, 1525277832, 1, 'admin', 79, '47', 'ask_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1670, 1525277832, 1, 'admin', 78, '47', 'ask_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1671, 1525278038, 1, 'admin', 78, '44', 'calc_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1672, 1525278063, 1, 'admin', 79, '47', 'ask_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1673, 1525278064, 1, 'admin', 78, '47', 'ask_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1674, 1525278069, 1, 'admin', 79, '44', 'calc_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1675, 1525278070, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1676, 1525278078, 1, 'admin', 78, '32', 'form_modal_cb', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1677, 1525278085, 1, 'admin', 79, '32', 'form_modal_cb', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1678, 1525278085, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1679, 1525278092, 1, 'admin', 78, '42', 'header_callback_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1680, 1525278100, 1, 'admin', 79, '42', 'header_callback_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1681, 1525278100, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1682, 1525278480, 1, 'admin', 102, '12', 'evoAjax', 'Edit plugin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1683, 1525278505, 1, 'admin', 78, '3', 'AjaxSearch_tplInput', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1684, 1525278510, 1, 'admin', 78, '9', 'Comments_tplForm', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1685, 1525278510, 1, 'admin', 78, '14', 'ContactForm', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1686, 1525278555, 1, 'admin', 78, '15', 'ContactFormReport', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1687, 1525278556, 1, 'admin', 78, '14', 'ContactForm', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1688, 1525278556, 1, 'admin', 78, '9', 'Comments_tplForm', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1689, 1525278559, 1, 'admin', 78, '13', 'Comments', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1690, 1525278565, 1, 'admin', 78, '4', 'AjaxSearch_tplAjaxResult', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1691, 1525278645, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1692, 1525278653, 1, 'admin', 78, '13', 'Comments', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1693, 1525278665, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1694, 1525278683, 1, 'admin', 16, '3', 'Minimal Template', 'Editing template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1695, 1525278686, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1696, 1525278689, 1, 'admin', 16, '4', 'EVO startup - Bootstrap', 'Editing template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1697, 1525278734, 1, 'admin', 78, '9', 'Comments_tplForm', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1698, 1525278740, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1699, 1525278750, 1, 'admin', 78, '14', 'ContactForm', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36');
+INSERT INTO `evo_manager_log` (`id`, `timestamp`, `internalKey`, `username`, `action`, `itemid`, `itemname`, `message`, `ip`, `useragent`) VALUES
+(1700, 1525278818, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1701, 1525278829, 1, 'admin', 78, '44', 'calc_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1702, 1525278950, 1, 'admin', 17, '-', '-', 'Editing settings', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1703, 1525278984, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1704, 1525279003, 1, 'admin', 78, '29', 'ask', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1705, 1525279013, 1, 'admin', 79, '29', 'ask', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1706, 1525279013, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1707, 1525279017, 1, 'admin', 78, '21', 'calc', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1708, 1525279024, 1, 'admin', 79, '21', 'calc', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1709, 1525279024, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1710, 1525281196, 1, 'admin', 78, '16', 'header', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1711, 1525281207, 1, 'admin', 79, '16', 'header', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1712, 1525281207, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1713, 1525281216, 1, 'admin', 78, '43', 'modals', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1714, 1525281225, 1, 'admin', 79, '43', 'modals', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1715, 1525281225, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1716, 1525281304, 1, 'admin', 103, '12', 'evoAjax', 'Saving plugin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1717, 1525281305, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1718, 1525281375, 1, 'admin', 17, '-', '-', 'Editing settings', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1719, 1525281383, 1, 'admin', 30, '-', '-', 'Saving settings', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1720, 1525281578, 1, 'admin', 17, '-', '-', 'Editing settings', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1721, 1525289933, 1, 'admin', 17, '-', '-', 'Editing settings', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1722, 1525289952, 1, 'admin', 30, '-', '-', 'Saving settings', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1723, 1525289978, 1, 'admin', 10, '-', '-', 'Viewing/ composing messages', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1724, 1525290085, 1, 'admin', 10, '-', '-', 'Viewing/ composing messages', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1725, 1525291037, 1, 'admin', 102, '12', 'evoAjax', 'Edit plugin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1726, 1525291090, 1, 'admin', 79, '44', 'calc_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1727, 1525291090, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1728, 1525292479, 1, 'admin', 16, '5', 'electron', 'Editing template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1729, 1525292506, 1, 'admin', 20, '5', 'electron', 'Saving template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1730, 1525292506, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1731, 1525292643, 1, 'admin', 16, '5', 'electron', 'Editing template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1732, 1525292652, 1, 'admin', 20, '5', 'electron', 'Saving template', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1733, 1525292652, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1734, 1525298596, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1735, 1525302741, 1, 'admin', 78, '43', 'modals', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1736, 1525302758, 1, 'admin', 79, '43', 'modals', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1737, 1525302758, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1738, 1525302813, 1, 'admin', 78, '19', 'products', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1739, 1525302832, 1, 'admin', 79, '19', 'products', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1740, 1525302832, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1741, 1525304611, 1, 'admin', 78, '30', 'footer', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1742, 1525304652, 1, 'admin', 79, '30', 'footer', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1743, 1525304652, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1744, 1525304854, 1, 'admin', 78, '30', 'footer', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1745, 1525304872, 1, 'admin', 79, '30', 'footer', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1746, 1525304872, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1747, 1525305385, 1, 'admin', 102, '12', 'evoAjax', 'Edit plugin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1748, 1525305388, 1, 'admin', 102, '12', 'evoAjax', 'Edit plugin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1749, 1525305424, 1, 'admin', 78, '42', 'header_callback_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1750, 1525305433, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1751, 1525305436, 1, 'admin', 78, '47', 'ask_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1752, 1525305442, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1753, 1525305445, 1, 'admin', 78, '48', 'ask_success', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1754, 1525305446, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1755, 1525305449, 1, 'admin', 78, '44', 'calc_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1756, 1525305471, 1, 'admin', 17, '-', '-', 'Editing settings', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1757, 1525305572, 1, 'admin', 78, '14', 'ContactForm', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1758, 1525305771, 1, 'admin', 103, '12', 'evoAjax', 'Saving plugin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1759, 1525305771, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1760, 1525305779, 1, 'admin', 102, '12', 'evoAjax', 'Edit plugin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1761, 1525305795, 1, 'admin', 103, '12', 'evoAjax', 'Saving plugin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1762, 1525305795, 1, 'admin', 102, '12', 'evoAjax', 'Edit plugin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1763, 1525305827, 1, 'admin', 103, '12', 'evoAjax', 'Saving plugin', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1764, 1525305827, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1765, 1525305839, 1, 'admin', 78, '43', 'modals', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1766, 1525305868, 1, 'admin', 77, '-', 'Новый чанк', 'Creating a new Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1767, 1525305901, 1, 'admin', 79, '-', 'Untitled chunk', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1768, 1525305901, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1769, 1525305904, 1, 'admin', 78, '49', 'Untitled chunk', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1770, 1525305938, 1, 'admin', 79, '49', 'product_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1771, 1525305938, 1, 'admin', 78, '49', 'product_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1772, 1525305946, 1, 'admin', 78, '43', 'modals', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1773, 1525305956, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1774, 1525305997, 1, 'admin', 79, '43', 'modals', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1775, 1525305997, 1, 'admin', 78, '43', 'modals', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1776, 1525306015, 1, 'admin', 79, '49', 'form_product', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1777, 1525306016, 1, 'admin', 78, '49', 'form_product', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1778, 1525306035, 1, 'admin', 78, '47', 'ask_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1779, 1525306177, 1, 'admin', 79, '49', 'form_product', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1780, 1525306177, 1, 'admin', 78, '49', 'form_product', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1781, 1525306189, 1, 'admin', 79, '43', 'modals', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1782, 1525306189, 1, 'admin', 78, '43', 'modals', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1783, 1525306264, 1, 'admin', 79, '47', 'ask_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1784, 1525306264, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1785, 1525306271, 1, 'admin', 78, '48', 'ask_success', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1786, 1525306275, 1, 'admin', 97, '48', 'ask_success Копия', 'Duplicate Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1787, 1525306275, 1, 'admin', 78, '50', 'ask_success Копия', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1788, 1525306329, 1, 'admin', 79, '49', 'form_product', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1789, 1525306329, 1, 'admin', 78, '49', 'form_product', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1790, 1525306401, 1, 'admin', 79, '50', 'form_product_success', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1791, 1525306401, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1792, 1525306423, 1, 'admin', 79, '49', 'form_product', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1793, 1525306423, 1, 'admin', 77, '-', 'Новый чанк', 'Creating a new Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1794, 1525306457, 1, 'admin', 79, '43', 'modals', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1795, 1525306457, 1, 'admin', 78, '43', 'modals', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1796, 1525306465, 1, 'admin', 79, '-', 'production', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1797, 1525306465, 1, 'admin', 77, '-', 'Новый чанк', 'Creating a new Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1798, 1525306467, 1, 'admin', 77, '-', 'Новый чанк', 'Creating a new Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1799, 1525306472, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1800, 1525306476, 1, 'admin', 78, '51', 'production', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1801, 1525306480, 1, 'admin', 79, '51', 'production', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1802, 1525306480, 1, 'admin', 78, '51', 'production', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1803, 1525306505, 1, 'admin', 78, '47', 'ask_form', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1804, 1525306529, 1, 'admin', 79, '51', 'production', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1805, 1525306529, 1, 'admin', 78, '51', 'production', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1806, 1525306615, 1, 'admin', 79, '51', 'production', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1807, 1525306615, 1, 'admin', 78, '51', 'production', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1808, 1525306712, 1, 'admin', 79, '43', 'modals', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1809, 1525306712, 1, 'admin', 78, '43', 'modals', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1810, 1525306730, 1, 'admin', 79, '47', 'ask_form', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1811, 1525306730, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1812, 1525306968, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1813, 1525306971, 1, 'admin', 78, '43', 'modals', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1814, 1525307009, 1, 'admin', 79, '51', 'production', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1815, 1525307009, 1, 'admin', 78, '51', 'production', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1816, 1525307027, 1, 'admin', 79, '43', 'modals', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1817, 1525307027, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1818, 1525307036, 1, 'admin', 77, '-', 'Новый чанк', 'Creating a new Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1819, 1525307060, 1, 'admin', 79, '-', 'production_success', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1820, 1525307060, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1821, 1525307064, 1, 'admin', 78, '33', 'form_modal_cb_success', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1822, 1525307070, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1823, 1525307076, 1, 'admin', 78, '52', 'production_success', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1824, 1525307094, 1, 'admin', 79, '52', 'production_success', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1825, 1525307094, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36');
 
 -- --------------------------------------------------------
 
@@ -1162,6 +2108,7 @@ INSERT INTO `evo_manager_log` (`id`, `timestamp`, `internalKey`, `username`, `ac
 -- Структура таблицы `evo_manager_users`
 --
 
+DROP TABLE IF EXISTS `evo_manager_users`;
 CREATE TABLE `evo_manager_users` (
   `id` int(10) NOT NULL,
   `username` varchar(100) NOT NULL DEFAULT '',
@@ -1181,6 +2128,7 @@ INSERT INTO `evo_manager_users` (`id`, `username`, `password`) VALUES
 -- Структура таблицы `evo_membergroup_access`
 --
 
+DROP TABLE IF EXISTS `evo_membergroup_access`;
 CREATE TABLE `evo_membergroup_access` (
   `id` int(10) NOT NULL,
   `membergroup` int(10) NOT NULL DEFAULT '0',
@@ -1193,6 +2141,7 @@ CREATE TABLE `evo_membergroup_access` (
 -- Структура таблицы `evo_membergroup_names`
 --
 
+DROP TABLE IF EXISTS `evo_membergroup_names`;
 CREATE TABLE `evo_membergroup_names` (
   `id` int(10) NOT NULL,
   `name` varchar(245) NOT NULL DEFAULT ''
@@ -1204,6 +2153,7 @@ CREATE TABLE `evo_membergroup_names` (
 -- Структура таблицы `evo_member_groups`
 --
 
+DROP TABLE IF EXISTS `evo_member_groups`;
 CREATE TABLE `evo_member_groups` (
   `id` int(10) NOT NULL,
   `user_group` int(10) NOT NULL DEFAULT '0',
@@ -1216,6 +2166,7 @@ CREATE TABLE `evo_member_groups` (
 -- Структура таблицы `evo_site_content`
 --
 
+DROP TABLE IF EXISTS `evo_site_content`;
 CREATE TABLE `evo_site_content` (
   `id` int(10) NOT NULL,
   `type` varchar(20) NOT NULL DEFAULT 'document',
@@ -1306,7 +2257,54 @@ INSERT INTO `evo_site_content` (`id`, `type`, `contentType`, `pagetitle`, `longt
 (74, 'document', 'text/html', 'Денис Белоусов', '', '', 'denis-belousov', '', 1, 0, 0, 72, 0, '', '<p>Идейные соображения высшего порядка, а также рамки и место обучения кадров обеспечивает широкому кругу (специалистов) участие в формировании позиций, занимаемых участниками в отношении поставленных задач. С другой стороны новая модель организационной деятельности обеспечивает широкому</p>', 1, 11, 2, 0, 1, 1, 1524940980, 1, 1524940980, 0, 0, 0, 1524940980, 1, '', 0, 0, 0, 0, 0, 1),
 (75, 'document', 'text/html', 'Григорий Макаров', '', '', 'grigorij-makarov', '', 1, 0, 0, 72, 0, '', '<p>Идейные соображения высшего порядка, а также рамки и место обучения кадров обеспечивает широкому кругу (специалистов) участие в формировании позиций, занимаемых участниками в отношении поставленных задач. С другой стороны новая модель организационной деятельности обеспечивает широкому</p>', 1, 11, 0, 0, 1, 1, 1524941017, 1, 1524941017, 0, 0, 0, 1524941017, 1, '', 0, 0, 0, 0, 0, 1),
 (76, 'document', 'text/html', 'Плитка', '', '', 'plitka', '', 1, 0, 0, 1, 1, '', '', 1, 5, 0, 0, 1, 1, 1524957238, 1, 1524957238, 0, 0, 0, 1524957238, 1, '', 0, 0, 0, 0, 0, 1),
-(77, 'document', 'text/html', 'Цокольная плитка', '', '', 'cokolnaya-plitka', '', 1, 0, 0, 76, 0, '', '', 1, 13, 0, 0, 1, 1, 1524958200, 1, 1524958337, 0, 0, 0, 1524958200, 1, '', 0, 0, 0, 0, 0, 1);
+(77, 'document', 'text/html', 'Цокольная плитка', '', '', 'cokolnaya-plitka', '', 1, 0, 0, 112, 0, '', '', 1, 13, 0, 0, 1, 1, 1524958200, 1, 1524958337, 0, 0, 0, 1524958200, 1, '', 0, 0, 0, 0, 0, 1),
+(78, 'document', 'text/html', 'Кирпич', '', '', 'kirpich', '', 1, 0, 0, 1, 1, '', '', 1, 5, 0, 0, 1, 1, 1525097483, 1, 1525097483, 0, 0, 0, 1525097483, 1, '', 0, 0, 0, 0, 0, 1),
+(79, 'document', 'text/html', 'Размеры', '', 'Выберите размер', 'razmery', '', 1, 0, 0, 78, 1, '', '', 1, 5, 0, 0, 1, 1, 1525097537, 1, 1525101277, 0, 0, 0, 1525097537, 1, '', 0, 0, 0, 0, 1, 1),
+(80, 'document', 'text/html', '1.4', '', 'полуторный', '1.4', '', 1, 0, 0, 79, 0, '', '', 1, 14, 0, 0, 1, 1, 1525097592, 1, 1525101286, 0, 0, 0, 1525097592, 1, '', 0, 0, 0, 0, 0, 1),
+(81, 'document', 'text/html', '1.0', '', 'одинарный', '1.0', '', 1, 0, 0, 79, 0, '', '', 1, 14, 0, 0, 1, 1, 1525101796, 1, 1525101796, 0, 0, 0, 1525101796, 1, '', 0, 0, 0, 0, 0, 1),
+(82, 'document', 'text/html', '0.7', '', 'брусок полуторный', '0.7', '', 1, 0, 0, 79, 0, '', '', 1, 14, 0, 0, 1, 1, 1525101821, 1, 1525101821, 0, 0, 0, 1525101821, 1, '', 0, 0, 0, 0, 0, 1),
+(83, 'document', 'text/html', '0.5', '', 'брусок одинарный', '0.5', '', 1, 0, 0, 79, 0, '', '', 1, 5, 0, 0, 1, 1, 1525101835, 1, 1525101835, 0, 0, 0, 1525101835, 1, '', 0, 0, 0, 0, 0, 1),
+(84, 'document', 'text/html', 'Цвета', '', '', 'cveta', '', 1, 0, 0, 78, 1, '', '', 1, 5, 0, 0, 1, 1, 1525107665, 1, 1525107665, 0, 0, 0, 1525107665, 1, '', 0, 0, 0, 0, 0, 1),
+(85, 'document', 'text/html', 'Золотистый', '#f4d773', '', 'zolotistyj', '', 1, 0, 0, 84, 0, '', '', 1, 5, 0, 0, 1, 1, 1525109162, 1, 1525109182, 0, 0, 0, 1525109162, 1, '', 0, 0, 0, 0, 0, 1),
+(86, 'document', 'text/html', 'Полузолотой', '#c7b65c', '', 'poluzolotoj', '', 1, 0, 0, 84, 0, '', '', 1, 5, 0, 0, 1, 1, 1525112765, 1, 1525112765, 0, 0, 0, 1525112765, 1, '', 0, 0, 0, 0, 0, 1),
+(87, 'document', 'text/html', 'Светло коричневый', '#9b7f69', '', 'svetlo-seryj', '', 1, 0, 0, 84, 0, '', '', 1, 5, 0, 0, 1, 1, 1525112788, 1, 1525112914, 0, 0, 0, 1525112788, 1, '', 0, 0, 0, 0, 0, 1),
+(88, 'document', 'text/html', 'Коричневый', '#8c6d58', '', 'korichnevyj', '', 1, 0, 0, 84, 0, '', '', 1, 5, 0, 0, 1, 1, 1525112819, 1, 1525112819, 0, 0, 0, 1525112819, 1, '', 0, 0, 0, 0, 0, 1),
+(89, 'document', 'text/html', 'Светло бежевый', '#ede1b9', '', 'svetlo-bezhevyj', '', 1, 0, 0, 84, 0, '', '', 1, 5, 0, 0, 1, 1, 1525112832, 1, 1525112832, 0, 0, 0, 1525112832, 1, '', 0, 0, 0, 0, 0, 1),
+(90, 'document', 'text/html', 'Серый', '#545452', '', 'seryj', '', 1, 0, 0, 84, 0, '', '', 1, 5, 0, 0, 1, 1, 1525112843, 1, 1525112843, 0, 0, 0, 1525112843, 1, '', 0, 0, 0, 0, 0, 1),
+(91, 'document', 'text/html', 'Темно оранжевый', '#b25840', '', 'temno-oranzhevyj', '', 1, 0, 0, 84, 0, '', '', 1, 5, 0, 0, 1, 1, 1525112855, 1, 1525112855, 0, 0, 0, 1525112855, 1, '', 0, 0, 0, 0, 0, 1),
+(92, 'document', 'text/html', 'Болотный', '#95a26a', '', 'bolotnyj', '', 1, 0, 0, 84, 0, '', '', 1, 5, 0, 0, 1, 1, 1525112865, 1, 1525112865, 0, 0, 0, 1525112865, 1, '', 0, 0, 0, 0, 0, 1),
+(93, 'document', 'text/html', 'Светло серый', '#c6c5ba', '', 'svetlo-seryj1', '', 1, 0, 0, 84, 0, '', '', 1, 5, 0, 0, 1, 1, 1525112875, 1, 1525112875, 0, 0, 0, 1525112875, 1, '', 0, 0, 0, 0, 0, 1),
+(94, 'document', 'text/html', 'Светло золотой', '#ecb678', '', 'svetlo-zolotoj', '', 1, 0, 0, 84, 0, '', '', 1, 5, 0, 0, 1, 1, 1525112896, 1, 1525112896, 0, 0, 0, 1525112896, 1, '', 0, 0, 0, 0, 0, 1),
+(95, 'document', 'text/html', 'Вид', '', '', 'vid', '', 1, 0, 0, 78, 1, '', '', 1, 15, 0, 0, 1, 1, 1525113378, 1, 1525113378, 0, 0, 0, 1525113378, 1, '', 0, 0, 0, 0, 0, 1),
+(96, 'document', 'text/html', 'Полнотелый', '', '', 'polnotelyj', '', 1, 0, 0, 95, 0, '', '', 1, 15, 0, 0, 1, 1, 1525117562, 1, 1525117672, 0, 0, 0, 1525117562, 1, '', 0, 0, 0, 0, 0, 1),
+(97, 'document', 'text/html', 'Пустотелый', '', '', 'pustotelyj', '', 1, 0, 0, 95, 0, '', '', 1, 15, 0, 0, 1, 1, 1525117615, 1, 1525117615, 0, 0, 0, 1525117615, 1, '', 0, 0, 0, 0, 0, 1),
+(98, 'document', 'text/html', 'Фасонный', '', '', 'fasonnyj', '', 1, 0, 0, 95, 0, '', '', 1, 15, 0, 0, 1, 1, 1525117649, 1, 1525117649, 0, 0, 0, 1525117649, 1, '', 0, 0, 0, 0, 0, 1),
+(99, 'document', 'text/html', 'Форма', '', '', 'forma', '', 1, 0, 0, 78, 1, '', '', 1, 0, 0, 0, 1, 1, 1525121441, 1, 1525121441, 0, 0, 0, 1525121441, 1, '', 0, 0, 0, 0, 0, 1),
+(100, 'document', 'text/html', 'Угловой', '', '', 'uglovoj', '', 1, 0, 0, 99, 0, '', '', 1, 16, 0, 0, 1, 1, 1525122083, 1, 1525122083, 0, 0, 0, 1525122083, 1, '', 0, 0, 0, 0, 0, 1),
+(101, 'document', 'text/html', 'Брусок угловой', '', '', 'brusok-uglovoj', '', 1, 0, 0, 99, 0, '', '', 1, 16, 0, 0, 1, 1, 1525122166, 1, 1525122166, 0, 0, 0, 1525122166, 1, '', 0, 0, 0, 0, 0, 1),
+(102, 'document', 'text/html', 'Двусторонный', '', '', 'dvustoronnyj', '', 1, 0, 0, 99, 0, '', '', 1, 16, 0, 0, 1, 1, 1525122198, 1, 1525122198, 0, 0, 0, 1525122198, 1, '', 0, 0, 0, 0, 0, 1),
+(103, 'document', 'text/html', 'Фигурный №1', '', '', 'figurnyj-n1', '', 1, 0, 0, 99, 0, '', '', 1, 16, 0, 0, 1, 1, 1525122234, 1, 1525122234, 0, 0, 0, 1525122234, 1, '', 0, 0, 0, 0, 0, 1),
+(104, 'document', 'text/html', 'Фигурный №2', '', '', 'figurnyj-n2', '', 1, 0, 0, 99, 0, '', '', 1, 16, 0, 0, 1, 1, 1525122262, 1, 1525122262, 0, 0, 0, 1525122262, 1, '', 0, 0, 0, 0, 0, 1),
+(105, 'document', 'text/html', 'Трапеция №1', '', '', 'trapeciya-n1', '', 1, 0, 0, 99, 0, '', '', 1, 16, 0, 0, 1, 1, 1525122296, 1, 1525122296, 0, 0, 0, 1525122296, 1, '', 0, 0, 0, 0, 0, 1),
+(106, 'document', 'text/html', 'Трапеция №2', '', '', 'trapeciya-n2', '', 1, 0, 0, 99, 0, '', '', 1, 16, 0, 0, 1, 1, 1525122328, 1, 1525122328, 0, 0, 0, 1525122328, 1, '', 0, 0, 0, 0, 0, 1),
+(107, 'document', 'text/html', 'Трапеция №3', '', '', 'trapeciya-n3', '', 1, 0, 0, 99, 0, '', '', 1, 16, 0, 0, 1, 1, 1525122362, 1, 1525122362, 0, 0, 0, 1525122362, 1, '', 0, 0, 0, 0, 0, 1),
+(108, 'document', 'text/html', 'Как можно использовать нашу продукцию - слайдер', '', '', 'kak-mozhno-ispolzovat-nashu-produkciyu-slajder', '', 1, 0, 0, 78, 1, '', '', 1, 0, 0, 0, 1, 1, 1525122900, 1, 1525123374, 0, 0, 0, 1525122900, 1, '', 0, 0, 0, 0, 0, 1),
+(109, 'document', 'text/html', 'Слайд 1', '', '', 'slajd-11', '', 1, 0, 0, 108, 0, '', '', 1, 17, 0, 0, 1, 1, 1525123142, 1, 1525123142, 0, 0, 0, 1525123142, 1, '', 0, 0, 0, 0, 0, 1),
+(111, 'document', 'text/html', 'Как можно использовать нашу продукцию - слайдер', '', '', 'kak-mozhno-ispolzovat-nashu-produkciyu-slajder1', '', 1, 0, 0, 76, 1, '', '', 1, 0, 0, 0, 1, 1, 1525124051, 1, 1525124051, 0, 0, 0, 1525124051, 1, '', 0, 0, 0, 0, 0, 1),
+(110, 'document', 'text/html', 'Слайд 2', '', '', 'slajd-21', '', 1, 0, 0, 108, 0, '', '', 1, 17, 0, 0, 1, 1, 1525123163, 1, 1525123580, 0, 0, 0, 1525123163, 1, '', 0, 0, 0, 0, 0, 1),
+(112, 'document', 'text/html', 'Товары', '', '', 'tovary', '', 1, 0, 0, 76, 1, '', '', 1, 0, 0, 0, 1, 1, 1525124078, 1, 1525124078, 0, 0, 0, 1525124078, 1, '', 0, 0, 0, 0, 0, 1),
+(113, 'document', 'text/html', 'Слайд 1', '', '', 'slajd-12', '', 1, 0, 0, 111, 0, '', '', 1, 17, 0, 0, 1, 1, 1525124223, 1, 1525124223, 0, 0, 0, 1525124223, 1, '', 0, 0, 0, 0, 0, 1),
+(114, 'document', 'text/html', 'Слайд 2', '', '', 'slajd-22', '', 1, 0, 0, 111, 0, '', '', 1, 17, 0, 0, 1, 1, 1525124264, 1, 1525124264, 0, 0, 0, 1525124264, 1, '', 0, 0, 0, 0, 0, 1),
+(115, 'document', 'text/html', 'Слайд 3', '', '', 'slajd-31', '', 1, 0, 0, 111, 0, '', '', 1, 17, 0, 0, 1, 1, 1525124285, 1, 1525124285, 0, 0, 0, 1525124285, 1, '', 0, 0, 0, 0, 0, 1),
+(116, 'document', 'text/html', 'Слайд 4', '', '', 'slajd-41', '', 1, 0, 0, 111, 0, '', '', 1, 17, 0, 0, 1, 1, 1525124320, 1, 1525124320, 0, 0, 0, 1525124320, 1, '', 0, 0, 0, 0, 0, 1),
+(117, 'document', 'text/html', 'Элементы', '', '', 'elementy', '', 1, 0, 0, 1, 1, '', '', 1, 0, 0, 0, 1, 1, 1525175616, 1, 1525175616, 0, 0, 0, 1525175616, 1, '', 0, 0, 0, 0, 0, 1),
+(118, 'document', 'text/html', 'Товары', '', '', 'tovary1', '', 1, 0, 0, 117, 1, '', '', 1, 0, 0, 0, 1, 1, 1525175630, 1, 1525175630, 0, 0, 0, 1525175630, 1, '', 0, 0, 0, 0, 0, 1),
+(119, 'document', 'text/html', 'Колпак из гладкого кирпича', '', '', 'kolpak-iz-gladkogo-kirpicha', '', 1, 0, 0, 118, 0, '', '', 1, 18, 0, 0, 1, 1, 1525175843, 1, 1525192924, 0, 0, 0, 1525175843, 1, '', 0, 0, 0, 0, 0, 1),
+(120, 'document', 'text/html', 'Как можно использовать нашу продукцию - слайдер', '', '', 'kak-mozhno-ispolzovat-nashu-produkciyu-slajder2', '', 1, 0, 0, 117, 1, '', '', 1, 3, 0, 0, 1, 1, 1525192955, 1, 1525192955, 0, 0, 0, 1525192955, 1, '', 0, 0, 0, 0, 0, 1),
+(121, 'document', 'text/html', 'Слайд 1', '', '', 'slajd-13', '', 1, 0, 0, 120, 0, '', '', 1, 17, 0, 0, 1, 1, 1525193216, 1, 1525193216, 0, 0, 0, 1525193216, 1, '', 0, 0, 0, 0, 0, 1),
+(122, 'document', 'text/html', 'Слайд 2', '', '', 'slajd-23', '', 1, 0, 0, 120, 0, '', '', 1, 17, 0, 0, 1, 1, 1525193285, 1, 1525193285, 0, 0, 0, 1525193285, 1, '', 0, 0, 0, 0, 0, 1),
+(123, 'document', 'text/html', 'Слайд 3', '', '', 'slajd-32', '', 1, 0, 0, 120, 0, '', '', 1, 17, 0, 0, 1, 1, 1525193321, 1, 1525193321, 0, 0, 0, 1525193321, 1, '', 0, 0, 0, 0, 0, 1),
+(124, 'document', 'text/html', 'Слайд 4', '', '', 'slajd-42', '', 1, 0, 0, 120, 0, '', '', 1, 17, 0, 0, 1, 1, 1525193381, 1, 1525193381, 0, 0, 0, 1525193381, 1, '', 0, 0, 0, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1314,6 +2312,7 @@ INSERT INTO `evo_site_content` (`id`, `type`, `contentType`, `pagetitle`, `longt
 -- Структура таблицы `evo_site_htmlsnippets`
 --
 
+DROP TABLE IF EXISTS `evo_site_htmlsnippets`;
 CREATE TABLE `evo_site_htmlsnippets` (
   `id` int(10) NOT NULL,
   `name` varchar(100) NOT NULL DEFAULT '',
@@ -1343,22 +2342,39 @@ INSERT INTO `evo_site_htmlsnippets` (`id`, `name`, `description`, `editor_type`,
 (13, 'Comments', 'Comments (JotX) showing beneath a blog entry.', 2, 'none', 1, 0, '<div id=\"commentsAnchor\">\n[[ifsnippet? &name=`JotX`]]	\n[!JotX? &customfields=`name,email` &subscribe=`1` &pagination=`4` &badwords=`dotNet` &canmoderate=`Site Admins` &tplForm=`Comments_tplForm` &tplComments=`Comments_tplComments`!]\n</div>', 0, 1507723259, 1509825745, 0),
 (14, 'ContactForm', 'eForm-template for showing contact-form', 2, 'none', 1, 0, '<form id=\"EmailForm\">\n	<input type=\"hidden\" name=\"formid\" value=\"ContactForm\">\n	<p>[+form.messages+]</p>\n	<div class=\"form-group [+name.classname+]\">\n		<label for=\"cfName\">Your name:</label>\n		<input type=\"text\" class=\"form-control\" name=\"name\" id=\"cfName\" value=\"[+name.value+]\" placeholder=\"Your Name\"/>\n		<div class=\"invalid-feedback\">[+name.error+]</div>\n	</div>\n	<div class=\"form-group [+email.classname+]\">\n		<label for=\"cfEmail\">Your Email Address:</label>\n		<input type=\"text\" class=\"form-control\" name=\"email\" id=\"cfEmail\" value=\"[+email.value+]\" placeholder=\"Email Address\"/>\n		<div class=\"invalid-feedback\">[+email.error+]</div>\n	</div>\n	\n	<div class=\"form-group [+subject.classname+]\">\n		<label for=\"cfRegarding\">Regarding:</label>\n		<select class=\"form-control\" name=\"subject\" id=\"cfRegarding\">\n			<option value=\"General Inquiries\" [+s.subject.General Inquiries+] >General Inquiries</option>\n			<option value=\"Press\" [+s.subject.Press+] >Press or Interview Request</option>\n			<option value=\"Partnering\" [+s.subject.Partnering+] >Partnering Opportunities</option>\n		</select>\n		<div class=\"invalid-feedback\">[+subject.error+]</div>\n	</div>\n	\n	<div class=\"form-group [+message.classname+]\">\n		<label for=\"cfMessage\">Message:</label>\n		<textarea name=\"message\" id=\"cfMessage\" class=\"form-control\">[+message.value+]</textarea>\n		<div class=\"invalid-feedback\">[+message.error+]</div>\n	</div>\n	\n	<div class=\"form-group\">\n		<input type=\"submit\" name=\"contact\" id=\"submit\" class=\"btn btn-primary\" value=\"Send This Message\" />\n	</div>\n\n</form>', 0, 1507723259, 1507816800, 0),
 (15, 'ContactFormReport', 'eForm-template for sending form-data by mail', 0, 'none', 1, 0, '<p>This is a response sent by <b>[+name+]</b> using the feedback form on the website. The details of the message follow below:</p>\n\n\n<p>Name: [+name+]</p>\n<p>Email: [+email+]</p>\n<p>Regarding: [+subject+]</p>\n<p>comments:<br />[+message+]</p>\n\n<p>You can use this link to reply: <a href=\"mailto:[+email+]?subject=RE: [+subject+]\">[+email+]</a></p>\n', 0, 1507723259, 0, 0),
-(16, 'header', 'Шапка главной', 2, 'none', 7, 0, '<header class=\"header\" id=\"header\">\r\n	<div class=\"container\">\r\n		<div class=\"row header__top\">\r\n			<div class=\"col-xl-3 col-lg-6 col-6 order-1 logo__box\">\r\n				<div class=\"logo\">\r\n					<h2 class=\"logo__caption\">КИРПИЧЪ</h2>\r\n					<p class=\"logo__subtitle\">Производство и продажа <br> облицовочного кирпича</p>\r\n				</div>\r\n			</div>\r\n			<div class=\"col-xl-6 menu__pc order-2\">\r\n				<div class=\"menu\">\r\n					<div class=\"geolocation\">\r\n						<img class=\"modal__region\" src=\"assets/images/geolocation.svg\">\r\n						<p class=\"modal__region geolocation__city\">г. Ижевск</p>\r\n					</div>\r\n					<nav class=\"nav\">\r\n						<a href=\"#\" data-anchor=\"#work\" class=\"nav__link\">Преимущества</a>\r\n						<a href=\"#\" data-anchor=\"#products\" class=\"nav__link\">Купить</a>\r\n						<a href=\"#\" data-anchor=\"#offers\" class=\"nav__link\">Отзывы</a>\r\n						<a href=\"#\" data-anchor=\"#guarant\" class=\"nav__link\">Гарантия</a>\r\n						<a href=\"#\" data-anchor=\"#footer\" class=\"nav__link\">Контакты</a>\r\n					</nav>\r\n				</div>\r\n			</div>\r\n			<div class=\"col-xl-3 col-lg-5 col-5 order-2 header__cb__hidden\">\r\n				<div class=\"header__callback\">\r\n					<p class=\"callback__caption\">звонок по России бесплатно</p>\r\n					<a href=\"tel: [*phone*]\" class=\"callback__number\">[*phone*]</a>\r\n					<a href=\"#\" class=\"btn callback__btn\">ПЕРЕЗВОНИТЕ МНЕ</a>\r\n				</div>\r\n			</div>\r\n			<div class=\"col-lg-1 col-1 menu__btn order-3\">\r\n				<button class=\"c-hamburger c-hamburger--htx\" id=\"mobile_menu\">\r\n					<span>toggle menu</span>\r\n				</button>\r\n			</div>\r\n		</div>\r\n		<div class=\"row header__content\">\r\n			<div class=\"col-lg-6\">\r\n				<h2 class=\"content__caption\">\r\n					<span class=\"yellow\">Закажите бесплатную пробную партию кирпича</span> и убедитесь в нашем качестве\r\n				</h2>\r\n			</div>\r\n			<div class=\"col-lg-6 header__form__wrap\">\r\n				<div class=\"header__form__box\">\r\n					<form action=\"\" method=\"POST\" class=\"header__form form__default\">\r\n						<h4 class=\"header__form__caption\">Заказать пробную партию</h4>\r\n						<input class=\"form__input\" type=\"text\" name=\"name\" placeholder=\"Ваше имя\">\r\n						<input class=\"form__input\" type=\"text\" name=\"phone\" placeholder=\"Ваше номер телефона\">\r\n\r\n						<input class=\"btn header__form__btn\" type=\"submit\"  name=\"submit\" value=\"Заказать бесплатно\">\r\n						<p class=\"form__politics header__form__polit\">Нажимая на кнопку, вы даете свое согласие на обработку персональных данных. <a href=\"#\">Узнать больше</a></p>\r\n					</form>\r\n				</div>\r\n				<img src=\"assets/images/kirp_header.png\" alt=\"\" class=\"header__kirp__form\">\r\n			</div>\r\n		</div>\r\n		<div class=\"row header__slider slider\">\r\n			<div class=\"slider__content slick__header\">\r\n				[[DocLister? \r\n					&parents=`54` \r\n					&tpl=`header_slider_elem`\r\n					&tvPrefix=``\r\n					&tvList=`headerSliderImg`\r\n				]]\r\n			</div>\r\n		</div>\r\n	</div>\r\n</header>\r\n<div class=\"menu__mob__right non-active\" style=\"z-index: 1010;\">\r\n	<div class=\"geolocation\">\r\n		<img class=\"modal__region\" src=\"assets/images/geolocation_black.svg\">\r\n		<p class=\"modal__region geolocation__city\">г. Ижевск</p>\r\n		<div class=\"close\"></div>\r\n	</div>\r\n	<nav class=\"nav\">\r\n		<a href=\"#\" data-anchor=\"#work\" class=\"nav__link\">Преимущества</a>\r\n		<a href=\"#\" data-anchor=\"#products\" class=\"nav__link\">Купить</a>\r\n		<a href=\"#\" data-anchor=\"#offers\" class=\"nav__link\">Отзывы</a>\r\n		<a href=\"#\" data-anchor=\"#guarant\" class=\"nav__link\">Гарантия</a>\r\n		<a href=\"#\" data-anchor=\"#footer\" class=\"nav__link\">Контакты</a>\r\n	</nav>\r\n</div>', 0, 1524848394, 1524938675, 0),
-(19, 'products', '', 2, 'none', 7, 0, '<section class=\"products\" id=\"products\">\r\n	<div class=\"container products__wrap wrap\">\r\n		<div class=\"row wrap__row\">\r\n			<div class=\"col-12\">  \r\n				<div class=\"products__menu\">\r\n					<a href=\"#\" data-to=\"#stone\" class=\"products__punkt active__products\">Кирпич</a>\r\n					<a href=\"#\" data-to=\"#plit\" class=\"products__punkt\">Плитка</a>\r\n					<a href=\"#\" data-to=\"#elements\" class=\"products__punkt\">Элементы</a>\r\n				</div>\r\n			</div>\r\n			<div class=\"col-12 products__content\">\r\n				<div class=\"stone\" id=\"stone\">\r\n					<div class=\"row justify-content-center\">\r\n						<div class=\"col-12\">\r\n							<h2 class=\"products__caption\">Облицовочный камень</h2>\r\n						</div>\r\n						<div class=\"col-xl-6 col-md-8 col stone__demo\">\r\n							<div class=\"stone__image\">\r\n								<img src=\"assets/images/bricks.jpg\" class=\"stone__img\">\r\n							</div>\r\n							<div class=\"stone__demo__slider\">\r\n								<h4 class=\"stone__demo__slider__caption\">Как можно использовать нашу продукцию</h4>\r\n								<div class=\"stone__slider\">\r\n									<img class=\"stone__demo__slider__image\" src=\"assets/images/stone__img.jpg\">\r\n									<img class=\"stone__demo__slider__image\" src=\"assets/images/stone__img.jpg\">\r\n									<img class=\"stone__demo__slider__image\" src=\"assets/images/stone__img.jpg\">\r\n									<img class=\"stone__demo__slider__image\" src=\"assets/images/stone__img.jpg\">\r\n									<!-- TODO -->\r\n								</div>\r\n							</div>\r\n						</div>\r\n						<div class=\"col-xl-6 col-md-8 col stone__info\">\r\n							<div class=\"stone__size\">\r\n								<h5>Выберите размер</h5>\r\n								<div class=\"stone__size__box\">\r\n									<a href=\"#\" class=\"stone__size__elem select__size\">\r\n										<span class=\"stone__size__bold\">1.4</span>\r\n										<span class=\"stone__size__name\">полуторный</span>\r\n									</a>\r\n									<a href=\"#\" class=\"stone__size__elem\">\r\n										<span class=\"stone__size__bold\">1.0</span>\r\n										<span class=\"stone__size__name\">одинарный</span>\r\n									</a>\r\n									<a href=\"#\" class=\"stone__size__elem\">\r\n										<span class=\"stone__size__bold\">0.7</span>\r\n										<span class=\"stone__size__name\">брусок полуторный</span>\r\n									</a>\r\n									<a href=\"#\" class=\"stone__size__elem\">\r\n										<span class=\"stone__size__bold\">0.5</span>\r\n										<span class=\"stone__size__name\">брусок одинарный</span>\r\n									</a>\r\n								</div>\r\n							</div>\r\n							<div class=\"stone__color\">\r\n								<h5>Выберите цвет</h5>\r\n								<div class=\"stone__color__box\">\r\n									<a href=\"#\" class=\"stone__color__elem select__color\">\r\n										<img src=\"assets/images/brick_light_shadow.png\" alt=\"\">\r\n									</a>\r\n									<a href=\"#\" class=\"stone__color__elem\">\r\n										<img src=\"assets/images/brick_light_shadow.png\" alt=\"\">\r\n									</a>\r\n									<a href=\"#\" class=\"stone__color__elem\">\r\n										<img src=\"assets/images/brick_light_shadow.png\" alt=\"\">\r\n									</a>\r\n									<a href=\"#\" class=\"stone__color__elem\">\r\n										<img src=\"assets/images/brick_light_shadow.png\" alt=\"\">\r\n									</a>\r\n									<a href=\"#\" class=\"stone__color__elem\">\r\n										<img src=\"assets/images/brick_light_shadow.png\" alt=\"\">\r\n									</a>\r\n									<a href=\"#\" class=\"stone__color__elem\">\r\n										<img src=\"assets/images/brick_light_shadow.png\" alt=\"\">\r\n									</a>\r\n									<a href=\"#\" class=\"stone__color__elem\">\r\n										<img src=\"assets/images/brick_light_shadow.png\" alt=\"\">\r\n									</a>\r\n									<a href=\"#\" class=\"stone__color__elem\">\r\n										<img src=\"assets/images/brick_light_shadow.png\" alt=\"\">\r\n									</a>\r\n									<a href=\"#\" class=\"stone__color__elem\">\r\n										<img src=\"assets/images/brick_light_shadow.png\" alt=\"\">\r\n									</a>\r\n									<a href=\"#\" class=\"stone__color__elem\">\r\n										<img src=\"assets/images/brick_light_shadow.png\" alt=\"\">\r\n									</a>\r\n								</div>\r\n							</div>\r\n							<div class=\"stone__view\">\r\n								<h5>Выберите вид</h5>\r\n								<div class=\"stone__view__box\">\r\n									<div class=\"stone__view__elem select__view\">\r\n										<img class=\"stone__view__img\" src=\"assets/images/polnotel_act.png\" alt=\"\">\r\n										<img class=\"stone__view__img-close\" src=\"assets/images/polnotel_no_act.png\" alt=\"\">\r\n										<p class=\"stone__view__name\">Полнотелый</p>\r\n									</div>\r\n									<div class=\"stone__view__elem\">\r\n										<img class=\"stone__view__img\" src=\"assets/images/pustotel_act.png\" alt=\"\">\r\n										<img class=\"stone__view__img-close\" src=\"assets/images/pustotel_no_act.png\" alt=\"\">\r\n										<p class=\"stone__view__name\">Пустотелый</p>\r\n									</div>\r\n									<div class=\"stone__view__elem\">\r\n										<img class=\"stone__view__img\" src=\"assets/images/fason_act.png\" alt=\"\">\r\n										<img class=\"stone__view__img-close\" src=\"assets/images/fason_no_act.png\" alt=\"\">\r\n										<p class=\"stone__view__name\">Фасонный</p>\r\n									</div>\r\n								</div>\r\n							</div>\r\n							<div class=\"stone__form\">\r\n								<h5>Выберите форму</h5>\r\n								<div class=\"row stone__form__box\">\r\n									<div class=\"stone__form__elem col-sm-3 col-6 select__form\">\r\n										<div class=\"stone__img__wrap\">\r\n											<img src=\"assets/images/ugol_no_act.png\" alt=\"\" class=\"stone__form__img-close\">\r\n											<img src=\"assets/images/ugol_act.png\" alt=\"\" class=\"stone__form__img\">\r\n										</div>\r\n										<p class=\"stone__form__name\">Угловой</p>\r\n									</div>\r\n									<div class=\"stone__form__elem col-sm-3 col-6\">\r\n										<div class=\"stone__img__wrap\">\r\n											<img src=\"assets/images/brus_no_act.png\" alt=\"\" class=\"stone__form__img-close\">\r\n											<img src=\"assets/images/brus_act.png\" alt=\"\" class=\"stone__form__img\">\r\n											<p class=\"stone__form__name\">Брусок угловой</p>\r\n										</div>\r\n									</div>\r\n									<div class=\"stone__form__elem col-sm-3 col-6\">\r\n										<div class=\"stone__img__wrap\">\r\n											<img src=\"assets/images/doubleside_no_act.png\" alt=\"\" class=\"stone__form__img-close\">\r\n											<img src=\"assets/images/doubleside_act.png\" alt=\"\" class=\"stone__form__img\">\r\n											<p class=\"stone__form__name\">Двусторонный</p>\r\n										</div>\r\n									</div>\r\n									<div class=\"stone__form__elem col-sm-3 col-6\">\r\n										<div class=\"stone__img__wrap\">\r\n											<img src=\"assets/images/fig1_no_act.png\" alt=\"\" class=\"stone__form__img-close\">\r\n											<img src=\"assets/images/fig1_act.png\" alt=\"\" class=\"stone__form__img\">\r\n											<p class=\"stone__form__name\">Фигурный №1</p>\r\n										</div>\r\n									</div>\r\n									<div class=\"stone__form__elem col-sm-3 col-6\">\r\n										<div class=\"stone__img__wrap\">\r\n											<img src=\"assets/images/fig2_no_act.png\" alt=\"\" class=\"stone__form__img-close\">\r\n											<img src=\"assets/images/fig2_act.png\" alt=\"\" class=\"stone__form__img\">\r\n											<p class=\"stone__form__name\">Фигурный №2</p>\r\n										</div>\r\n									</div>\r\n									<div class=\"stone__form__elem col-sm-3 col-6\">\r\n										<div class=\"stone__img__wrap\">\r\n											<img src=\"assets/images/trap1_no_act.png\" alt=\"\" class=\"stone__form__img-close\">\r\n											<img src=\"assets/images/trap1_act.png\" alt=\"\" class=\"stone__form__img\">\r\n											<p class=\"stone__form__name\">Трапеция №1</p>\r\n										</div>\r\n									</div>\r\n									<div class=\"stone__form__elem col-sm-3 col-6\">\r\n										<div class=\"stone__img__wrap\">\r\n											<img src=\"assets/images/trap2_no_act.png\" alt=\"\" class=\"stone__form__img-close\">\r\n											<img src=\"assets/images/trap2_act.png\" alt=\"\" class=\"stone__form__img\">\r\n											<p class=\"stone__form__name\">Трапеция №2</p>\r\n										</div>\r\n									</div>\r\n									<div class=\"stone__form__elem col-sm-3 col-6\">\r\n										<div class=\"stone__img__wrap\">\r\n											<img src=\"assets/images/trap3_no_act.png\" alt=\"\" class=\"stone__form__img-close\">\r\n											<img src=\"assets/images/trap3_act.png\" alt=\"\" class=\"stone__form__img\">\r\n											<p class=\"stone__form__name\">Трапеция №3</p>\r\n										</div>\r\n									</div>\r\n								</div>\r\n							</div>\r\n							<div class=\"stone__type\">\r\n								<h5>Тех. характеристики:</h5>\r\n								<div class=\"stone__type__box\">\r\n									<div class=\"stone__names\">\r\n										<div class=\"stone__name\">\r\n											<p>Вес(кг):</p>\r\n										</div>\r\n										<div class=\"stone__name\">\r\n											<p>Марка прочности:</p>\r\n										</div>\r\n										<div class=\"stone__name\">\r\n											<p>Морозостойкость:</p>\r\n										</div>\r\n										<div class=\"stone__name\">\r\n											<p>Влагопоглощение (%):</p>\r\n										</div>\r\n										<div class=\"stone__name\">\r\n											<p>Теплопроводимость (ВТ/м°С):</p>\r\n										</div>\r\n										<div class=\"stone__name\">\r\n											<p>Кол-во на поддоне (шт):</p>\r\n										</div>\r\n										<div class=\"stone__name\">\r\n											<p>Вес поддона:</p>\r\n										</div>\r\n										<div class=\"stone__name\">\r\n											<p>Цвет:</p>\r\n										</div>\r\n									</div>\r\n									<div class=\"stone__values\">\r\n										<div class=\"stone__value\">\r\n											<p>4,0</p>\r\n										</div>\r\n										<div class=\"stone__value\">\r\n											<p>200</p>\r\n										</div>\r\n										<div class=\"stone__value\">\r\n											<p>100</p>\r\n										</div>\r\n										<div class=\"stone__value\">\r\n											<p>до 8%</p>\r\n										</div>\r\n										<div class=\"stone__value\">\r\n											<p>0,84 ВТ/м°С</p>\r\n										</div>\r\n										<div class=\"stone__value\">\r\n											<p>336</p>\r\n										</div>\r\n										<div class=\"stone__value\">\r\n											<p>1350</p>\r\n										</div>\r\n										<div class=\"stone__value\">\r\n											<p>Персиковый</p>\r\n										</div>\r\n									</div>\r\n								</div>\r\n							</div>\r\n							<div class=\"stone__total\">\r\n								<div class=\"stone__price\">\r\n									<h3>24.00 <span class=\"price__low\">руб./шт</span></h3>\r\n								</div>\r\n								<input type=\"submit\" name=\"submit\" class=\"btn stone__total__btn\" value=\"ЗАКАЗАТЬ\">\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>\r\n				<div class=\"plit\" id=\"plit\">\r\n					<div class=\"row justify-content-md-center\">\r\n						<div class=\"col-12\">\r\n							<h2 class=\"cap__snake plit__caption\">Плитка</h2>\r\n						</div>\r\n						[[DocLister? \r\n							&parents=`76` \r\n							&tpl=`product_plit`\r\n							&tvPrefix=``\r\n							&tvList=`plitImg, plitColor, plitSize, plitWeight, plitCount, plitHeft, plitPrice`\r\n						]]\r\n					</div>\r\n					<div class=\"row\">\r\n						<div class=\"col-12\">\r\n							<h4 class=\"plit__slider__caption\">Как можно использовать нашу продукцию</h4>\r\n						</div>\r\n					</div>\r\n					<div class=\"slider\">\r\n						<div class=\"slider__controls plit__slider__controls\">\r\n							<a class=\"slider__left\" href=\"#\"><img src=\"assets/images/left.svg\" alt=\"\"></a>\r\n							<a class=\"slider__right\" href=\"#\"><img src=\"assets/images/right.svg\" alt=\"\"></a>\r\n						</div>\r\n						<div class=\"row slider__content\">\r\n							<div class=\"col-3\">\r\n								<img  class=\"plit__slider__image\" src=\"assets/images/plit_slider_1.png\" alt=\"/\">\r\n							</div>\r\n							<div class=\"col-3\">\r\n								<img  class=\"plit__slider__image\" src=\"assets/images/plit_slider_2.png\" alt=\"/\">\r\n							</div>\r\n							<div class=\"col-3\">\r\n								<img  class=\"plit__slider__image\" src=\"assets/images/plit_slider_3.png\" alt=\"/\">\r\n							</div>\r\n							<div class=\"col-3\">\r\n								<img  class=\"plit__slider__image\" src=\"assets/images/plit_slider_4.png\" alt=\"/\">\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>\r\n				<div class=\"elements\" id=\"elements\">\r\n\r\n				</div>\r\n			</div>\r\n\r\n		</div>\r\n	</div>\r\n</section>', 0, 1524874681, 1524957735, 0),
+(16, 'header', 'Шапка главной', 2, 'none', 7, 0, '<header class=\"header\" id=\"header\">\r\n	<div class=\"container\">\r\n		<div class=\"row header__top\">\r\n			<div class=\"col-xl-3 col-lg-6 col-6 order-1 logo__box\">\r\n				<div class=\"logo\">\r\n					<h2 class=\"logo__caption\">КИРПИЧЪ</h2>\r\n					<p class=\"logo__subtitle\">Производство и продажа <br> облицовочного кирпича</p>\r\n				</div>\r\n			</div>\r\n			<div class=\"col-xl-6 menu__pc order-2\">\r\n				<div class=\"menu\">\r\n					<div class=\"geolocation\">\r\n						<img class=\"modal__region\" src=\"assets/images/geolocation.svg\">\r\n						<p class=\"modal__region geolocation__city\">г. Ижевск</p>\r\n					</div>\r\n					<nav class=\"nav\">\r\n						<a href=\"#\" data-anchor=\"#work\" class=\"nav__link\">Преимущества</a>\r\n						<a href=\"#\" data-anchor=\"#products\" class=\"nav__link\">Купить</a>\r\n						<a href=\"#\" data-anchor=\"#offers\" class=\"nav__link\">Отзывы</a>\r\n						<a href=\"#\" data-anchor=\"#guarant\" class=\"nav__link\">Гарантия</a>\r\n						<a href=\"#\" data-anchor=\"#footer\" class=\"nav__link\">Контакты</a>\r\n					</nav>\r\n				</div>\r\n			</div>\r\n			<div class=\"col-xl-3 col-lg-5 col-5 order-2 header__cb__hidden\">\r\n				<div class=\"header__callback\">\r\n					<p class=\"callback__caption\">звонок по России бесплатно</p>\r\n					<a href=\"tel: [*phone*]\" class=\"callback__number\">[*phone*]</a>\r\n					<a href=\"#\" class=\"btn callback__btn\">ПЕРЕЗВОНИТЕ МНЕ</a>\r\n				</div>\r\n			</div>\r\n			<div class=\"col-lg-1 col-1 menu__btn order-3\">\r\n				<button class=\"c-hamburger c-hamburger--htx\" id=\"mobile_menu\">\r\n					<span>toggle menu</span>\r\n				</button>\r\n			</div>\r\n		</div>\r\n		<div class=\"row header__content\">\r\n			<div class=\"col-lg-6\">\r\n				<h2 class=\"content__caption\">\r\n					<span class=\"yellow\">Закажите бесплатную пробную партию кирпича</span> и убедитесь в нашем качестве\r\n				</h2>\r\n			</div>\r\n			<div class=\"col-lg-6 header__form__wrap\">\r\n				<div class=\"header__form__box\">\r\n					[!FormLister?\r\n						&formid=`header_form_cb`\r\n						&rules=`{\"name\":{\"required\":\"Введите имя\"},\"phone\":{\"required\":\"Введите номер телефона\",\"phone\":\"Введите номер правильно\"}}`\r\n						&formTpl=`header_callback_form`\r\n						&subject=`Запрос обратного звонка с сайта`\r\n						&successTpl=`form_modal_cb_success`\r\n						&parseDocumentSource=`1`\r\n					!]\r\n				</div>\r\n				<img src=\"assets/images/kirp_header.png\" alt=\"\" class=\"header__kirp__form\">\r\n			</div>\r\n		</div>\r\n		<div class=\"row header__slider slider\">\r\n			<div class=\"slider__content slick__header\">\r\n				[[DocLister? \r\n					&parents=`54` \r\n					&tpl=`header_slider_elem`\r\n					&tvPrefix=``\r\n					&tvList=`headerSliderImg`\r\n				]]\r\n			</div>\r\n		</div>\r\n	</div>\r\n</header>\r\n<div class=\"menu__mob__right non-active\" style=\"z-index: 1010;\">\r\n	<div class=\"geolocation\">\r\n		<img class=\"modal__region\" src=\"assets/images/geolocation_black.svg\">\r\n		<p class=\"modal__region geolocation__city\">г. Ижевск</p>\r\n		<div class=\"close\"></div>\r\n	</div>\r\n	<nav class=\"nav\">\r\n		<a href=\"#\" data-anchor=\"#work\" class=\"nav__link\">Преимущества</a>\r\n		<a href=\"#\" data-anchor=\"#products\" class=\"nav__link\">Купить</a>\r\n		<a href=\"#\" data-anchor=\"#offers\" class=\"nav__link\">Отзывы</a>\r\n		<a href=\"#\" data-anchor=\"#guarant\" class=\"nav__link\">Гарантия</a>\r\n		<a href=\"#\" data-anchor=\"#footer\" class=\"nav__link\">Контакты</a>\r\n	</nav>\r\n</div>', 0, 1524848394, 1525281207, 0),
+(19, 'products', '', 2, 'none', 7, 0, '<section class=\"products\" id=\"products\">\r\n	<div class=\"container products__wrap wrap\">\r\n		<div class=\"row wrap__row\">\r\n			<div class=\"col-12\">  \r\n				<div class=\"products__menu\">\r\n					<a href=\"#\" data-to=\"#stone\" class=\"products__punkt active__products\">Кирпич</a>\r\n					<a href=\"#\" data-to=\"#plit\" class=\"products__punkt\">Плитка</a>\r\n					<a href=\"#\" data-to=\"#elements\" class=\"products__punkt\">Элементы</a>\r\n				</div>\r\n			</div>\r\n			<div class=\"col-12 products__content\">\r\n				<div class=\"stone\" id=\"stone\">\r\n					<div class=\"row justify-content-center\">\r\n						<div class=\"col-12\">\r\n							<h2 class=\"products__caption\">Облицовочный камень</h2>\r\n						</div>\r\n						<div class=\"col-xl-6 col-md-8 col stone__demo\">\r\n							<div class=\"stone__image\">\r\n								<img src=\"assets/images/bricks.jpg\" class=\"stone__img\">\r\n							</div>\r\n							<div class=\"stone__demo__slider\">\r\n								<h4 class=\"stone__demo__slider__caption\">Как можно использовать нашу продукцию</h4>\r\n								<div class=\"stone__slider\">\r\n									[[DocLister? \r\n										&parents=`108` \r\n										&tpl=`stone_slide`\r\n										&tvPrefix=``\r\n										&tvList=`stoneSlideImg`\r\n									]]\r\n								</div>\r\n							</div>\r\n						</div>\r\n						<div class=\"col-xl-6 col-md-8 col stone__info\">\r\n							<div class=\"stone__size\">\r\n								<h5>Выберите размер</h5>\r\n								<div class=\"stone__size__box\">\r\n									[[DocLister? \r\n										&parents=`79` \r\n										&tpl=`stone_size`\r\n									]]\r\n								</div>\r\n							</div>\r\n							<div class=\"stone__color\">\r\n								<h5>Выберите цвет</h5>\r\n								<div class=\"stone__color__box\">\r\n									[[DocLister? \r\n										&parents=`84` \r\n										&tpl=`stone_color`\r\n									]]\r\n								</div>\r\n							</div>\r\n							<div class=\"stone__view\">\r\n								<h5>Выберите вид</h5>\r\n								<div class=\"stone__view__box\">\r\n									[[DocLister? \r\n										&parents=`95` \r\n										&tpl=`stone_view`\r\n										&tvPrefix=``\r\n										&tvList=`stoneViewImgColor, stoneViewImgWB`\r\n									]]\r\n								</div>\r\n							</div>\r\n							<div class=\"stone__form\">\r\n								<h5>Выберите форму</h5>\r\n								<div class=\"row stone__form__box\">\r\n									[[DocLister? \r\n										&parents=`99` \r\n										&tpl=`stone_form`\r\n										&tvPrefix=``\r\n										&tvList=`stoneFormImgWB, stoneFormImgColor`\r\n									]]\r\n								</div>\r\n							</div>\r\n							<div class=\"stone__type\">\r\n								<h5>Тех. характеристики:</h5>\r\n								<table class=\"stone__type__table\">\r\n									<tr class=\"stoneWeight\">\r\n										<td><p class=\"stone__name\">Вес(кг):</p></td>\r\n										<td><p class=\"stone__value\">4,0</p></td>\r\n									</tr>\r\n									<tr class=\"stoneMark\">\r\n										<td><p class=\"stone__name\">Марка прочности:</p></td>\r\n										<td><p class=\"stone__value\">200</p></td>\r\n									</tr>\r\n									<tr class=\"stoneQu\">\r\n										<td><p class=\"stone__name\">Морозостойкость:</p></td>\r\n										<td>100</td>\r\n									</tr>\r\n									<tr class=\"stoneWater\">\r\n										<td><p class=\"stone__name\">Влагопоглощение (%):</p></td>\r\n										<td><p class=\"stone__value\">до 8%</p></td>\r\n									</tr>\r\n									<tr class=\"stoneFire\">\r\n										<td><p class=\"stone__name\">Теплопроводимость (вт/м°с):</p></td>\r\n										<td><p class=\"stone__value\">0,84 вт/м°с</p></td>\r\n									</tr>\r\n									<tr class=\"stoneCount\">\r\n										<td><p class=\"stone__name\">Кол-во на поддоне (шт):</p></td>\r\n										<td><p class=\"stone__value\">336</p></td>\r\n									</tr>\r\n									<tr class=\"stoneWeightP\">\r\n										<td><p class=\"stone__name\">Вес поддона:</p></td>\r\n										<td><p class=\"stone__value\">1350</p></td>\r\n									</tr>\r\n									<tr class=\"stoneColor\">\r\n										<td><p class=\"stone__name\">Цвет:</p></td>\r\n										<td><p class=\"stone__value\">персиковый</p></td>\r\n									</tr>\r\n								</table>\r\n							</div>\r\n							<div class=\"stone__total\">\r\n								<div class=\"stone__price\">\r\n									<h3><span class=\"stonePriceOne\">24.00</span> <span class=\"price__low\">руб./шт</span></h3>\r\n								</div>\r\n								<a href=\"#\" class=\"btn stone__total__btn btn__buy\" data-product=\"#stone\">ЗАКАЗАТЬ</a>\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>\r\n				<div class=\"plit\" id=\"plit\">\r\n					<div class=\"row justify-content-md-center\">\r\n						<div class=\"col-12\">\r\n							<h2 class=\"cap__snake plit__caption\">Плитка</h2>\r\n						</div>\r\n						[[DocLister? \r\n							&parents=`112` \r\n							&tpl=`product_plit`\r\n							&tvPrefix=``\r\n							&tvList=`plitImg, plitColor, plitSize, plitWeight, plitCount, plitHeft, plitPrice`\r\n						]]\r\n					</div>\r\n					<div class=\"row\">\r\n						<div class=\"col-12\">\r\n							<h4 class=\"plit__slider__caption\">Как можно использовать нашу продукцию</h4>\r\n						</div>\r\n					</div>\r\n					<div class=\"slider\">\r\n						<div class=\"row slider__content\" id=\"plit__slider\">\r\n							[[DocLister? \r\n								&parents=`111` \r\n								&tpl=`plit_slide`\r\n								&tvPrefix=``\r\n								&tvList=`stoneSlideImg`\r\n							]]\r\n						</div>\r\n					</div>\r\n				</div>\r\n				<div class=\"elements\" id=\"elements\">\r\n					<div class=\"row justify-content-md-center\">\r\n						<div class=\"col-12\">\r\n							<h2 class=\"cap__snake plit__caption\">Элементы</h2>\r\n						</div>\r\n						[[DocLister? \r\n							&parents=`118` \r\n							&tpl=`product_elem`\r\n							&tvPrefix=``\r\n							&tvList=`plitPrice, elemWeight, elemSize, elemImg`\r\n						]]\r\n					</div>\r\n					<div class=\"row\">\r\n						<div class=\"col-12\">\r\n							<h4 class=\"plit__slider__caption\">Как можно использовать нашу продукцию</h4>\r\n						</div>\r\n					</div>\r\n					<div class=\"slider\">\r\n						<div class=\"row slider__content\" id=\"plit__slider\">\r\n							[[DocLister? \r\n								&parents=`120` \r\n								&tpl=`plit_slide`\r\n								&tvPrefix=``\r\n								&tvList=`stoneSlideImg`\r\n							]]\r\n						</div>\r\n					</div>\r\n				</div>\r\n			</div>\r\n\r\n		</div>\r\n	</div>\r\n</section>', 0, 1524874681, 1525302832, 0),
 (26, 'partner', '', 2, 'none', 10, 0, '<div class=\"partner col-md-4 col-lg-3 col-sm-6 col\">\r\n	<img src=\"[+partnerImg+]\" alt=\"[+pagetitle+]\">\r\n</div>', 0, 1524937694, 1524937694, 0),
+(35, 'stone_size', 'Размер кирпича', 2, 'none', 12, 0, '<a href=\"#\" class=\"stone__size__elem\">\r\n	<span class=\"stone__size__bold\">[+pagetitle+]</span>\r\n	<span class=\"stone__size__name\">[+description+]</span>\r\n</a>', 0, 1525100745, 1525122528, 0),
 (24, 'header_slider_elem', '', 2, 'none', 9, 0, '<div class=\"header__slider__elem\">\r\n	<img src=\"[+headerSliderImg+]\" alt=\"\" class=\"header__slider__image\">\r\n	<span class=\"header__slider__text\">[+content+]</span>\r\n</div>', 0, 1524918534, 1524925679, 0),
+(41, 'product_elem', 'Товар (элемент)', 2, 'none', 12, 0, '<div class=\"col-lg-4 col-xl-3 col-md-6 col-sm-6 col\">\r\n	<div class=\"plit__elem\">\r\n		<img src=\"[+elemImg+]\" class=\"plit__elem__img\">\r\n		<h5 class=\"plit__elem__caption\">[+pagetitle+]</h5>\r\n		<p class=\"plit__elem__stat\">\r\n			Размер: [+elemSize+] <br>\r\n			Вес: [+elemWeight+] <br>\r\n		</p>\r\n		<h4>[+plitPrice+] <span class=\"price__low\">руб./шт</span></h4>\r\n		<a href=\"\" class=\"plit__elem__btn btn\">ЗАКАЗАТЬ</a>\r\n	</div>\r\n</div>', 0, 1525176471, 1525192877, 0),
+(40, 'plit_slide', 'Слайд в слайдере - Как можно использовать нашу продукцию? (кирпич)', 2, 'none', 9, 0, '<div class=\"col-3\">\r\n	<img  class=\"plit__slider__image\" src=\"[+stoneSlideImg+]\" alt=\"/\">\r\n</div>', 0, 0, 1525125014, 0),
+(42, 'header_callback_form', 'Форма в шапке', 2, 'none', 11, 0, '<form method=\"POST\" class=\"header__form form__default\" action=\"[~[*id*]~]#header_form_cb\">\r\n	<input type=\"hidden\" name=\"formid\" value=\"header_form_cb\">\r\n	\r\n	<h4 class=\"header__form__caption\">Заказать пробную партию</h4>\r\n	\r\n	<input type=\"text\" class=\"form__input border__input\" placeholder=\"Ваше имя\" name=\"name\" value=\"[+name.value+]\" required>\r\n\r\n	<input type=\"text\" class=\"form__input border__input\" placeholder=\"Ваш номер телефона\" name=\"phone\" value=\"[+phone.value+]\" required>\r\n	\r\n	<input class=\"btn header__form__btn\" type=\"submit\"  name=\"submit\" value=\"Заказать бесплатно\">\r\n	<p class=\"form__politics header__form__polit\">Нажимая на кнопку, вы даете свое согласие на обработку персональных данных. <a href=\"#\">Узнать больше</a></p>\r\n</form>', 0, 1525194067, 1525278100, 0),
+(47, 'ask_form', 'Форма - задать вопрос', 2, 'none', 11, 0, '<form action=\"[~[*id*]~]#ask_form\" method=\"POST\" class=\"ask__form form__default\">\r\n	<input type=\"hidden\" name=\"formid\" value=\"ask_form\">\r\n	\r\n	<input type=\"text\" class=\"form__input ask__form__input\" placeholder=\"Ваше имя\" name=\"name\" value=\"[+name.value+]\" required>\r\n	<input type=\"text\" class=\"form__input ask__form__input\" placeholder=\"Ваш номер телефона или email\" name=\"phone\" value=\"[+phone.value+]\" required>\r\n	\r\n	<textarea class=\"form__input ask__form__input\" placeholder=\"Текст сообщения\" name=\"text\" value=\"[+text.value+]\" required></textarea>\r\n	\r\n	<div class=\"form__btn__polit\">\r\n		<input class=\"btn ask__form__btn\" type=\"submit\" name=\"submit\" value=\"Отправить\">\r\n		<p class=\"form__politics\">Нажимая на кнопку, вы даете свое согласие на обработку персональных данных. \r\n			<a href=\"#\">Узнать больше</a></p>\r\n	</div>\r\n</form>', 0, 1525277462, 1525306730, 0),
+(38, 'stone_form', 'Форма кирпича ', 2, 'none', 12, 0, '<div class=\"stone__form__elem col-sm-3 col-6\">\r\n	<div class=\"stone__img__wrap\">\r\n		<img src=\"[+stoneFormImgWB+]\" alt=\"\" class=\"stone__form__img-close\">\r\n		<img src=\"[+stoneFormImgColor+]\" alt=\"\" class=\"stone__form__img\">\r\n	</div>\r\n	<p class=\"stone__form__name\">[+pagetitle+]</p>\r\n</div>', 0, 1525121902, 1525122784, 0),
+(39, 'stone_slide', 'Слайд в слайдере - Как можно использовать нашу продукцию? (кирпич)', 2, 'none', 9, 0, '<img class=\"stone__demo__slider__image\" src=\"[+stoneSlideImg+]\">', 0, 1525123041, 1525124688, 0),
+(36, 'stone_color', 'Цвет кирпича', 2, 'none', 12, 0, '<a href=\"#\" class=\"stone__color__elem\" style=\"background: [+longtitle+]\">\r\n	<img src=\"assets/images/brick_light_shadow.png\" alt=\"\" title=\"[+pagetitle+]\">\r\n</a>', 0, 1525107646, 1525113138, 0),
+(37, 'stone_view', 'Вид кирпича', 2, 'none', 12, 0, '<div class=\"stone__view__elem\">\r\n	<img class=\"stone__view__img\" src=\"[+stoneViewImgColor+]\" alt=\"\">\r\n	<img class=\"stone__view__img-close\" src=\"[+stoneViewImgWB+]\" alt=\"\">\r\n	<p class=\"stone__view__name\">[+pagetitle+]</p>\r\n</div>', 0, 1525113592, 1525122553, 0),
+(44, 'calc_form', 'Форма - рассчитать стоимость', 2, 'none', 11, 0, '<form action=\"[~[*id*]~]#calc_form\" method=\"POST\" class=\"form__default\">\r\n	<input type=\"hidden\" name=\"formid\" value=\"calc_form\">\r\n\r\n	<div class=\"form__double\">\r\n		<input class=\"calc__form__input form__input\" type=\"text\" name=\"length\" placeholder=\"Длина постройки метров\" value=\"[+length.value+]\" required>\r\n		<input class=\"calc__form__input form__input\" type=\"text\" name=\"height\" placeholder=\"Высота постройки метров\" value=\"[+height.value+]\" required>\r\n	</div>\r\n	<input type=\"text\" class=\"calc__form__input form__input\" placeholder=\"Ваше имя\" name=\"name\" value=\"[+name.value+]\" required>\r\n	<input type=\"text\" class=\"calc__form__input form__input\" placeholder=\"Ваш номер телефона или email\" name=\"phone\" value=\"[+phone.value+]\" required>\r\n	\r\n	<div class=\"form__btn__polit\">\r\n		<input class=\"btn calc__form__btn\" type=\"submit\" name=\"submit\" value=\"Рассчитать стоимость\">\r\n		<p class=\"form__politics\">Нажимая на кнопку, вы даете свое согласие на обработку персональных данных. <a href=\"#\">Узнать больше</a></p>\r\n	</div>\r\n\r\n</form>', 0, 1525273814, 1525291090, 0),
+(46, 'calc_success', 'Успешная отправка формы калькулятора', 2, 'none', 11, 0, 'Письмо с сайта\r\nИмя: [+name.value+]\r\nТелефон: [+phone.value+]\r\nДлина: [+length.value+]\r\nВысота: [+height.value+]', 0, 0, 1525274841, 0),
 (20, 'sertifics', '', 2, 'none', 7, 0, '<section class=\"sertifics\" id=\"sertifics\">\r\n	<div class=\"container\">\r\n		<div class=\"row\">\r\n			<div class=\"col-12\">\r\n				<h2 class=\"cap__snake\">Сертификаты</h2>\r\n			</div>\r\n			<div class=\"sertifics__box\">\r\n				[[DocLister? \r\n					&parents=`59` \r\n					&tpl=`sert_slider_elem`\r\n					&tvPrefix=``\r\n					&tvList=`sertSliderImg`\r\n				]]\r\n			</div>\r\n		</div>\r\n	</div>\r\n</section>', 0, 1524902993, 1524928686, 0),
-(21, 'calc', '', 2, 'none', 7, 0, '<section class=\"calc\" id=\"calc\">\r\n	<div class=\"container wrap calc__wrap\">\r\n		<div class=\"row wrap__row\">\r\n			<div class=\"calc__form__box\">\r\n				<div class=\"calc__form\">\r\n					<div class=\"calc__content\">\r\n						<h3 class=\"yellow\">Рассчет стоимости</h3>\r\n						<p class=\"calc__text\">Мы можем расчитать стоимость и количество материала с учетом параметров вашей постройки. Заполните данную формы и перезвоним вам в течении 10 минут.</p>\r\n						<form action=\"\" method=\"POST\" class=\"form__default\">\r\n							<div class=\"form__double\">\r\n								<input class=\"calc__form__input form__input\" type=\"text\" name=\"length\" placeholder=\"Длина постройки метров\">\r\n								<input class=\"calc__form__input form__input\" type=\"text\" name=\"height\" placeholder=\"Высота постройки метров\">\r\n							</div>\r\n							<input class=\"calc__form__input form__input\" type=\"text\" name=\"name\" placeholder=\"Ваше имя\">\r\n							<input class=\"calc__form__input form__input\" type=\"text\" name=\"phone\" placeholder=\"Ваш номер телефона или email\">\r\n							<div class=\"form__btn__polit\">\r\n								<input class=\"btn calc__form__btn\" type=\"submit\" name=\"submit\" value=\"Рассчитать стоимость\">\r\n								<p class=\"form__politics\">Нажимая на кнопку, вы даете свое согласие на обработку персональных данных. <a href=\"#\">Узнать больше</a></p>\r\n							</div>\r\n\r\n						</form>\r\n						<!-- TODO -->\r\n					</div>\r\n				</div>\r\n			</div>\r\n		</div>\r\n	</div>\r\n</section>', 0, 1524903048, 1524903048, 0),
+(21, 'calc', '', 2, 'none', 7, 0, '<section class=\"calc\" id=\"calc\">\r\n	<div class=\"container wrap calc__wrap\">\r\n		<div class=\"row wrap__row\">\r\n			<div class=\"calc__form__box\">\r\n				<div class=\"calc__form\">\r\n					<div class=\"calc__content\">\r\n						<h3 class=\"yellow\">Рассчет стоимости</h3>\r\n						<p class=\"calc__text\">Мы можем расчитать стоимость и количество материала с учетом параметров вашей постройки. Заполните данную формы и перезвоним вам в течении 10 минут.</p>\r\n						\r\n						[!FormLister?\r\n							&formid=`calc_form`\r\n							&formTpl=`calc_form`\r\n							&subject=`Запрос обратного звонка с сайта`\r\n							&successTpl=`calc_success`\r\n							&parseDocumentSource=`1`\r\n						!]\r\n					</div>\r\n				</div>\r\n			</div>\r\n		</div>\r\n	</div>\r\n</section>', 0, 1524903048, 1525279024, 0),
 (22, 'partners', '', 2, 'none', 7, 0, '<section class=\"partners\" id=\"partners\">\r\n	<div class=\"container wrap\">\r\n		<div class=\"row\">\r\n			<h2 class=\"cap__snake partners__caption\">Наши клиенты <br>и партнеры</h2>\r\n			<div class=\"partners__box\">\r\n				[[DocLister? \r\n					&parents=`63` \r\n					&tpl=`partner`\r\n					&tvPrefix=``\r\n					&tvList=`partnerImg`\r\n				]]\r\n			</div>\r\n		</div>\r\n	</div>\r\n</section>', 0, 1524903082, 1524937897, 0),
 (27, 'work', '', 2, 'none', 7, 0, '<section class=\"work\" id=\"work\">\r\n	<div class=\"container wrap\">\r\n		<div class=\"row\">\r\n			<div class=\"col-12\">\r\n				<h2 class=\"cap__snake work__caption\">\r\n					Как мы работаем\r\n				</h2>\r\n				<div class=\"row work__box\">\r\n					<div class=\"col-xl-3 col-lg-6 col-12 col-sm-6 work__elem \"> \r\n						<!-- TODO: work__arrow -->\r\n						<img src=\"assets/images/how_01.png\" alt=\"/\">\r\n						<p class=\"work__elem__text\">Вы оставляете <br> заявку на сайте</p>\r\n					</div>\r\n					<div class=\"col-xl-3 col-lg-6 col-12 col-sm-6 work__elem \"> \r\n						<!-- TODO: work__arrow -->\r\n						<img src=\"assets/images/how_02.png\" alt=\"/\">\r\n						<p class=\"work__elem__text\">Наш специалист <br> перезванивает вам и <br>уточняет детали</p>\r\n					</div>\r\n					<div class=\"col-xl-3 col-lg-6 col-12 col-sm-6 work__elem \"> \r\n						<!-- TODO: work__arrow -->\r\n						<img src=\"assets/images/how_03.png\" alt=\"/\">\r\n						<p class=\"work__elem__text\">Доставляем кирпич прямо до <br> вашей стройплощадки всего <br> за 5 дней</p>\r\n					</div>\r\n					<div class=\"col-xl-3 col-lg-6 col-12  work__elem\">\r\n						<img src=\"assets/images/how_04.png\" alt=\"/\">\r\n						<p class=\"work__elem__text\">Отгружаем <br> продукцию</p>\r\n					</div>\r\n				</div>\r\n				<div class=\"btn__wrap\">\r\n					<a href=\"#\" class=\"btn work__btn\">Оставить заявку</a>\r\n				</div>\r\n			</div>\r\n		</div>\r\n	</div>\r\n</section>', 0, 1524939142, 1524939142, 0),
 (23, 'guarant', '', 2, 'none', 7, 0, '<section class=\"guarant\" id=\"guarant\">\r\n	<div class=\"container wrap guarant__box\">\r\n		<div class=\"row\">\r\n			<div class=\"col-12\">\r\n				<h2 class=\"cap__snake guarant__caption\">3 года гарантии</h2>\r\n			</div>\r\n			<div class=\"col-md-6 col-sm-12\">\r\n				<img src=\"assets/images/bricks_guarantee.jpg\" alt=\"/\" class=\"guarant__image\">\r\n			</div>\r\n			<div class=\"col-md-6 col-sm-12\">\r\n				<p class=\"guarant__text\">\r\n					Мы даем 3 годовую гарантию на облицовочный кирпич. В случае выявления производственных дефектов, сколов и т.п., мы заменим поврежденные части плитки за свой счет.\r\n				</p>\r\n			</div>\r\n		</div>\r\n	</div>\r\n</section>', 0, 1524903128, 1524903128, 0),
+(43, 'modals', 'Модальные окна проекта', 2, 'none', 7, 0, '<div class=\"modals\">\r\n	<div class=\"callback modal\" id=\"callback\">\r\n		<div class=\"modal__caption\">\r\n			<h3 class=\"modal__title\">Обратный звонок</h3>\r\n			<div class=\"close\" data-izimodal-close=\"\"></div>\r\n		</div>\r\n		<div class=\"modal__body\">\r\n			[!FormLister?\r\n				&formid=`form_callme`\r\n				&rules=`{\"name\":{\"required\":\"Введите имя\"},\"phone\":{\"required\":\"Введите номер телефона\"}}`\r\n				&formTpl=`form_modal_cb`\r\n				&subject=`Запрос обратного звонка с сайта`\r\n				&successTpl=`form_modal_cb_success`\r\n				&parseDocumentSource=`1`\r\n			!]\r\n		</div>\r\n	</div>\r\n	\r\n	<div class=\"region modal\" id=\"region\">\r\n		<div class=\"modal__caption\">\r\n			<h3 class=\"modal__title\">Ваш регион</h3>\r\n			<div class=\"close\" data-izimodal-close=\"\"></div>\r\n		</div>\r\n		<div class=\"modal__body\">\r\n			<div class=\"region__screen__start\">\r\n				<h4 class=\"region__mb\">Ижевск</h4>\r\n				<div class=\"btn__double\">\r\n					<a href=\"#\" class=\"btn region__btn\" id=\"regionYes\">Да, всё верно</a>\r\n					<a href=\"#\" class=\"btn region__btn region__btn__grey\" id=\"regionAny\">Выбрать другой</a>\r\n				</div>\r\n			</div>\r\n			<div class=\"region__screen__select\">\r\n				<form action=\"\" method=\"POST\" class=\"default__form\">\r\n					<div class=\"region__form__group\">\r\n						<input type=\"text\" class=\"form__input region__input border__input\" placeholder=\"Введите название города\">\r\n						<input type=\"text\" class=\"btn region__btn\" value=\"Выбрать\">\r\n					</div>\r\n				</form>\r\n			</div>\r\n		</div>\r\n	</div>\r\n	\r\n	<div class=\"modal buy\" id=\"buy\">\r\n        <div class=\"modal__caption\">\r\n            <h3 class=\"modal__title\"></h3>\r\n            <div class=\"close\" data-izimodal-close=\"\"></div>\r\n        </div>\r\n        <div class=\"modal__body\">\r\n            <p class=\"product__info\"></p>\r\n             [!FormLister?\r\n				&formid=`form_product`\r\n				&formTpl=`form_product`\r\n				&subject=`Запрос обратного звонка с сайта`\r\n				&successTpl=`form_product_success`\r\n				&parseDocumentSource=`1`\r\n			!]\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"modal success\" id=\"success\">\r\n        <div class=\"modal__caption\">\r\n            <h3 class=\"modal__title\">Ваша заявка принята</h3>\r\n            <div class=\"close\" data-izimodal-close=\"\"></div>\r\n        </div>\r\n        <div class=\"modal__body\">\r\n            <p class=\"modal__success__info\">Ваша заявка принята, наш менеджер перезвонит вам в течении десяти минут.</p>\r\n            <a href=\"#\" class=\"btn modal__succes__btn\" data-izimodal-close=\"\">Закрыть окно</a>\r\n        </div>\r\n    </div>\r\n	\r\n	<div class=\"modal error\" id=\"error\">\r\n        <div class=\"modal__caption\">\r\n            <h3 class=\"modal__title\">Ваша сообщение не отправлено</h3>\r\n            <div class=\"close\" data-izimodal-close=\"\"></div>\r\n        </div>\r\n        <div class=\"modal__body\">При отправке произошла ошибка, попробуйте снова.</p>\r\n            <a href=\"#\" class=\"btn modal__succes__btn\" data-izimodal-close=\"\">Закрыть окно</a>\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"modal production\" id=\"production\">\r\n        <div class=\"modal__caption\">\r\n            <h3 class=\"modal__title\">Заявка на продукцию</h3>\r\n            <div class=\"close\" data-izimodal-close=\"\"></div>\r\n        </div>\r\n        <div class=\"modal__body\">\r\n            [!FormLister?\r\n				&formid=`production`\r\n				&formTpl=`production`\r\n				&subject=`Запрос обратного звонка с сайта`\r\n				&successTpl=`production_success`\r\n				&parseDocumentSource=`1`\r\n			!]   \r\n        </div>\r\n    </div>\r\n	\r\n</div>', 0, 1525263945, 1525307027, 0),
 (25, 'sert_slider_elem', '', 2, 'none', 9, 0, '\r\n<div class=\"sertific__item\">\r\n	<img src=\"[+sertSliderImg+]\" class=\"sertific__image\">\r\n</div>', 0, 1524928682, 1524928682, 0),
 (28, 'offers', '', 2, 'none', 7, 0, '<section class=\"offers\" id=\"offers\">\r\n	<div class=\"container wrap\">\r\n		<div class=\"row\">\r\n			<div class=\"col-12\">\r\n				<h2 class=\"cap__snake offers__caption\">Отзывы <br> наших клиентов</h2>\r\n			</div>\r\n		</div>\r\n		<div class=\"slider\">\r\n			<div class=\"slider__content slider__content__offers\">\r\n				<div class=\"row justify-content-center offer__slider\">\r\n					[[DocLister? \r\n						&parents=`72` \r\n						&tpl=`offer_slider_elem`\r\n						&tvPrefix=``\r\n						&tvList=`offerSliderImg`\r\n					]]\r\n				</div>\r\n			</div>\r\n		</div>\r\n	</div>\r\n</section>', 0, 1524939169, 1524940661, 0),
-(33, 'successTpl', 'Успешная отправка заявки на обратный звонок', 2, 'none', 0, 0, 'Письмо с сайта\r\nИмя: [+name.value+]\r\nТелефон: [+phone.value+]', 0, 1524955470, 1524955993, 0),
-(34, 'product_plit', '', 2, 'none', 12, 0, '<div class=\"col-lg-4 col-xl-3 col-md-6 col-sm-6 col\">\r\n	<div class=\"plit__elem\">\r\n		<img src=\"[+plitImg+]\" class=\"plit__elem__img\">\r\n		<h5 class=\"plit__elem__caption\">[+pagetitle+]</h5>\r\n		<p class=\"plit__elem__stat\">\r\n			Цвет: [+plitColor+] <br>\r\n			Размер: [+plitSize+] <br>\r\n			Вес: [+plitWeight+] <br>\r\n			В поддоне: [+plitCount+] <br>\r\n			Вес поддона: [+plitHeft+] <br>\r\n		</p>\r\n		<h4>[+plitPrice+] <span class=\"price__low\">руб./м2</span></h4>\r\n		<a href=\"\" class=\"plit__elem__btn btn\">ЗАКАЗАТЬ</a>\r\n	</div>\r\n</div>', 0, 1524957451, 1524958426, 0),
-(29, 'ask', '', 2, 'none', 7, 0, '<section class=\"ask\" id=\"ask\">\r\n	<div class=\"container wrap ask__wrap\">\r\n		<div class=\"row wrap__row ask__box\">\r\n			<div class=\"ask__name\">\r\n				<img src=\"assets/images/manager.png\" alt=\"/\" class=\"manager__img\">\r\n				<h4 class=\"ask__name__caption yellow\">ФЁДОРОВ МИХАИЛ</h4>\r\n				<p class=\"ask__name__stat\">менеджер по работе с клиентами</p>\r\n			</div>\r\n			<div class=\"ask__form__content\">\r\n				<h3 class=\"yellow ask__form__caption\">Остались вопросы?</h3>\r\n				<p class=\"ask__form__desc\">Оставьте заявку и я с удовольствием ответчу на все ваши <br> вопросы</p>\r\n				<form action=\"\" method=\"POST\" class=\"ask__form form__default\">\r\n					<input type=\"text\" class=\"form__input ask__form__input\" placeholder=\"Ваше имя\">\r\n					<input type=\"text\" class=\"form__input ask__form__input\" placeholder=\"Ваш номер телефона или email\">\r\n					<textarea class=\"form__input ask__form__input\" placeholder=\"Текст сообщения\"></textarea>\r\n					<div class=\"form__btn__polit\">\r\n						<input class=\"btn ask__form__btn\" type=\"submit\" name=\"submit\" value=\"Отправить\">\r\n						<p class=\"form__politics\">Нажимая на кнопку, вы даете свое согласие на обработку персональных данных. <a href=\"#\">Узнать больше</a></p>\r\n					</div>\r\n				</form>\r\n			</div>\r\n		</div>\r\n	</div>\r\n</section>', 0, 1524939205, 1524939205, 0),
-(30, 'footer', '', 2, 'none', 7, 0, '<footer class=\"footer\" id=\"footer\">\r\n	<div class=\"container\">\r\n		<div class=\"row justify-content-center\">\r\n			<div class=\"col-xl-4 col-md-12\">\r\n				<div class=\"footer__city\">\r\n					<h5>[*address*]</h5>\r\n				</div>\r\n			</div>\r\n			<div class=\"col-xl-5 col-md-12\">\r\n				<div class=\"footer__callback\">\r\n					<div class=\"footer__phone\">\r\n						<p class=\"footer__phone__text\">звонок по России бесплатный</p>\r\n						<h5>[*phone*]</h5>\r\n					</div>\r\n					<div class=\"footer__btn__box\">\r\n						<a href=\"#\" class=\"btn footer__btn callback__btn\">ПЕРЕЗВОНИТЕ МНЕ</a>\r\n					</div>\r\n				</div>\r\n			</div>\r\n			<div class=\"col-xl-3 col-md-12\">\r\n				<div class=\"footer__dev\">\r\n					<a href=\"#\" class=\"footer__dev__link\">\r\n						<img src=\"assets/images/dev.png\" alt=\"Электрон\">\r\n					</a>\r\n				</div>\r\n			</div>\r\n		</div>\r\n	</div>\r\n</footer>', 0, 1524939675, 1524943872, 0),
-(32, 'form_callme_tpl', 'Форма обратного звонка', 2, 'none', 11, 0, '<div class=\"callback modal\" id=\"callback\">\r\n	<div class=\"modal__caption\">\r\n		<h3 class=\"modal__title\">Обратный звонок</h3>\r\n		<div class=\"close\"></div>\r\n	</div>\r\n	<div class=\"modal__body\">\r\n		<form action=\"[~[*id*]~]#form_callme\" method=\"POST\" class=\"callback__form form__default\" >\r\n			<input type=\"hidden\" name=\"formid\" value=\"form_callme\">\r\n			\r\n			<input type=\"text\" class=\"form__input border__input\" placeholder=\"Ваше имя\" name=\"name\" value=\"[+name.value+]\">\r\n			<span class=\"error\">[+name.error+]</span>\r\n			\r\n			<input type=\"text\" class=\"form__input border__input [+phone.errorClass+] [+phone.requiredClass+]\" placeholder=\"Ваш номер телефона\" name=\"phone\" value=\"[+phone.value+]\">\r\n			<span class=\"error\">[+phone.error+]</span>\r\n			\r\n			<div class=\"form__btn__polit\">\r\n				<input class=\"btn callback__form__btn\" type=\"submit\" name=\"submit\" value=\"Рассчитать стоимость\">\r\n				<p class=\"form__politics callback__polit\">Нажимая на кнопку, вы даете свое согласие на обработку персональных данных. <a href=\"#\">Узнать больше</a></p>\r\n			</div>\r\n			[+form.messages+]\r\n		</form>    \r\n	</div>\r\n</div>', 0, 1524955065, 1524956181, 0),
+(33, 'form_modal_cb_success', 'Успешная отправка заявки на обратный звонок', 2, 'none', 11, 0, 'Письмо с сайта\r\nИмя: [+name.value+]\r\nТелефон: [+phone.value+]', 0, 1524955470, 1525266604, 0),
+(34, 'product_plit', '', 2, 'none', 12, 0, '<div class=\"col-lg-4 col-xl-3 col-md-6 col-sm-6 col\">\r\n	<div class=\"plit__elem\">\r\n		<img src=\"[+plitImg+]\" class=\"plit__elem__img\">\r\n		<h5 class=\"plit__elem__caption\">[+pagetitle+]</h5>\r\n		<p class=\"plit__elem__stat\">\r\n			Цвет: [+plitColor+] <br>\r\n			Размер: [+plitSize+] <br>\r\n			Вес: [+plitWeight+] <br>\r\n			В поддоне: [+plitCount+] <br>\r\n			Вес поддона: [+plitHeft+] <br>\r\n		</p>\r\n		<h4>[+plitPrice+] <span class=\"price__low\">руб./м2</span></h4>\r\n		<a href=\"\" class=\"plit__elem__btn btn\">ЗАКАЗАТЬ</a>\r\n	</div>\r\n</div>', 0, 1524957451, 1525176428, 0),
+(51, 'production', 'Форма - Заявка на продукцию', 2, 'none', 11, 0, '<form action=\"[~[*id*]~]#production\" method=\"POST\" class=\"callback__form form__default\">\r\n	<input type=\"hidden\" name=\"formid\" value=\"production\">\r\n\r\n	<select name=\"production\" id=\"\" class=\"form__select form__input border__input\" value=\"[+production.value+]\">\r\n		<option>Выберите нужную продукцию</option>\r\n		<option>1</option>\r\n		<option>2</option>\r\n		<option>3</option>\r\n	</select>\r\n	<input type=\"text\" class=\"form__input border__input\" placeholder=\"Ваше имя\" name=\"name\" value=\"[+name.value+]\" required>\r\n	<input type=\"text\" class=\"form__input border__input\" placeholder=\"Ваш номер телефона\" name=\"phone\" value=\"[+phone.value+]\" required>\r\n	<div class=\"form__btn__polit\">\r\n		<input class=\"btn callback__form__btn\" type=\"submit\" name=\"submit\" value=\"Оставить заявку\">\r\n		<p class=\"form__politics callback__polit\">Нажимая на кнопку, вы даете свое согласие на обработку персональных данных. <a href=\"#\">Узнать больше</a></p>\r\n	</div>\r\n</form>', 0, 1525306465, 1525307009, 0),
+(50, 'form_product_success', 'Успешная отправка формы - Заказ товара', 2, 'none', 11, 0, 'Письмо с сайта\r\nИмя: [+name.value+]\r\nТелефон: [+phone.value+]\r\nEmail: [+email.value+]\r\nСообщение: [+text.value+]\r\nАдрес доставки: [+address.value+]\r\n\r\nОбщая сумма: [+result.value+]', 0, 0, 1525306400, 0),
+(52, 'production_success', 'Успешная отправка формы - Продукция', 2, 'none', 11, 0, 'Письмо с сайта\r\nИмя: [+name.value+]\r\nТелефон: [+phone.value+]\r\nПродукция: [+production.value+]', 0, 1525307060, 1525307094, 0),
+(49, 'form_product', 'Форма для модального окна при заказе продукта', 2, 'none', 11, 0, '<form action=\"[~[*id*]~]#form_product\"  method=\"POST\" class=\"callback__form form__default\">\r\n	<input type=\"hidden\" name=\"formid\" value=\"form_product\">\r\n	\r\n	<div class=\"product__sum\">\r\n		<div class=\"result__count\">\r\n			<p class=\"caption__counter\">Количество поддонов:</p>\r\n			<div class=\"counter sumcounter\">\r\n				<span class=\"delCount\"></span>\r\n				<input type=\"text\" name=\"count\" min=\"1\" value=\"1\" disabled=\"\">\r\n				<span class=\"addCount\"></span>\r\n			</div>\r\n		</div>\r\n		<div class=\"result__sum\">\r\n			<p class=\"caption__counter\">Итоговая стоимость:</p>\r\n			<h3 class=\"result__sum__value\">0,00</h3>\r\n			<input type=\"hidden\" name=\"result\" class=\"result__input\" value=\"[+result.value+]\">\r\n		</div>\r\n	</div>\r\n	<input type=\"text\" class=\"form__input border__input\" value=\"[+name.value+]\" name=\"name\" placeholder=\"Ваше имя\" required>\r\n	<input type=\"text\" class=\"form__input border__input\" value=\"[+phone.value+]\" name=\"phone\" placeholder=\"Ваш номер телефона\" required>\r\n	<input type=\"text\" class=\"form__input border__input\" value=\"[+email.value+]\" name=\"email\" placeholder=\"Ваш email\" required>\r\n	<input type=\"text\" class=\"form__input border__input\" value=\"[+address.value+]\" name=\"address\" placeholder=\"Адрес доставки\" required>\r\n	<textarea class=\"form__input ask__form__input\" placeholder=\"Комментарий к заявке\" value=\"[+text.value+]\"></textarea>\r\n	<div class=\"form__btn__polit\">\r\n		<input class=\"btn buy__btn\" type=\"submit\" name=\"submit\" value=\"Заказать\">\r\n		<p class=\"form__politics callback__polit\">Нажимая на кнопку, вы даете свое согласие на обработку персональных данных. <a href=\"#\">Узнать больше</a></p>\r\n	</div>\r\n</form>', 0, 1525305901, 1525306423, 0),
+(29, 'ask', 'Задать вопрос', 2, 'none', 7, 0, '<section class=\"ask\" id=\"ask\">\r\n	<div class=\"container wrap ask__wrap\">\r\n		<div class=\"row wrap__row ask__box\">\r\n			<div class=\"ask__name\">\r\n				<img src=\"assets/images/manager.png\" alt=\"/\" class=\"manager__img\">\r\n				<h4 class=\"ask__name__caption yellow\">ФЁДОРОВ МИХАИЛ</h4>\r\n				<p class=\"ask__name__stat\">менеджер по работе с клиентами</p>\r\n			</div>\r\n			<div class=\"ask__form__content\">\r\n				<h3 class=\"yellow ask__form__caption\">Остались вопросы?</h3>\r\n				<p class=\"ask__form__desc\">Оставьте заявку и я с удовольствием ответчу на все ваши <br> вопросы</p>\r\n				[!FormLister?\r\n					&formid=`ask_form`\r\n					&formTpl=`ask_form`\r\n					&subject=`Запрос обратного звонка с сайта`\r\n					&successTpl=`ask_success`\r\n					&parseDocumentSource=`1`\r\n				!]\r\n			</div>\r\n		</div>\r\n	</div>\r\n</section>', 0, 1524939205, 1525279013, 0),
+(48, 'ask_success', 'Успешная отправка формы - Задать вопрос', 2, 'none', 11, 0, 'Письмо с сайта\r\nИмя: [+name.value+]\r\nТелефон: [+phone.value+]\r\nСообщение: [+text.value+]', 0, 1525277592, 1525277657, 0),
+(30, 'footer', '', 2, 'none', 7, 0, '<footer class=\"footer\" id=\"footer\">\r\n	<div class=\"container\">\r\n		<div class=\"row justify-content-center\">\r\n			<div class=\"col-xl-4 col-md-12\">\r\n				<div class=\"footer__city\">\r\n					<h5>[*address*]</h5>\r\n				</div>\r\n			</div>\r\n			<div class=\"col-xl-5 col-md-12\">\r\n				<div class=\"footer__callback\">\r\n					<div class=\"footer__phone\">\r\n						<p class=\"footer__phone__text\">звонок по России бесплатный</p>\r\n						<h5>[*phone*]</h5>\r\n					</div>\r\n					<div class=\"footer__btn__box\">\r\n						<a href=\"#\" class=\"btn footer__btn callback__btn\">ПЕРЕЗВОНИТЕ МНЕ</a>\r\n					</div>\r\n				</div>\r\n			</div>\r\n			<div class=\"col-xl-3 col-md-12\">\r\n				<div class=\"footer__dev\">\r\n					<a href=\"#\" class=\"footer__dev__link\">\r\n						<img src=\"assets/images/dev.png\" alt=\"Электрон\">\r\n					</a>\r\n				</div>\r\n			</div>\r\n		</div>\r\n		<a href=\"#\" class=\"up\">\r\n			<img src=\"assets/images/up.png\" alt=\"\">\r\n		</a>\r\n	</div>\r\n</footer>', 0, 1524939675, 1525304871, 0),
+(32, 'form_modal_cb', 'Форма обратного звонка', 2, 'none', 11, 0, '<form action=\"[~[*id*]~]#form_callme\" method=\"POST\" class=\"callback__form form__default\" >\r\n	<input type=\"hidden\" name=\"formid\" value=\"form_callme\">\r\n	\r\n	<input type=\"text\" class=\"form__input border__input\" placeholder=\"Ваше имя\" name=\"name\" value=\"[+name.value+]\" required>\r\n	<input type=\"text\" class=\"form__input border__input\" placeholder=\"Ваш номер телефона\" name=\"phone\" value=\"[+phone.value+]\" required>\r\n\r\n	<div class=\"form__btn__polit\">\r\n		<input class=\"btn callback__form__btn\" type=\"submit\" name=\"submit\" value=\"Рассчитать стоимость\">\r\n		<p class=\"form__politics callback__polit\">Нажимая на кнопку, вы даете свое согласие на обработку персональных данных. <a href=\"#\">Узнать больше</a></p>\r\n	</div>\r\n</form>  ', 0, 1524955065, 1525278085, 0),
 (31, 'offer_slider_elem', 'Слайд в отзывах', 2, 'none', 9, 0, '<div class=\"col-xl-4 col-lg-4 col-sm-10 col-md-6 offer__elem\">\r\n	<div class=\"offer\">\r\n		<img src=\"[+offerSliderImg+]\" class=\"offer__image\">\r\n		<h5 class=\"offer__name\">[+pagetitle+]</h5>\r\n		<p class=\"offer__desc\">\r\n			[+content:strip_tags+]\r\n		</p>\r\n		<a href=\"#\" class=\"btn offer__btn\">Показать весь текст</a>\r\n	</div>\r\n</div>', 0, 1524940492, 1524940814, 0);
 
 -- --------------------------------------------------------
@@ -1367,6 +2383,7 @@ INSERT INTO `evo_site_htmlsnippets` (`id`, `name`, `description`, `editor_type`,
 -- Структура таблицы `evo_site_modules`
 --
 
+DROP TABLE IF EXISTS `evo_site_modules`;
 CREATE TABLE `evo_site_modules` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL DEFAULT '',
@@ -1401,6 +2418,7 @@ INSERT INTO `evo_site_modules` (`id`, `name`, `description`, `editor_type`, `dis
 -- Структура таблицы `evo_site_module_access`
 --
 
+DROP TABLE IF EXISTS `evo_site_module_access`;
 CREATE TABLE `evo_site_module_access` (
   `id` int(10) UNSIGNED NOT NULL,
   `module` int(11) NOT NULL DEFAULT '0',
@@ -1413,6 +2431,7 @@ CREATE TABLE `evo_site_module_access` (
 -- Структура таблицы `evo_site_module_depobj`
 --
 
+DROP TABLE IF EXISTS `evo_site_module_depobj`;
 CREATE TABLE `evo_site_module_depobj` (
   `id` int(11) NOT NULL,
   `module` int(11) NOT NULL DEFAULT '0',
@@ -1426,6 +2445,7 @@ CREATE TABLE `evo_site_module_depobj` (
 -- Структура таблицы `evo_site_plugins`
 --
 
+DROP TABLE IF EXISTS `evo_site_plugins`;
 CREATE TABLE `evo_site_plugins` (
   `id` int(10) NOT NULL,
   `name` varchar(50) NOT NULL DEFAULT '',
@@ -1457,7 +2477,7 @@ INSERT INTO `evo_site_plugins` (`id`, `name`, `description`, `editor_type`, `cat
 (8, 'TinyMCE4', '<strong>4.6.3</strong> Javascript WYSIWYG editor', 0, 4, 0, 'require MODX_BASE_PATH.\'assets/plugins/tinymce4/plugin.tinymce.php\';', 0, '{\"styleFormats\":[{\"label\":\"Custom Style Formats <b>RAW<\\/b><br\\/><br\\/><ul><li>leave empty to use below block\\/inline formats<\\/li><li>allows simple-format: <i>Title,cssClass|Title2,cssClass2<\\/i><\\/li><li>Also accepts full JSON-config as per TinyMCE4 docs \\/ configure \\/ content-formating \\/ style_formats<\\/li><\\/ul>\",\"type\":\"textarea\",\"value\":\"\",\"default\":\"\",\"desc\":\"\"}],\"styleFormats_inline\":[{\"label\":\"Custom Style Formats <b>INLINE<\\/b><br\\/><br\\/><ul><li>will wrap selected text with span-tag + css-class<\\/li><li>simple-format only<\\/li><\\/ul>\",\"type\":\"textarea\",\"value\":\"InlineTitle,cssClass1|InlineTitle2,cssClass2\",\"default\":\"InlineTitle,cssClass1|InlineTitle2,cssClass2\",\"desc\":\"\"}],\"styleFormats_block\":[{\"label\":\"Custom Style Formats <b>BLOCK<\\/b><br\\/><br\\/><ul><li>will add css-class to selected block-element<\\/li><li>simple-format only<\\/li><\\/ul>\",\"type\":\"textarea\",\"value\":\"BlockTitle,cssClass3|BlockTitle2,cssClass4\",\"default\":\"BlockTitle,cssClass3|BlockTitle2,cssClass4\",\"desc\":\"\"}],\"customParams\":[{\"label\":\"Custom Parameters<br\\/><b>(Be careful or leave empty!)<\\/b>\",\"type\":\"textarea\",\"value\":\"\",\"default\":\"\",\"desc\":\"\"}],\"entityEncoding\":[{\"label\":\"Entity Encoding\",\"type\":\"list\",\"value\":\"named\",\"options\":\"named,numeric,raw\",\"default\":\"named\",\"desc\":\"\"}],\"entities\":[{\"label\":\"Entities\",\"type\":\"text\",\"value\":\"\",\"default\":\"\",\"desc\":\"\"}],\"pathOptions\":[{\"label\":\"Path Options\",\"type\":\"list\",\"value\":\"Site config\",\"options\":\"Site config,Absolute path,Root relative,URL,No convert\",\"default\":\"Site config\",\"desc\":\"\"}],\"resizing\":[{\"label\":\"Advanced Resizing\",\"type\":\"list\",\"value\":\"false\",\"options\":\"true,false\",\"default\":\"false\",\"desc\":\"\"}],\"disabledButtons\":[{\"label\":\"Disabled Buttons\",\"type\":\"text\",\"value\":\"\",\"default\":\"\",\"desc\":\"\"}],\"webTheme\":[{\"label\":\"Web Theme\",\"type\":\"test\",\"value\":\"webuser\",\"default\":\"webuser\",\"desc\":\"\"}],\"webPlugins\":[{\"label\":\"Web Plugins\",\"type\":\"text\",\"value\":\"\",\"default\":\"\",\"desc\":\"\"}],\"webButtons1\":[{\"label\":\"Web Buttons 1\",\"type\":\"text\",\"value\":\"bold italic underline strikethrough removeformat alignleft aligncenter alignright\",\"default\":\"bold italic underline strikethrough removeformat alignleft aligncenter alignright\",\"desc\":\"\"}],\"webButtons2\":[{\"label\":\"Web Buttons 2\",\"type\":\"text\",\"value\":\"link unlink image undo redo\",\"default\":\"link unlink image undo redo\",\"desc\":\"\"}],\"webButtons3\":[{\"label\":\"Web Buttons 3\",\"type\":\"text\",\"value\":\"\",\"default\":\"\",\"desc\":\"\"}],\"webButtons4\":[{\"label\":\"Web Buttons 4\",\"type\":\"text\",\"value\":\"\",\"default\":\"\",\"desc\":\"\"}],\"webAlign\":[{\"label\":\"Web Toolbar Alignment\",\"type\":\"list\",\"value\":\"ltr\",\"options\":\"ltr,rtl\",\"default\":\"ltr\",\"desc\":\"\"}],\"width\":[{\"label\":\"Width\",\"type\":\"text\",\"value\":\"100%\",\"default\":\"100%\",\"desc\":\"\"}],\"height\":[{\"label\":\"Height\",\"type\":\"text\",\"value\":\"400px\",\"default\":\"400px\",\"desc\":\"\"}],\"introtextRte\":[{\"label\":\"<b>Introtext RTE<\\/b><br\\/>add richtext-features to \\\"introtext\\\"\",\"type\":\"list\",\"value\":\"disabled\",\"options\":\"enabled,disabled\",\"default\":\"disabled\",\"desc\":\"\"}],\"inlineMode\":[{\"label\":\"<b>Inline-Mode<\\/b>\",\"type\":\"list\",\"value\":\"disabled\",\"options\":\"enabled,disabled\",\"default\":\"disabled\",\"desc\":\"\"}],\"inlineTheme\":[{\"label\":\"<b>Inline-Mode<\\/b><br\\/>Theme\",\"type\":\"text\",\"value\":\"inline\",\"default\":\"inline\",\"desc\":\"\"}],\"browser_spellcheck\":[{\"label\":\"<b>Browser Spellcheck<\\/b><br\\/>At least one dictionary must be installed inside your browser\",\"type\":\"list\",\"value\":\"disabled\",\"options\":\"enabled,disabled\",\"default\":\"disabled\",\"desc\":\"\"}],\"paste_as_text\":[{\"label\":\"<b>Force Paste as Text<\\/b>\",\"type\":\"list\",\"value\":\"disabled\",\"options\":\"enabled,disabled\",\"default\":\"disabled\",\"desc\":\"\"}]}', 1, '', 0, 0),
 (9, 'TransAlias', '<strong>1.0.4</strong> Human readible URL translation supporting multiple languages and overrides', 0, 4, 0, 'require MODX_BASE_PATH.\'assets/plugins/transalias/plugin.transalias.php\';', 0, '{\"table_name\":[{\"label\":\"Trans table\",\"type\":\"list\",\"value\":\"russian\",\"options\":\"common,russian,dutch,german,czech,utf8,utf8lowercase\",\"default\":\"russian\",\"desc\":\"\"}],\"char_restrict\":[{\"label\":\"Restrict alias to\",\"type\":\"list\",\"value\":\"lowercase alphanumeric\",\"options\":\"lowercase alphanumeric,alphanumeric,legal characters\",\"default\":\"lowercase alphanumeric\",\"desc\":\"\"}],\"remove_periods\":[{\"label\":\"Remove Periods\",\"type\":\"list\",\"value\":\"No\",\"options\":\"Yes,No\",\"default\":\"No\",\"desc\":\"\"}],\"word_separator\":[{\"label\":\"Word Separator\",\"type\":\"list\",\"value\":\"dash\",\"options\":\"dash,underscore,none\",\"default\":\"dash\",\"desc\":\"\"}],\"override_tv\":[{\"label\":\"Override TV name\",\"type\":\"string\",\"value\":\"\",\"default\":\"\",\"desc\":\"\"}]}', 0, '', 0, 0),
 (10, 'Updater', '<strong>0.8.3</strong> show message about outdated CMS version', 0, 4, 0, 'require MODX_BASE_PATH.\'assets/plugins/updater/plugin.updater.php\';\r\n\r\n\r\n', 0, '{\"version\":[{\"label\":\"Version:\",\"type\":\"text\",\"value\":\"evolution-cms\\/evolution\",\"default\":\"evolution-cms\\/evolution\",\"desc\":\"\"}],\"wdgVisibility\":[{\"label\":\"Show widget for:\",\"type\":\"menu\",\"value\":\"All\",\"options\":\"All,AdminOnly,AdminExcluded,ThisRoleOnly,ThisUserOnly\",\"default\":\"All\",\"desc\":\"\"}],\"ThisRole\":[{\"label\":\"Show only to this role id:\",\"type\":\"string\",\"value\":\"\",\"default\":\"\",\"desc\":\"\"}],\"ThisUser\":[{\"label\":\"Show only to this username:\",\"type\":\"string\",\"value\":\"\",\"default\":\"\",\"desc\":\"\"}],\"showButton\":[{\"label\":\"Show Update Button:\",\"type\":\"menu\",\"value\":\"AdminOnly\",\"options\":\"show,hide,AdminOnly\",\"default\":\"AdminOnly\",\"desc\":\"\"}],\"type\":[{\"label\":\"Type:\",\"type\":\"menu\",\"value\":\"tags\",\"options\":\"tags,releases,commits\",\"default\":\"tags\",\"desc\":\"\"}]}', 1, '', 0, 0),
-(12, 'evoAjax', '', 0, 1, 0, 'switch($_GET[\'q\']){     \n	case \'feedbackajaxform\':\n		echo $modx->runSnippet(\'FormLister\', array(\n			\'formid\' => \'ContactForm\',\n			\'to\' => $modx->config[\'emailsender\'],\n			\'replyTo\'=> \'[+email.value+]\',\n			\'subjectTpl\' => \'@CODE:[+subject.value+], from: \' . $modx->config[\'site_name\'] ,\n			\'ccSender\'=>\'1\',\n			\'errorClass\'=> \' has-error\',\n			\'requiredClass\'=> \' has-warning\',\n			\'rules\'=> \'{\n               	\"name\":{\n               		\"required\":\"Enter your Name\"\n               	},\n               	\"email\":{\n               		\"required\":\"Enter email\",\n               		\"email\":\"Incorrect email\"\n               	},\n               	\"message\":{\n                	\"required\":\"Enter message\"\n                }\n            }\',\n			\'formControls\'=>\'subject\',\n			\'messagesTpl\' => \'@CODE:<div class=\"form-messages alert alert-danger\">[+required+]<br>[+errors+]</div>\',\n            \'errorTpl\'=>\'@CODE: [+message+]\',\n            \'successTpl\'=> \'@CODE: \n             	<div class=\"alert alert-success mt-3\">\n                 	<h3>Thanks!</h3>\n                 	<p>your message has been sent.</p>\n             	</div>\',\n            \'formTpl\' => \'ContactForm\', \n			\'reportTpl\'=>\'ContactFormReport\',\n            \'ccSenderTpl\'=>\'ContactFormReport\',	\n			));\n			die();\n        break;\n}\n', 0, '{}', 0, ' ', 1507815395, 1507816656);
+(12, 'evoAjax', '', 0, 1, 0, 'switch($_GET[\'q\']){     \r\n	case \'feedbackajaxform\':\r\n		echo $modx->runSnippet(\'FormLister\', array(\r\n			\'formid\' => \'ContactForm\',\r\n			\'to\' => $modx->config[\'emailsender\'],\r\n			\'replyTo\'=> \'[+email.value+]\',\r\n			\'subjectTpl\' => \'@CODE:[+subject.value+], from: \' . $modx->config[\'site_name\'] ,\r\n			\'ccSender\'=>\'1\',\r\n			\'errorClass\'=> \' has-error\',\r\n			\'requiredClass\'=> \' has-warning\',\r\n			\'rules\'=> \'{\r\n               	\"name\":{\r\n               		\"required\":\"Enter your Name\"\r\n               	},\r\n               	\"email\":{\r\n               		\"required\":\"Enter email\",\r\n               		\"email\":\"Incorrect email\"\r\n               	},\r\n               	\"message\":{\r\n                	\"required\":\"Enter message\"\r\n                }\r\n            }\',\r\n			\'formControls\'=>\'subject\',\r\n			\'messagesTpl\' => \'@CODE:<div class=\"form-messages alert alert-danger\">[+required+]<br>[+errors+]</div>\',\r\n            \'errorTpl\'=>\'@CODE: [+message+]\',\r\n            \'successTpl\'=> \'@CODE: \r\n             	<div class=\"alert alert-success mt-3\">\r\n                 	<h3>Thanks!</h3>\r\n                 	<p>your message has been sent.</p>\r\n             	</div>\',\r\n            \'formTpl\' => \'ContactForm\', \r\n			\'reportTpl\'=>\'ContactFormReport\',\r\n            \'ccSenderTpl\'=>\'ContactFormReport\',	\r\n			));\r\n			die();\r\n        break;\r\n	case \'calcform\':\r\n		echo $modx->runSnippet(\'FormLister\', array(\r\n			\'formid\' => \'calc_form\',\r\n			\'to\' => $modx->config[\'emailsender\'],\r\n			\'replyTo\'=> \'[+email.value+]\',\r\n			\'subjectTpl\' => \'@CODE:[+subject.value+], from: \' . $modx->config[\'site_name\'] ,\r\n			\'ccSender\'=>\'1\',\r\n			\'formControls\'=>\'subject\'\r\n			));\r\n			die();\r\n        break;\r\n	case \'cbform\':\r\n		echo $modx->runSnippet(\'FormLister\', array(\r\n			\'formid\' => \'form_callme\',\r\n			\'to\' => $modx->config[\'emailsender\'],\r\n			\'replyTo\'=> \'[+email.value+]\',\r\n			\'subjectTpl\' => \'@CODE:[+subject.value+], from: \' . $modx->config[\'site_name\'] ,\r\n			\'ccSender\'=>\'1\',\r\n			\'formControls\'=>\'subject\'\r\n			));\r\n			die();\r\n        break;\r\n}\r\n', 0, '{}', 0, ' ', 1507815395, 1525305827);
 INSERT INTO `evo_site_plugins` (`id`, `name`, `description`, `editor_type`, `category`, `cache_type`, `plugincode`, `locked`, `properties`, `disabled`, `moduleguid`, `createdon`, `editedon`) VALUES
 (13, 'CodeMirror', '<strong>1.5</strong> JavaScript library that can be used to create a relatively pleasant editor interface based on CodeMirror 5.33 (released on 21-12-2017)', 0, 4, 0, '\r\n/**\r\n * CodeMirror\r\n *\r\n * JavaScript library that can be used to create a relatively pleasant editor interface based on CodeMirror 5.33 (released on 21-12-2017)\r\n *\r\n * @category    plugin\r\n * @version     1.5\r\n * @license     http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)\r\n * @package     evo\r\n * @internal    @events OnDocFormRender,OnChunkFormRender,OnModFormRender,OnPluginFormRender,OnSnipFormRender,OnTempFormRender,OnRichTextEditorInit\r\n * @internal    @modx_category Manager and Admin\r\n * @internal    @properties &theme=Theme;list;default,ambiance,blackboard,cobalt,eclipse,elegant,erlang-dark,lesser-dark,midnight,monokai,neat,night,one-dark,rubyblue,solarized,twilight,vibrant-ink,xq-dark,xq-light;default &darktheme=Dark Theme;list;default,ambiance,blackboard,cobalt,eclipse,elegant,erlang-dark,lesser-dark,midnight,monokai,neat,night,one-dark,rubyblue,solarized,twilight,vibrant-ink,xq-dark,xq-light;one-dark &fontSize=Font-size;list;10,11,12,13,14,15,16,17,18;14 &lineHeight=Line-height;list;1,1.1,1.2,1.3,1.4,1.5;1.3 &indentUnit=Indent unit;int;4 &tabSize=The width of a tab character;int;4 &lineWrapping=lineWrapping;list;true,false;true &matchBrackets=matchBrackets;list;true,false;true &activeLine=activeLine;list;true,false;false &emmet=emmet;list;true,false;true &search=search;list;true,false;false &indentWithTabs=indentWithTabs;list;true,false;true &undoDepth=undoDepth;int;200 &historyEventDelay=historyEventDelay;int;1250\r\n * @internal    @installset base\r\n * @reportissues https://github.com/evolution-cms/evolution/issues/\r\n * @documentation Official docs https://codemirror.net/doc/manual.html\r\n * @author      hansek from http://www.modxcms.cz\r\n * @author      update Mihanik71\r\n * @author      update Deesen\r\n * @author      update 64j\r\n * @lastupdate  08-01-2018\r\n */\r\n\r\n$_CM_BASE = \'assets/plugins/codemirror/\';\r\n\r\n$_CM_URL = $modx->config[\'site_url\'] . $_CM_BASE;\r\n\r\nrequire(MODX_BASE_PATH. $_CM_BASE .\'codemirror.plugin.php\');', 0, '{\"theme\":[{\"label\":\"Theme\",\"type\":\"list\",\"value\":\"default\",\"options\":\"default,ambiance,blackboard,cobalt,eclipse,elegant,erlang-dark,lesser-dark,midnight,monokai,neat,night,one-dark,rubyblue,solarized,twilight,vibrant-ink,xq-dark,xq-light\",\"default\":\"default\",\"desc\":\"\"}],\"darktheme\":[{\"label\":\"Dark Theme\",\"type\":\"list\",\"value\":\"one-dark\",\"options\":\"default,ambiance,blackboard,cobalt,eclipse,elegant,erlang-dark,lesser-dark,midnight,monokai,neat,night,one-dark,rubyblue,solarized,twilight,vibrant-ink,xq-dark,xq-light\",\"default\":\"one-dark\",\"desc\":\"\"}],\"fontSize\":[{\"label\":\"Font-size\",\"type\":\"list\",\"value\":\"14\",\"options\":\"10,11,12,13,14,15,16,17,18\",\"default\":\"14\",\"desc\":\"\"}],\"lineHeight\":[{\"label\":\"Line-height\",\"type\":\"list\",\"value\":\"1.3\",\"options\":\"1,1.1,1.2,1.3,1.4,1.5\",\"default\":\"1.3\",\"desc\":\"\"}],\"indentUnit\":[{\"label\":\"Indent unit\",\"type\":\"int\",\"value\":\"4\",\"default\":\"4\",\"desc\":\"\"}],\"tabSize\":[{\"label\":\"The width of a tab character\",\"type\":\"int\",\"value\":\"4\",\"default\":\"4\",\"desc\":\"\"}],\"lineWrapping\":[{\"label\":\"lineWrapping\",\"type\":\"list\",\"value\":\"true\",\"options\":\"true,false\",\"default\":\"true\",\"desc\":\"\"}],\"matchBrackets\":[{\"label\":\"matchBrackets\",\"type\":\"list\",\"value\":\"true\",\"options\":\"true,false\",\"default\":\"true\",\"desc\":\"\"}],\"activeLine\":[{\"label\":\"activeLine\",\"type\":\"list\",\"value\":\"false\",\"options\":\"true,false\",\"default\":\"false\",\"desc\":\"\"}],\"emmet\":[{\"label\":\"emmet\",\"type\":\"list\",\"value\":\"true\",\"options\":\"true,false\",\"default\":\"true\",\"desc\":\"\"}],\"search\":[{\"label\":\"search\",\"type\":\"list\",\"value\":\"false\",\"options\":\"true,false\",\"default\":\"false\",\"desc\":\"\"}],\"indentWithTabs\":[{\"label\":\"indentWithTabs\",\"type\":\"list\",\"value\":\"true\",\"options\":\"true,false\",\"default\":\"true\",\"desc\":\"\"}],\"undoDepth\":[{\"label\":\"undoDepth\",\"type\":\"int\",\"value\":\"200\",\"default\":\"200\",\"desc\":\"\"}],\"historyEventDelay\":[{\"label\":\"historyEventDelay\",\"type\":\"int\",\"value\":\"1250\",\"default\":\"1250\",\"desc\":\"\"}]}', 0, '', 0, 0),
 (14, 'Forgot Manager Login', '<strong>1.1.7</strong> Resets your manager login when you forget your password via email confirmation', 0, 4, 0, 'require MODX_BASE_PATH.\'assets/plugins/forgotmanagerlogin/plugin.forgotmanagerlogin.php\';', 0, '', 0, '', 0, 0),
@@ -1472,6 +2492,7 @@ INSERT INTO `evo_site_plugins` (`id`, `name`, `description`, `editor_type`, `cat
 -- Структура таблицы `evo_site_plugin_events`
 --
 
+DROP TABLE IF EXISTS `evo_site_plugin_events`;
 CREATE TABLE `evo_site_plugin_events` (
   `pluginid` int(10) NOT NULL,
   `evtid` int(10) NOT NULL DEFAULT '0',
@@ -1575,6 +2596,7 @@ INSERT INTO `evo_site_plugin_events` (`pluginid`, `evtid`, `priority`) VALUES
 -- Структура таблицы `evo_site_snippets`
 --
 
+DROP TABLE IF EXISTS `evo_site_snippets`;
 CREATE TABLE `evo_site_snippets` (
   `id` int(10) NOT NULL,
   `name` varchar(50) NOT NULL DEFAULT '',
@@ -1614,6 +2636,7 @@ INSERT INTO `evo_site_snippets` (`id`, `name`, `description`, `editor_type`, `ca
 -- Структура таблицы `evo_site_templates`
 --
 
+DROP TABLE IF EXISTS `evo_site_templates`;
 CREATE TABLE `evo_site_templates` (
   `id` int(10) NOT NULL,
   `templatename` varchar(100) NOT NULL DEFAULT '',
@@ -1636,8 +2659,13 @@ CREATE TABLE `evo_site_templates` (
 INSERT INTO `evo_site_templates` (`id`, `templatename`, `description`, `editor_type`, `category`, `icon`, `template_type`, `content`, `locked`, `selectable`, `createdon`, `editedon`) VALUES
 (3, 'Minimal Template', 'Default minimal empty template (content returned only)', 0, 0, '', 0, '[*content*]', 0, 1, 0, 1524847355),
 (4, 'EVO startup - Bootstrap', '<strong>1.0</strong> Sample template in Bootstrap', 0, 1, '', 0, '<!DOCTYPE html>\n<html lang=\"[(lang_code)]\">\n	<head>\n		<meta http-equiv=\"Content-Type\" content=\"text/html; charset=[(modx_charset)]\" /> \n		<title>[*titl*]</title>\n		[*noIndex*]\n		<meta name=\"keywords\" content=\"[*keyw*]\" />\n		<meta name=\"description\" content=\"[*desc*]\" />\n		<base href=\"[(site_url)]\"/>\n\n		<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n		<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n\n		<link href=\"[(site_url)][[if? &is=[(site_start)]:!=:[*id*] &then=`[~[*id*]~]`]]\" rel=\"canonical\">\n		<link href=\"https://fonts.googleapis.com/css?family=Open+Sans:400,700\" rel=\"stylesheet\" type=\"text/css\">	\n		<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\">\n		<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css\">\n\n		<style> \n			html, body{background:#eee; font-family:\'Open Sans\',sans-serif; line-height:1.8; font-size:14px;}\n			a:focus{outline:none; outline-offset:0;}\n			h1{margin-top:15px;}\n\n			.logo{float:left;}\n			.logo img{ margin-top:10px; display:block; max-width:256px;}\n			\n			.dropdown-menu{border-radius:0; border:0;}\n			.dropdown-menu > li > a{padding-top:5px; padding-bottom:5px;}\n\n			.navbar-collapse.collapse.in{border-bottom:10px solid #eee;}\n			.navbar{min-height:0; background:#fff; margin-bottom:0;}\n			.navbar.nav{margin-left:0;}\n			.navbar.nav ul{padding-left:0;}\n			.navbar-nav{margin:0;}\n			.navbar-toggle{background:#fff; border:2px solid #eee; border-radius:0; position:fixed; z-index:99; right:0; top:7px; padding:12px 10px; margin-right:10px;}\n			.navbar .navbar-toggle .icon-bar{background-color:#333;}\n\n			.nav li a{text-transform:uppercase; color:#333; font-weight:500; font-size:110%;}\n			.nav li li a{text-transform:none; font-weight:normal; font-size:100%;}\n\n			.navbar{border:none; border-radius:0;}\n			#navbar{padding:0;}\n			ul.nav > li > a:hover{background-color:#f5f5f5;}\n\n			.affix{top:0px; width:100%; z-index:1000; background-color:#eee;}\n			.affix + .affspacer{display:block; height:50px;}\n\n			.box-shadow{-webkit-box-shadow:0 6px 12px rgba(0,0,0,.175); box-shadow:0 6px 12px rgba(0,0,0,.175);}\n\n			.container {max-width:970px; margin:0 12px;}\n			.top .col-sm-12{padding-left:0; padding-right:0;}\n\n			#ajaxSearch_input,\n			#username,\n			#password{width:100%!important;}\n			#forgotpsswd{clear:both;}\n			input.button[type=\"submit\"]{display:block;}\n			label.checkbox{display:inline-block; margin-left:10px;}\n			label, legend{font-weight:400;}\n			#ajaxSearch_form { position:relative; }\n			#searchClose { display:none !important; }\n			#indicator { position:absolute; top:9px; right:12px; z-index:10; opacity:.75; }\n\n			h2{font-size:22px;}\n			.bread{padding:1em 0 0 0;}\n			.mem{color:#aaa; text-align:center; padding:1em 0 2em;}\n\n			section.main .container{background-color:#fff; padding-bottom:20px;}\n			footer.footer .container{background-color:#000; color:#fff; line-height:40px;}\n\n			section.main .content ul{list-style:none; margin:0 0 1em 0; padding:0;}\n			section.main .content ul li{padding-left:1em;}\n			section.main .content ul li:before{content:\'\\2022\'; position:absolute; line-height:1.85em; margin-left:-1em;}\n\n			.breadcrumb {padding: 0px 0px;margin-bottom: 0px;list-style: none;background-color:#fff;border-radius: 0px;}	\n\n			.footer{text-align:center;}\n			.footer .text-right{text-align:center;}\n\n			/* JOT */\n			.jot-comment{padding:5px 10px;}\n			.jot-row-author{background-color:#dddddd;}\n			.jot-row-alt{background-color:#f9f9f9;}\n			.jot-row{background-color:#eeeeee;}\n			.jot-row-up{border:1px solid #333!important;}\n			.jot-row-up.panel-primary > .panel-heading{background-color:#333!important; border-color:#333!important;}\n			.jot-extra{font-size:75%;}\n			.jot-poster{font-size:inherit!important;}\n\n			.dl_summaryPost img{max-width:100%; height:auto; margin:10px 0 5px; display:block;}\n			.dl_summaryPost{padding-top:10px; padding-bottom:15px; border-bottom:1px solid #eee;}\n\n			.pagination b, .pagination a {padding: 5px;}	\n\n			div.errors{ color:#F00; }\n			#EmailForm .invalidValue{ background: #FFDFDF; border:1px solid #F00; }\n			#EmailForm .requiredValue{ background: #FFFFDF; border:1px solid #F00; }	\n\n			/* Larger than mobile */\n			@media (min-width:320px) {\n\n			}\n\n			/* Larger than phablet */\n			@media (min-width:480px) {\n\n			}\n\n			/* Larger than tablet */\n			@media (min-width:768px) {\n\n				.container{margin:0 auto;}\n				.logo{padding-left:15px;}\n				.logo img{ margin-top:10px; display:block; max-width:256px;}\n\n				.navbar{background:transparent;}\n				.navbar.affix{background:#eee;}\n				.navbar-collapse.collapse.in{border-bottom:0;}\n\n				.footer{text-align:left;}\n				.footer .text-right{text-align:right;}\n\n				.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {padding-left:35px; padding-right:35px;}\n\n			}\n		</style>\n\n		<script src=\"https://code.jquery.com/jquery-2.2.3.min.js\"></script>\n	</head>\n	<body>\n		<section class=\"top\">\n			<div class=\"container\">\n				<div class=\"row\">\n					<div class=\"col-sm-12\" itemscope itemtype=\"http://schema.org/Organization\">\n\n						<a class=\"logo\" href=\"[~[(site_start)]~]\" title=\"[(site_name)]\" itemprop=\"url\">\n							<img src=\"[(site_url)]manager/media/style/default/images/misc/login-logo.png\" itemprop=\"logo\" alt=\"[(site_name)]\" />\n						</a>\n\n						<div class=\"clearfix\"></div>\n\n						<nav class=\"navbar\" role=\"navigation\" data-spy=\"affix\" data-offset-top=\"100\">\n\n							<div class=\"navbar-header\">\n								<button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\n									<span class=\"sr-only\">Toggle navigation</span>\n									<span class=\"icon-bar\"></span>\n									<span class=\"icon-bar\"></span>\n									<span class=\"icon-bar\"></span>\n								</button>\n							</div>\n							<div id=\"navbar\" class=\"navbar-collapse collapse\">\n\n								[[DLMenu? \n								&parents=`0` \n								&maxDepth=`2` \n								&outerClass=`nav navbar-nav`\n								&hereClass=`active`\n								&innerTpl=`@CODE:<ul class=\"dropdown-menu\">[+wrap+]</ul>`\n								&parentRowTpl=`@CODE:<li class=\"dropdown\"><a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" title=\"[+title+]\">[+title+] <b class=\"caret\"></b></a>[+wrap+]</li>`\n								]]\n\n							</div>\n						</nav>\n						<div class=\"affspacer\"></div>\n\n					</div>\n				</div>\n			</div>\n		</section>\n\n		<section class=\"main\">\n			<div class=\"container\">\n\n				<div class=\"row\">\n					<div class=\"col-sm-12\">\n						<div class=\"bread\">\n							[[if? &is=`[*id*]:!=:[(site_start)]` &then=`\n								[[DLCrumbs? &showCurrent=`1`]]\n							`]]\n						</div>\n					</div>\n				</div>\n\n				<div class=\"row content\">\n\n					<div class=\"col-sm-8\">\n						<h1>[*#longtitle*]</h1>\n						[*#content*]\n						\n						[[if? &is=`[*parent*]:=:2` &then=`@TPL:Comments`]]\n					</div>\n\n					<aside class=\"col-sm-4\">\n						<div class=\"search\">\n							<h2>Search</h2>\n							[[ifsnippet? &name=`AjaxSearch`]]\n							[!AjaxSearch? \n							&ajaxSearch=`1` \n							&addJscript=`0` \n							&showIntro=`0` \n							&ajaxMax=`5` \n							&extract=`1`\n							&jscript=`jquery`\n							&tplInput=`AjaxSearch_tplInput`\n							&tplAjaxGrpResult=`AjaxSearch_tplAjaxGrpResult`\n							&tplAjaxResults=`AjaxSearch_tplAjaxResults`\n							&tplAjaxResult=`AjaxSearch_tplAjaxResult`\n							&showResults=`1`\n							&liveSearch=`0`\n							!]\n						</div>\n\n						<h2>News:</h2>\n						[[DocLister? \n						&parents=`2` \n						&display=`2`\n						&total=`20` \n						&tpl=`@CODE:<strong><a href=\"[+url+]\" title=\"[+e.title+]\">[+e.title+]</a></strong><br />\n						[+longtitle+]<br /><br />`\n						]]\n\n						<div>\n							<h2>Most Recent:</h2>\n\n							<ul>\n								[[DocLister? \n								&showInMenuOnly=`1` \n								&parents=`0`\n								&display=`5`\n								&tpl=`@CODE:<li><a href=\"[+url+]\" title=\"[+pagetitle+]\">[+pagetitle+]</a> <span class=\"date\">[+date+]</span></li>`\n								]]\n							</ul>\n\n						</div>\n						\n					</aside>\n				</div>\n			</div>\n\n		</section>\n\n		<footer class=\"footer\">\n			<div class=\"container\">\n				<div class=\"row\">\n					<div class=\"col-sm-6\">\n						<a href=\"https://evo.im\" title=\"Learn more about EVO\">EVO</a> Starter-Template &copy;2006-[[$_SERVER[\'REQUEST_TIME\']:dateFormat=`Y` ]]\n					</div>\n					<div class=\"col-sm-6 text-right\">\n						Built with <a href=\"http://www.getbootstrap.com\" target=\"_blank\">Bootstrap</a> framework.\n					</div>\n				</div>\n			</div>\n		</footer>\n\n		<div class=\"container mem\">\n			<small>Memory: [^m^], MySQL: [^qt^], [^q^] request(s), PHP: [^p^], total: [^t^], document retrieved from [^s^]. </small>\n		</div>\n\n		<!-- Scripts\n–––––––––––––––––––––––––––––––––––––––––––––––––– -->	\n\n		<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js\"></script>\n		<!--[if lt IE 9]>\n<script src=\"https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js\"></script>\n<script src=\"https://oss.maxcdn.com/respond/1.4.2/respond.min.js\"></script>\n<![endif]-->\n\n	</body>\n</html>', 0, 1, 0, 1509819347),
-(5, 'electron', 'Шаблон подготовлен Electron для компании КирпичЪ', 0, 0, '', 0, '<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <title>[* pagetitle *]</title>\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"assets/css/app.css\">\r\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"assets/css/iziModal.min.css\">\r\n	<script type=\"text/javascript\" src=\"assets/js/common.js\"></script>\r\n</head>\r\n<body>\r\n    <div class=\"main\">\r\n        {{header}}\r\n        {{products}}\r\n        {{sertifics}}\r\n        {{calc}}\r\n        {{partners}}\r\n        {{guarant}}\r\n        {{work}}\r\n        {{offers}}\r\n        {{ask}}\r\n        <section class=\"map\" id=\"map\">\r\n            [*mapScript*]\r\n        </section>\r\n        {{footer}}\r\n    </div>\r\n    <div class=\"modals\">\r\n		[!FormLister?\r\n		&formid=`form_callme`\r\n		&rules=`{\"name\":{\"required\":\"Введите имя\"},\"phone\":{\"required\":\"Введите номер телефона\",\"phone\":\"Введите номер правильно\"}}`\r\n		&formTpl=`form_callme_tpl`\r\n		&messagesOuterTpl=`form_callme_outer`\r\n		&errorTpl=`form_callme_error_tpl`\r\n		&errorClass=` error`\r\n		&requiredClass=` error`\r\n		&to=`kazanzev2010@ya.ru`\r\n		&subject=`Запрос обратного звонка с сайта`\r\n		&successTpl=`form_callme_success`\r\n		&parseDocumentSource=`1`\r\n		!]\r\n        <div class=\"region modal\" id=\"region\">\r\n            <div class=\"modal__caption\">\r\n                <h3 class=\"modal__title\">Ваш регион</h3>\r\n                <div class=\"close\"></div>\r\n            </div>\r\n            <div class=\"modal__body\">\r\n                <div class=\"region__screen__start\">\r\n                    <h4 class=\"region__mb\">Ижевск</h4>\r\n                    <div class=\"btn__double\">\r\n                        <a href=\"#\" class=\"btn region__btn\" id=\"regionYes\">Да, всё верно</a>\r\n                        <a href=\"#\" class=\"btn region__btn region__btn__grey\" id=\"regionAny\">Выбрать другой</a>\r\n                    </div>\r\n                </div>\r\n                <div class=\"region__screen__select\">\r\n                    <form action=\"\" method=\"POST\" class=\"default__form\">\r\n                        <div class=\"region__form__group\">\r\n                            <input type=\"text\" class=\"form__input region__input border__input\" placeholder=\"Введите название города\">\r\n                            <input type=\"text\" class=\"btn region__btn\" value=\"Выбрать\">\r\n                        </div>\r\n                    </form>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n    <script type=\"text/javascript\" src=\"assets/js/app.js\"></script>\r\n</body>\r\n</html>', 0, 1, 1524841700, 1524955713),
+(5, 'electron', 'Шаблон подготовлен Electron для компании КирпичЪ', 0, 2, '', 0, '<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <title>[* pagetitle *]</title>\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"assets/css/app.css\">\r\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"assets/css/iziModal.min.css\">\r\n	<script type=\"text/javascript\" src=\"assets/js/common.js\"></script>\r\n</head>\r\n<body>\r\n    <div class=\"main\">\r\n        {{header}}\r\n        {{products}}\r\n        {{sertifics}}\r\n        {{calc}}\r\n        {{partners}}\r\n        {{guarant}}\r\n        {{work}}\r\n        {{offers}}\r\n        {{ask}}\r\n        <section class=\"map\" id=\"map\">\r\n            [*mapScript*]\r\n        </section>\r\n        {{footer}}\r\n    </div>\r\n    {{modals}}\r\n\r\n    <script type=\"text/javascript\" src=\"assets/js/app.js\"></script>\r\n</body>\r\n</html>', 0, 1, 1524841700, 1525292652),
 (13, 'Товар (плитка)', 'Шаблон товара (плитка)', 0, 12, '', 0, '', 0, 1, 1524957406, 1524958284),
+(14, 'Размер кирпича', 'Размер кирпича', 0, 12, '', 0, '', 0, 1, 1525097645, 1525113183),
+(15, 'Вид кирпича', 'Выберите вид', 0, 12, '', 0, '', 0, 1, 1525113020, 1525113197),
+(16, 'Форма крипича', 'Выберите форму', 0, 12, '', 0, '', 0, 1, 1525121467, 1525121467),
+(17, 'Слайд в слайдере (кирпич + плитка + элементы)', '', 0, 9, '', 0, '', 0, 1, 1525122966, 1525124194),
+(18, 'Товар (элемент)', 'Шаблон товара (элемент)', 0, 12, '', 0, '', 0, 1, 1525175958, 1525176309),
 (11, 'Слайд в слайдере (отзывы)', '', 0, 9, '', 0, '', 0, 1, 1524940235, 1524940238),
 (12, 'Untitled template', '', 0, 0, '', 0, '', 0, 1, 1524940240, 1524940240),
 (9, 'Слайд в слайдере (сертификаты)', '', 0, 9, '', 0, '', 0, 1, 1524928374, 1524928407),
@@ -1650,6 +2678,7 @@ INSERT INTO `evo_site_templates` (`id`, `templatename`, `description`, `editor_t
 -- Структура таблицы `evo_site_tmplvars`
 --
 
+DROP TABLE IF EXISTS `evo_site_tmplvars`;
 CREATE TABLE `evo_site_tmplvars` (
   `id` int(11) NOT NULL,
   `type` varchar(50) NOT NULL DEFAULT '',
@@ -1690,7 +2719,15 @@ INSERT INTO `evo_site_tmplvars` (`id`, `type`, `name`, `caption`, `description`,
 (16, 'text', 'plitWeight', 'Вес товара', 'К примеру - 1,7 кг', 0, 12, 0, '', 0, '', '', '', 1524957880, 1524958170),
 (17, 'text', 'plitCount', 'Количество товара (плитка)', 'В поддоне: 576 шт', 0, 12, 0, '', 0, '', '', '', 1524957926, 1524958104),
 (18, 'text', 'plitHeft', 'Вес поддона (плитка)', 'Вес поддона: 950 ', 0, 12, 0, '', 0, '', '', '', 1524957972, 1524958116),
-(19, 'text', 'plitPrice', 'Стоимость товара (плитка)', 'Стоимость товара за - руб./м2. К примеру, 544,00', 0, 12, 0, '', 0, '', '', '', 1524958043, 1524958043);
+(19, 'text', 'plitPrice', 'Стоимость товара (плитка)', 'Стоимость товара за - руб./м2. К примеру, 544,00', 0, 12, 0, '', 0, '', '', '', 1524958043, 1525192905),
+(20, 'image', 'stoneViewImgWB', 'Изображение вида кирпича - черно белое', '', 0, 12, 0, '', 0, '', '', '', 1525113094, 1525113556),
+(21, 'image', 'stoneViewImgColor', 'Изображение вида кирпича - цветное', '', 0, 12, 0, '', 0, '', '', '', 1525113265, 1525121930),
+(22, 'image', 'stoneFormImgWB', 'Изображение формы кирпича - черно белое', '', 0, 12, 0, '', 0, '', '', '', 1525121511, 1525121582),
+(23, 'image', 'stoneFormImgColor', 'Изображение формы кирпича - цветное', '', 0, 12, 0, '', 0, '', '', '', 1525121549, 1525121573),
+(24, 'image', 'stoneSlideImg', 'Слайд в слайдере \"Как можно использовать нашу продукцию\"  (кирпич)', '', 0, 9, 0, '', 0, '', '', '', 1525123088, 1525124896),
+(25, 'image', 'elemImg', 'Изображение товара (элемент)', '', 0, 12, 0, '', 0, '', '', '', 1525176052, 1525176180),
+(26, 'text', 'elemSize', 'Размер товара (элемент)', '', 0, 12, 0, '', 0, '', '', '', 1525176113, 1525176200),
+(27, 'text', 'elemWeight', 'Вес товара (элемент)', '', 0, 12, 0, '', 0, '', '', '', 1525176236, 1525176236);
 
 -- --------------------------------------------------------
 
@@ -1698,6 +2735,7 @@ INSERT INTO `evo_site_tmplvars` (`id`, `type`, `name`, `caption`, `description`,
 -- Структура таблицы `evo_site_tmplvar_access`
 --
 
+DROP TABLE IF EXISTS `evo_site_tmplvar_access`;
 CREATE TABLE `evo_site_tmplvar_access` (
   `id` int(10) NOT NULL,
   `tmplvarid` int(10) NOT NULL DEFAULT '0',
@@ -1710,6 +2748,7 @@ CREATE TABLE `evo_site_tmplvar_access` (
 -- Структура таблицы `evo_site_tmplvar_contentvalues`
 --
 
+DROP TABLE IF EXISTS `evo_site_tmplvar_contentvalues`;
 CREATE TABLE `evo_site_tmplvar_contentvalues` (
   `id` int(11) NOT NULL,
   `tmplvarid` int(10) NOT NULL DEFAULT '0' COMMENT 'Template Variable id',
@@ -1752,7 +2791,43 @@ INSERT INTO `evo_site_tmplvar_contentvalues` (`id`, `tmplvarid`, `contentid`, `v
 (29, 16, 77, '1,7 кг'),
 (30, 17, 77, '576 шт'),
 (31, 18, 77, '950'),
-(32, 19, 77, '544,00');
+(32, 19, 77, '544,00'),
+(33, 20, 96, 'assets/images/polnotel_no_act.png'),
+(34, 21, 96, 'assets/images/polnotel_act.png'),
+(35, 20, 97, 'assets/images/pustotel_no_act.png'),
+(36, 21, 97, 'assets/images/pustotel_act.png'),
+(37, 20, 98, 'assets/images/fason_no_act.png'),
+(38, 21, 98, 'assets/images/fason_act.png'),
+(39, 22, 100, 'assets/images/ugol_no_act.png'),
+(40, 23, 100, 'assets/images/ugol_act.png'),
+(41, 22, 101, 'assets/images/brus_no_act.png'),
+(42, 23, 101, 'assets/images/brus_act.png'),
+(43, 22, 102, 'assets/images/doubleside_no_act.png'),
+(44, 23, 102, 'assets/images/doubleside_act.png'),
+(45, 22, 103, 'assets/images/fig1_no_act.png'),
+(46, 23, 103, 'assets/images/fig1_act.png'),
+(47, 22, 104, 'assets/images/fig2_no_act.png'),
+(48, 23, 104, 'assets/images/fig2_act.png'),
+(49, 22, 105, 'assets/images/trap1_no_act.png'),
+(50, 23, 105, 'assets/images/trap1_act.png'),
+(51, 22, 106, 'assets/images/trap2_no_act.png'),
+(52, 23, 106, 'assets/images/trap2_act.png'),
+(53, 22, 107, 'assets/images/trap3_no_act.png'),
+(54, 23, 107, 'assets/images/trap3_act.png'),
+(55, 24, 109, 'assets/images/stone__img.jpg'),
+(56, 24, 110, 'assets/images/stone__img.jpg'),
+(57, 24, 113, 'assets/images/plit_slider_1.png'),
+(58, 24, 114, 'assets/images/plit_slider_2.png'),
+(59, 24, 115, 'assets/images/plit_slider_4.png'),
+(60, 24, 116, 'assets/images/plit_slider_4.png'),
+(61, 25, 119, 'assets/images/elem_1.png'),
+(62, 26, 119, '420х400 мм.'),
+(63, 27, 119, '30 кг.'),
+(64, 19, 119, '2000'),
+(65, 24, 121, 'assets/images/elem_slide_1.png'),
+(66, 24, 122, 'assets/images/elem_slide_2.png'),
+(67, 24, 123, 'assets/images/elem_slide_3.png'),
+(68, 24, 124, 'assets/images/elem_slide_4.png');
 
 -- --------------------------------------------------------
 
@@ -1760,6 +2835,7 @@ INSERT INTO `evo_site_tmplvar_contentvalues` (`id`, `tmplvarid`, `contentid`, `v
 -- Структура таблицы `evo_site_tmplvar_templates`
 --
 
+DROP TABLE IF EXISTS `evo_site_tmplvar_templates`;
 CREATE TABLE `evo_site_tmplvar_templates` (
   `tmplvarid` int(10) NOT NULL DEFAULT '0' COMMENT 'Template Variable id',
   `templateid` int(11) NOT NULL DEFAULT '0',
@@ -1780,11 +2856,20 @@ INSERT INTO `evo_site_tmplvar_templates` (`tmplvarid`, `templateid`, `rank`) VAL
 (12, 5, 0),
 (13, 13, 0),
 (14, 13, 0),
+(20, 15, 0),
 (16, 13, 0),
 (17, 13, 0),
 (18, 13, 0),
 (19, 13, 0),
-(15, 13, 0);
+(15, 13, 0),
+(21, 15, 0),
+(22, 16, 0),
+(23, 16, 0),
+(24, 17, 0),
+(25, 18, 0),
+(26, 18, 0),
+(27, 18, 0),
+(19, 18, 0);
 
 -- --------------------------------------------------------
 
@@ -1792,6 +2877,7 @@ INSERT INTO `evo_site_tmplvar_templates` (`tmplvarid`, `templateid`, `rank`) VAL
 -- Структура таблицы `evo_system_eventnames`
 --
 
+DROP TABLE IF EXISTS `evo_system_eventnames`;
 CREATE TABLE `evo_system_eventnames` (
   `id` int(10) NOT NULL,
   `name` varchar(50) NOT NULL DEFAULT '',
@@ -1942,6 +3028,7 @@ INSERT INTO `evo_system_eventnames` (`id`, `name`, `service`, `groupname`) VALUE
 -- Структура таблицы `evo_system_settings`
 --
 
+DROP TABLE IF EXISTS `evo_system_settings`;
 CREATE TABLE `evo_system_settings` (
   `setting_name` varchar(50) NOT NULL DEFAULT '',
   `setting_value` text
@@ -1952,7 +3039,7 @@ CREATE TABLE `evo_system_settings` (
 --
 
 INSERT INTO `evo_system_settings` (`setting_name`, `setting_value`) VALUES
-('settings_version', '1.4.0'),
+('settings_version', '1.4.3'),
 ('manager_theme', 'default'),
 ('server_offset_time', '0'),
 ('manager_language', 'russian-UTF8'),
@@ -1973,7 +3060,7 @@ INSERT INTO `evo_system_settings` (`setting_name`, `setting_value`) VALUES
 ('failed_login_attempts', '3'),
 ('blocked_minutes', '60'),
 ('use_captcha', '0'),
-('emailsender', 'kazanzev@ya.ru'),
+('emailsender', 'kazanzev2010@yandex.ru'),
 ('use_editor', '1'),
 ('use_browser', '1'),
 ('fe_editor_lang', 'russian-UTF8'),
@@ -2099,8 +3186,10 @@ INSERT INTO `evo_system_settings` (`setting_name`, `setting_value`) VALUES
 ('denyExtensionRename', '0'),
 ('showHiddenFiles', '0'),
 ('lang_code', 'ru'),
-('sys_files_checksum', 'a:4:{s:47:\"C:/server/data/htdocs/kirpich/kirpich/index.php\";s:32:\"1a580fcd2fe7218b42b621ec00bfedfd\";s:47:\"C:/server/data/htdocs/kirpich/kirpich/.htaccess\";s:32:\"ca73883cf616cb5e53513ec0202995c9\";s:55:\"C:/server/data/htdocs/kirpich/kirpich/manager/index.php\";s:32:\"863a96f261fe95da8b2a549002172c37\";s:69:\"C:/server/data/htdocs/kirpich/kirpich/manager/includes/config.inc.php\";s:32:\"950deb6d6795eaf79ec45b3617039379\";}'),
-('email_sender_method', '1');
+('sys_files_checksum', 'a:4:{s:47:\"C:/server/data/htdocs/kirpich/kirpich/index.php\";s:32:\"cdc22609f8a321de87c7305a478d42aa\";s:47:\"C:/server/data/htdocs/kirpich/kirpich/.htaccess\";s:32:\"ca73883cf616cb5e53513ec0202995c9\";s:55:\"C:/server/data/htdocs/kirpich/kirpich/manager/index.php\";s:32:\"95efdfa243c95d259353257ebd2235b1\";s:69:\"C:/server/data/htdocs/kirpich/kirpich/manager/includes/config.inc.php\";s:32:\"9c92ae6ed0f4cd14ee9e4df11f760493\";}'),
+('email_sender_method', '1'),
+('manager_theme_mode', '3'),
+('tinymce4_skintheme', 'inlite');
 
 -- --------------------------------------------------------
 
@@ -2108,6 +3197,7 @@ INSERT INTO `evo_system_settings` (`setting_name`, `setting_value`) VALUES
 -- Структура таблицы `evo_user_attributes`
 --
 
+DROP TABLE IF EXISTS `evo_user_attributes`;
 CREATE TABLE `evo_user_attributes` (
   `id` int(10) NOT NULL,
   `internalKey` int(10) NOT NULL DEFAULT '0',
@@ -2143,7 +3233,7 @@ CREATE TABLE `evo_user_attributes` (
 --
 
 INSERT INTO `evo_user_attributes` (`id`, `internalKey`, `fullname`, `role`, `email`, `phone`, `mobilephone`, `blocked`, `blockeduntil`, `blockedafter`, `logincount`, `lastlogin`, `thislogin`, `failedlogincount`, `sessionid`, `dob`, `gender`, `country`, `street`, `city`, `state`, `zip`, `fax`, `photo`, `comment`, `createdon`, `editedon`) VALUES
-(1, 1, 'Admin', 1, 'kazanzev@ya.ru', '', '', 0, 0, 0, 2, 1524839269, 1524840002, 0, 'cdpo66arovbgnjd5du9ee8eteu', 0, 0, '', '', '', '', '', '', '', '', 0, 0);
+(1, 1, 'Admin', 1, 'kazanzev@ya.ru', '', '', 0, 0, 0, 7, 1525118019, 1525262072, 0, 'cdpo66arovbgnjd5du9ee8eteu', 0, 0, '', '', '', '', '', '', '', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -2151,6 +3241,7 @@ INSERT INTO `evo_user_attributes` (`id`, `internalKey`, `fullname`, `role`, `ema
 -- Структура таблицы `evo_user_messages`
 --
 
+DROP TABLE IF EXISTS `evo_user_messages`;
 CREATE TABLE `evo_user_messages` (
   `id` int(10) NOT NULL,
   `type` varchar(15) NOT NULL DEFAULT '',
@@ -2169,6 +3260,7 @@ CREATE TABLE `evo_user_messages` (
 -- Структура таблицы `evo_user_roles`
 --
 
+DROP TABLE IF EXISTS `evo_user_roles`;
 CREATE TABLE `evo_user_roles` (
   `id` int(10) NOT NULL,
   `name` varchar(50) NOT NULL DEFAULT '',
@@ -2261,6 +3353,7 @@ INSERT INTO `evo_user_roles` (`id`, `name`, `description`, `frames`, `home`, `vi
 -- Структура таблицы `evo_user_settings`
 --
 
+DROP TABLE IF EXISTS `evo_user_settings`;
 CREATE TABLE `evo_user_settings` (
   `user` int(11) NOT NULL,
   `setting_name` varchar(50) NOT NULL DEFAULT '',
@@ -2273,6 +3366,7 @@ CREATE TABLE `evo_user_settings` (
 -- Структура таблицы `evo_webgroup_access`
 --
 
+DROP TABLE IF EXISTS `evo_webgroup_access`;
 CREATE TABLE `evo_webgroup_access` (
   `id` int(10) NOT NULL,
   `webgroup` int(10) NOT NULL DEFAULT '0',
@@ -2292,6 +3386,7 @@ INSERT INTO `evo_webgroup_access` (`id`, `webgroup`, `documentgroup`) VALUES
 -- Структура таблицы `evo_webgroup_names`
 --
 
+DROP TABLE IF EXISTS `evo_webgroup_names`;
 CREATE TABLE `evo_webgroup_names` (
   `id` int(10) NOT NULL,
   `name` varchar(245) NOT NULL DEFAULT ''
@@ -2311,6 +3406,7 @@ INSERT INTO `evo_webgroup_names` (`id`, `name`) VALUES
 -- Структура таблицы `evo_web_groups`
 --
 
+DROP TABLE IF EXISTS `evo_web_groups`;
 CREATE TABLE `evo_web_groups` (
   `id` int(10) NOT NULL,
   `webgroup` int(10) NOT NULL DEFAULT '0',
@@ -2330,6 +3426,7 @@ INSERT INTO `evo_web_groups` (`id`, `webgroup`, `webuser`) VALUES
 -- Структура таблицы `evo_web_users`
 --
 
+DROP TABLE IF EXISTS `evo_web_users`;
 CREATE TABLE `evo_web_users` (
   `id` int(10) NOT NULL,
   `username` varchar(100) NOT NULL DEFAULT '',
@@ -2350,6 +3447,7 @@ INSERT INTO `evo_web_users` (`id`, `username`, `password`, `cachepwd`) VALUES
 -- Структура таблицы `evo_web_user_attributes`
 --
 
+DROP TABLE IF EXISTS `evo_web_user_attributes`;
 CREATE TABLE `evo_web_user_attributes` (
   `id` int(10) NOT NULL,
   `internalKey` int(10) NOT NULL DEFAULT '0',
@@ -2393,6 +3491,7 @@ INSERT INTO `evo_web_user_attributes` (`id`, `internalKey`, `fullname`, `role`, 
 -- Структура таблицы `evo_web_user_settings`
 --
 
+DROP TABLE IF EXISTS `evo_web_user_settings`;
 CREATE TABLE `evo_web_user_settings` (
   `webuser` int(11) NOT NULL,
   `setting_name` varchar(50) NOT NULL DEFAULT '',
@@ -2680,7 +3779,7 @@ ALTER TABLE `evo_web_user_settings`
 -- AUTO_INCREMENT для таблицы `evo_active_user_locks`
 --
 ALTER TABLE `evo_active_user_locks`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=418;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=249;
 --
 -- AUTO_INCREMENT для таблицы `evo_categories`
 --
@@ -2700,7 +3799,7 @@ ALTER TABLE `evo_document_groups`
 -- AUTO_INCREMENT для таблицы `evo_event_log`
 --
 ALTER TABLE `evo_event_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT для таблицы `evo_jot_content`
 --
@@ -2715,7 +3814,7 @@ ALTER TABLE `evo_jot_subscriptions`
 -- AUTO_INCREMENT для таблицы `evo_manager_log`
 --
 ALTER TABLE `evo_manager_log`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=899;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1826;
 --
 -- AUTO_INCREMENT для таблицы `evo_manager_users`
 --
@@ -2740,12 +3839,12 @@ ALTER TABLE `evo_member_groups`
 -- AUTO_INCREMENT для таблицы `evo_site_content`
 --
 ALTER TABLE `evo_site_content`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
 --
 -- AUTO_INCREMENT для таблицы `evo_site_htmlsnippets`
 --
 ALTER TABLE `evo_site_htmlsnippets`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 --
 -- AUTO_INCREMENT для таблицы `evo_site_modules`
 --
@@ -2775,12 +3874,12 @@ ALTER TABLE `evo_site_snippets`
 -- AUTO_INCREMENT для таблицы `evo_site_templates`
 --
 ALTER TABLE `evo_site_templates`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT для таблицы `evo_site_tmplvars`
 --
 ALTER TABLE `evo_site_tmplvars`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT для таблицы `evo_site_tmplvar_access`
 --
@@ -2790,7 +3889,7 @@ ALTER TABLE `evo_site_tmplvar_access`
 -- AUTO_INCREMENT для таблицы `evo_site_tmplvar_contentvalues`
 --
 ALTER TABLE `evo_site_tmplvar_contentvalues`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 --
 -- AUTO_INCREMENT для таблицы `evo_system_eventnames`
 --

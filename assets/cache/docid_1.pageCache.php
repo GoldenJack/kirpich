@@ -55,14 +55,14 @@
 			</div>
 			<div class="col-lg-6 header__form__wrap">
 				<div class="header__form__box">
-					<form action="" method="POST" class="header__form form__default">
-						<h4 class="header__form__caption">Заказать пробную партию</h4>
-						<input class="form__input" type="text" name="name" placeholder="Ваше имя">
-						<input class="form__input" type="text" name="phone" placeholder="Ваше номер телефона">
-
-						<input class="btn header__form__btn" type="submit"  name="submit" value="Заказать бесплатно">
-						<p class="form__politics header__form__polit">Нажимая на кнопку, вы даете свое согласие на обработку персональных данных. <a href="#">Узнать больше</a></p>
-					</form>
+					[!FormLister?
+						&formid=`header_form_cb`
+						&rules=`{"name":{"required":"Введите имя"},"phone":{"required":"Введите номер телефона","phone":"Введите номер правильно"}}`
+						&formTpl=`header_callback_form`
+						&subject=`Запрос обратного звонка с сайта`
+						&successTpl=`form_modal_cb_success`
+						&parseDocumentSource=`1`
+					!]
 				</div>
 				<img src="assets/images/kirp_header.png" alt="" class="header__kirp__form">
 			</div>
@@ -123,11 +123,7 @@
 							<div class="stone__demo__slider">
 								<h4 class="stone__demo__slider__caption">Как можно использовать нашу продукцию</h4>
 								<div class="stone__slider">
-									<img class="stone__demo__slider__image" src="assets/images/stone__img.jpg">
-									<img class="stone__demo__slider__image" src="assets/images/stone__img.jpg">
-									<img class="stone__demo__slider__image" src="assets/images/stone__img.jpg">
-									<img class="stone__demo__slider__image" src="assets/images/stone__img.jpg">
-									<!-- TODO -->
+									<img class="stone__demo__slider__image" src="assets/images/stone__img.jpg"><img class="stone__demo__slider__image" src="assets/images/stone__img.jpg">
 								</div>
 							</div>
 						</div>
@@ -135,202 +131,161 @@
 							<div class="stone__size">
 								<h5>Выберите размер</h5>
 								<div class="stone__size__box">
-									<a href="#" class="stone__size__elem select__size">
-										<span class="stone__size__bold">1.4</span>
-										<span class="stone__size__name">полуторный</span>
-									</a>
 									<a href="#" class="stone__size__elem">
-										<span class="stone__size__bold">1.0</span>
-										<span class="stone__size__name">одинарный</span>
-									</a>
-									<a href="#" class="stone__size__elem">
-										<span class="stone__size__bold">0.7</span>
-										<span class="stone__size__name">брусок полуторный</span>
-									</a>
-									<a href="#" class="stone__size__elem">
-										<span class="stone__size__bold">0.5</span>
-										<span class="stone__size__name">брусок одинарный</span>
-									</a>
+	<span class="stone__size__bold">0.5</span>
+	<span class="stone__size__name">брусок одинарный</span>
+</a><a href="#" class="stone__size__elem">
+	<span class="stone__size__bold">0.7</span>
+	<span class="stone__size__name">брусок полуторный</span>
+</a><a href="#" class="stone__size__elem">
+	<span class="stone__size__bold">1.0</span>
+	<span class="stone__size__name">одинарный</span>
+</a><a href="#" class="stone__size__elem">
+	<span class="stone__size__bold">1.4</span>
+	<span class="stone__size__name">полуторный</span>
+</a>
 								</div>
 							</div>
 							<div class="stone__color">
 								<h5>Выберите цвет</h5>
 								<div class="stone__color__box">
-									<a href="#" class="stone__color__elem select__color">
-										<img src="assets/images/brick_light_shadow.png" alt="">
-									</a>
-									<a href="#" class="stone__color__elem">
-										<img src="assets/images/brick_light_shadow.png" alt="">
-									</a>
-									<a href="#" class="stone__color__elem">
-										<img src="assets/images/brick_light_shadow.png" alt="">
-									</a>
-									<a href="#" class="stone__color__elem">
-										<img src="assets/images/brick_light_shadow.png" alt="">
-									</a>
-									<a href="#" class="stone__color__elem">
-										<img src="assets/images/brick_light_shadow.png" alt="">
-									</a>
-									<a href="#" class="stone__color__elem">
-										<img src="assets/images/brick_light_shadow.png" alt="">
-									</a>
-									<a href="#" class="stone__color__elem">
-										<img src="assets/images/brick_light_shadow.png" alt="">
-									</a>
-									<a href="#" class="stone__color__elem">
-										<img src="assets/images/brick_light_shadow.png" alt="">
-									</a>
-									<a href="#" class="stone__color__elem">
-										<img src="assets/images/brick_light_shadow.png" alt="">
-									</a>
-									<a href="#" class="stone__color__elem">
-										<img src="assets/images/brick_light_shadow.png" alt="">
-									</a>
+									<a href="#" class="stone__color__elem" style="background: #ecb678">
+	<img src="assets/images/brick_light_shadow.png" alt="" title="Светло золотой">
+</a><a href="#" class="stone__color__elem" style="background: #c6c5ba">
+	<img src="assets/images/brick_light_shadow.png" alt="" title="Светло серый">
+</a><a href="#" class="stone__color__elem" style="background: #95a26a">
+	<img src="assets/images/brick_light_shadow.png" alt="" title="Болотный">
+</a><a href="#" class="stone__color__elem" style="background: #b25840">
+	<img src="assets/images/brick_light_shadow.png" alt="" title="Темно оранжевый">
+</a><a href="#" class="stone__color__elem" style="background: #545452">
+	<img src="assets/images/brick_light_shadow.png" alt="" title="Серый">
+</a><a href="#" class="stone__color__elem" style="background: #ede1b9">
+	<img src="assets/images/brick_light_shadow.png" alt="" title="Светло бежевый">
+</a><a href="#" class="stone__color__elem" style="background: #8c6d58">
+	<img src="assets/images/brick_light_shadow.png" alt="" title="Коричневый">
+</a><a href="#" class="stone__color__elem" style="background: #9b7f69">
+	<img src="assets/images/brick_light_shadow.png" alt="" title="Светло коричневый">
+</a><a href="#" class="stone__color__elem" style="background: #c7b65c">
+	<img src="assets/images/brick_light_shadow.png" alt="" title="Полузолотой">
+</a><a href="#" class="stone__color__elem" style="background: #f4d773">
+	<img src="assets/images/brick_light_shadow.png" alt="" title="Золотистый">
+</a>
 								</div>
 							</div>
 							<div class="stone__view">
 								<h5>Выберите вид</h5>
 								<div class="stone__view__box">
-									<div class="stone__view__elem select__view">
-										<img class="stone__view__img" src="assets/images/polnotel_act.png" alt="">
-										<img class="stone__view__img-close" src="assets/images/polnotel_no_act.png" alt="">
-										<p class="stone__view__name">Полнотелый</p>
-									</div>
 									<div class="stone__view__elem">
-										<img class="stone__view__img" src="assets/images/pustotel_act.png" alt="">
-										<img class="stone__view__img-close" src="assets/images/pustotel_no_act.png" alt="">
-										<p class="stone__view__name">Пустотелый</p>
-									</div>
-									<div class="stone__view__elem">
-										<img class="stone__view__img" src="assets/images/fason_act.png" alt="">
-										<img class="stone__view__img-close" src="assets/images/fason_no_act.png" alt="">
-										<p class="stone__view__name">Фасонный</p>
-									</div>
+	<img class="stone__view__img" src="assets/images/fason_act.png" alt="">
+	<img class="stone__view__img-close" src="assets/images/fason_no_act.png" alt="">
+	<p class="stone__view__name">Фасонный</p>
+</div><div class="stone__view__elem">
+	<img class="stone__view__img" src="assets/images/pustotel_act.png" alt="">
+	<img class="stone__view__img-close" src="assets/images/pustotel_no_act.png" alt="">
+	<p class="stone__view__name">Пустотелый</p>
+</div><div class="stone__view__elem">
+	<img class="stone__view__img" src="assets/images/polnotel_act.png" alt="">
+	<img class="stone__view__img-close" src="assets/images/polnotel_no_act.png" alt="">
+	<p class="stone__view__name">Полнотелый</p>
+</div>
 								</div>
 							</div>
 							<div class="stone__form">
 								<h5>Выберите форму</h5>
 								<div class="row stone__form__box">
-									<div class="stone__form__elem col-sm-3 col-6 select__form">
-										<div class="stone__img__wrap">
-											<img src="assets/images/ugol_no_act.png" alt="" class="stone__form__img-close">
-											<img src="assets/images/ugol_act.png" alt="" class="stone__form__img">
-										</div>
-										<p class="stone__form__name">Угловой</p>
-									</div>
 									<div class="stone__form__elem col-sm-3 col-6">
-										<div class="stone__img__wrap">
-											<img src="assets/images/brus_no_act.png" alt="" class="stone__form__img-close">
-											<img src="assets/images/brus_act.png" alt="" class="stone__form__img">
-											<p class="stone__form__name">Брусок угловой</p>
-										</div>
-									</div>
-									<div class="stone__form__elem col-sm-3 col-6">
-										<div class="stone__img__wrap">
-											<img src="assets/images/doubleside_no_act.png" alt="" class="stone__form__img-close">
-											<img src="assets/images/doubleside_act.png" alt="" class="stone__form__img">
-											<p class="stone__form__name">Двусторонный</p>
-										</div>
-									</div>
-									<div class="stone__form__elem col-sm-3 col-6">
-										<div class="stone__img__wrap">
-											<img src="assets/images/fig1_no_act.png" alt="" class="stone__form__img-close">
-											<img src="assets/images/fig1_act.png" alt="" class="stone__form__img">
-											<p class="stone__form__name">Фигурный №1</p>
-										</div>
-									</div>
-									<div class="stone__form__elem col-sm-3 col-6">
-										<div class="stone__img__wrap">
-											<img src="assets/images/fig2_no_act.png" alt="" class="stone__form__img-close">
-											<img src="assets/images/fig2_act.png" alt="" class="stone__form__img">
-											<p class="stone__form__name">Фигурный №2</p>
-										</div>
-									</div>
-									<div class="stone__form__elem col-sm-3 col-6">
-										<div class="stone__img__wrap">
-											<img src="assets/images/trap1_no_act.png" alt="" class="stone__form__img-close">
-											<img src="assets/images/trap1_act.png" alt="" class="stone__form__img">
-											<p class="stone__form__name">Трапеция №1</p>
-										</div>
-									</div>
-									<div class="stone__form__elem col-sm-3 col-6">
-										<div class="stone__img__wrap">
-											<img src="assets/images/trap2_no_act.png" alt="" class="stone__form__img-close">
-											<img src="assets/images/trap2_act.png" alt="" class="stone__form__img">
-											<p class="stone__form__name">Трапеция №2</p>
-										</div>
-									</div>
-									<div class="stone__form__elem col-sm-3 col-6">
-										<div class="stone__img__wrap">
-											<img src="assets/images/trap3_no_act.png" alt="" class="stone__form__img-close">
-											<img src="assets/images/trap3_act.png" alt="" class="stone__form__img">
-											<p class="stone__form__name">Трапеция №3</p>
-										</div>
-									</div>
+	<div class="stone__img__wrap">
+		<img src="assets/images/trap3_no_act.png" alt="" class="stone__form__img-close">
+		<img src="assets/images/trap3_act.png" alt="" class="stone__form__img">
+	</div>
+	<p class="stone__form__name">Трапеция №3</p>
+</div><div class="stone__form__elem col-sm-3 col-6">
+	<div class="stone__img__wrap">
+		<img src="assets/images/trap2_no_act.png" alt="" class="stone__form__img-close">
+		<img src="assets/images/trap2_act.png" alt="" class="stone__form__img">
+	</div>
+	<p class="stone__form__name">Трапеция №2</p>
+</div><div class="stone__form__elem col-sm-3 col-6">
+	<div class="stone__img__wrap">
+		<img src="assets/images/trap1_no_act.png" alt="" class="stone__form__img-close">
+		<img src="assets/images/trap1_act.png" alt="" class="stone__form__img">
+	</div>
+	<p class="stone__form__name">Трапеция №1</p>
+</div><div class="stone__form__elem col-sm-3 col-6">
+	<div class="stone__img__wrap">
+		<img src="assets/images/fig2_no_act.png" alt="" class="stone__form__img-close">
+		<img src="assets/images/fig2_act.png" alt="" class="stone__form__img">
+	</div>
+	<p class="stone__form__name">Фигурный №2</p>
+</div><div class="stone__form__elem col-sm-3 col-6">
+	<div class="stone__img__wrap">
+		<img src="assets/images/fig1_no_act.png" alt="" class="stone__form__img-close">
+		<img src="assets/images/fig1_act.png" alt="" class="stone__form__img">
+	</div>
+	<p class="stone__form__name">Фигурный №1</p>
+</div><div class="stone__form__elem col-sm-3 col-6">
+	<div class="stone__img__wrap">
+		<img src="assets/images/doubleside_no_act.png" alt="" class="stone__form__img-close">
+		<img src="assets/images/doubleside_act.png" alt="" class="stone__form__img">
+	</div>
+	<p class="stone__form__name">Двусторонный</p>
+</div><div class="stone__form__elem col-sm-3 col-6">
+	<div class="stone__img__wrap">
+		<img src="assets/images/brus_no_act.png" alt="" class="stone__form__img-close">
+		<img src="assets/images/brus_act.png" alt="" class="stone__form__img">
+	</div>
+	<p class="stone__form__name">Брусок угловой</p>
+</div><div class="stone__form__elem col-sm-3 col-6">
+	<div class="stone__img__wrap">
+		<img src="assets/images/ugol_no_act.png" alt="" class="stone__form__img-close">
+		<img src="assets/images/ugol_act.png" alt="" class="stone__form__img">
+	</div>
+	<p class="stone__form__name">Угловой</p>
+</div>
 								</div>
 							</div>
 							<div class="stone__type">
 								<h5>Тех. характеристики:</h5>
-								<div class="stone__type__box">
-									<div class="stone__names">
-										<div class="stone__name">
-											<p>Вес(кг):</p>
-										</div>
-										<div class="stone__name">
-											<p>Марка прочности:</p>
-										</div>
-										<div class="stone__name">
-											<p>Морозостойкость:</p>
-										</div>
-										<div class="stone__name">
-											<p>Влагопоглощение (%):</p>
-										</div>
-										<div class="stone__name">
-											<p>Теплопроводимость (ВТ/м°С):</p>
-										</div>
-										<div class="stone__name">
-											<p>Кол-во на поддоне (шт):</p>
-										</div>
-										<div class="stone__name">
-											<p>Вес поддона:</p>
-										</div>
-										<div class="stone__name">
-											<p>Цвет:</p>
-										</div>
-									</div>
-									<div class="stone__values">
-										<div class="stone__value">
-											<p>4,0</p>
-										</div>
-										<div class="stone__value">
-											<p>200</p>
-										</div>
-										<div class="stone__value">
-											<p>100</p>
-										</div>
-										<div class="stone__value">
-											<p>до 8%</p>
-										</div>
-										<div class="stone__value">
-											<p>0,84 ВТ/м°С</p>
-										</div>
-										<div class="stone__value">
-											<p>336</p>
-										</div>
-										<div class="stone__value">
-											<p>1350</p>
-										</div>
-										<div class="stone__value">
-											<p>Персиковый</p>
-										</div>
-									</div>
-								</div>
+								<table class="stone__type__table">
+									<tr class="stoneWeight">
+										<td><p class="stone__name">Вес(кг):</p></td>
+										<td><p class="stone__value">4,0</p></td>
+									</tr>
+									<tr class="stoneMark">
+										<td><p class="stone__name">Марка прочности:</p></td>
+										<td><p class="stone__value">200</p></td>
+									</tr>
+									<tr class="stoneQu">
+										<td><p class="stone__name">Морозостойкость:</p></td>
+										<td>100</td>
+									</tr>
+									<tr class="stoneWater">
+										<td><p class="stone__name">Влагопоглощение (%):</p></td>
+										<td><p class="stone__value">до 8%</p></td>
+									</tr>
+									<tr class="stoneFire">
+										<td><p class="stone__name">Теплопроводимость (вт/м°с):</p></td>
+										<td><p class="stone__value">0,84 вт/м°с</p></td>
+									</tr>
+									<tr class="stoneCount">
+										<td><p class="stone__name">Кол-во на поддоне (шт):</p></td>
+										<td><p class="stone__value">336</p></td>
+									</tr>
+									<tr class="stoneWeightP">
+										<td><p class="stone__name">Вес поддона:</p></td>
+										<td><p class="stone__value">1350</p></td>
+									</tr>
+									<tr class="stoneColor">
+										<td><p class="stone__name">Цвет:</p></td>
+										<td><p class="stone__value">персиковый</p></td>
+									</tr>
+								</table>
 							</div>
 							<div class="stone__total">
 								<div class="stone__price">
-									<h3>24.00 <span class="price__low">руб./шт</span></h3>
+									<h3><span class="stonePriceOne">24.00</span> <span class="price__low">руб./шт</span></h3>
 								</div>
-								<input type="submit" name="submit" class="btn stone__total__btn" value="ЗАКАЗАТЬ">
+								<a href="#" class="btn stone__total__btn btn__buy" data-product="#stone">ЗАКАЗАТЬ</a>
 							</div>
 						</div>
 					</div>
@@ -362,28 +317,55 @@
 						</div>
 					</div>
 					<div class="slider">
-						<div class="slider__controls plit__slider__controls">
-							<a class="slider__left" href="#"><img src="assets/images/left.svg" alt=""></a>
-							<a class="slider__right" href="#"><img src="assets/images/right.svg" alt=""></a>
-						</div>
-						<div class="row slider__content">
+						<div class="row slider__content" id="plit__slider">
 							<div class="col-3">
-								<img  class="plit__slider__image" src="assets/images/plit_slider_1.png" alt="/">
-							</div>
-							<div class="col-3">
-								<img  class="plit__slider__image" src="assets/images/plit_slider_2.png" alt="/">
-							</div>
-							<div class="col-3">
-								<img  class="plit__slider__image" src="assets/images/plit_slider_3.png" alt="/">
-							</div>
-							<div class="col-3">
-								<img  class="plit__slider__image" src="assets/images/plit_slider_4.png" alt="/">
-							</div>
+	<img  class="plit__slider__image" src="assets/images/plit_slider_4.png" alt="/">
+</div><div class="col-3">
+	<img  class="plit__slider__image" src="assets/images/plit_slider_4.png" alt="/">
+</div><div class="col-3">
+	<img  class="plit__slider__image" src="assets/images/plit_slider_2.png" alt="/">
+</div><div class="col-3">
+	<img  class="plit__slider__image" src="assets/images/plit_slider_1.png" alt="/">
+</div>
 						</div>
 					</div>
 				</div>
 				<div class="elements" id="elements">
-
+					<div class="row justify-content-md-center">
+						<div class="col-12">
+							<h2 class="cap__snake plit__caption">Элементы</h2>
+						</div>
+						<div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col">
+	<div class="plit__elem">
+		<img src="assets/images/elem_1.png" class="plit__elem__img">
+		<h5 class="plit__elem__caption">Колпак из гладкого кирпича</h5>
+		<p class="plit__elem__stat">
+			Размер: 420х400 мм. <br>
+			Вес: 30 кг. <br>
+		</p>
+		<h4>2000 <span class="price__low">руб./шт</span></h4>
+		<a href="" class="plit__elem__btn btn">ЗАКАЗАТЬ</a>
+	</div>
+</div>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							<h4 class="plit__slider__caption">Как можно использовать нашу продукцию</h4>
+						</div>
+					</div>
+					<div class="slider">
+						<div class="row slider__content" id="plit__slider">
+							<div class="col-3">
+	<img  class="plit__slider__image" src="assets/images/elem_slide_4.png" alt="/">
+</div><div class="col-3">
+	<img  class="plit__slider__image" src="assets/images/elem_slide_3.png" alt="/">
+</div><div class="col-3">
+	<img  class="plit__slider__image" src="assets/images/elem_slide_2.png" alt="/">
+</div><div class="col-3">
+	<img  class="plit__slider__image" src="assets/images/elem_slide_1.png" alt="/">
+</div>
+						</div>
+					</div>
 				</div>
 			</div>
 
@@ -419,20 +401,14 @@
 					<div class="calc__content">
 						<h3 class="yellow">Рассчет стоимости</h3>
 						<p class="calc__text">Мы можем расчитать стоимость и количество материала с учетом параметров вашей постройки. Заполните данную формы и перезвоним вам в течении 10 минут.</p>
-						<form action="" method="POST" class="form__default">
-							<div class="form__double">
-								<input class="calc__form__input form__input" type="text" name="length" placeholder="Длина постройки метров">
-								<input class="calc__form__input form__input" type="text" name="height" placeholder="Высота постройки метров">
-							</div>
-							<input class="calc__form__input form__input" type="text" name="name" placeholder="Ваше имя">
-							<input class="calc__form__input form__input" type="text" name="phone" placeholder="Ваш номер телефона или email">
-							<div class="form__btn__polit">
-								<input class="btn calc__form__btn" type="submit" name="submit" value="Рассчитать стоимость">
-								<p class="form__politics">Нажимая на кнопку, вы даете свое согласие на обработку персональных данных. <a href="#">Узнать больше</a></p>
-							</div>
-
-						</form>
-						<!-- TODO -->
+						
+						[!FormLister?
+							&formid=`calc_form`
+							&formTpl=`calc_form`
+							&subject=`Запрос обратного звонка с сайта`
+							&successTpl=`calc_success`
+							&parseDocumentSource=`1`
+						!]
 					</div>
 				</div>
 			</div>
@@ -571,15 +547,13 @@
 			<div class="ask__form__content">
 				<h3 class="yellow ask__form__caption">Остались вопросы?</h3>
 				<p class="ask__form__desc">Оставьте заявку и я с удовольствием ответчу на все ваши <br> вопросы</p>
-				<form action="" method="POST" class="ask__form form__default">
-					<input type="text" class="form__input ask__form__input" placeholder="Ваше имя">
-					<input type="text" class="form__input ask__form__input" placeholder="Ваш номер телефона или email">
-					<textarea class="form__input ask__form__input" placeholder="Текст сообщения"></textarea>
-					<div class="form__btn__polit">
-						<input class="btn ask__form__btn" type="submit" name="submit" value="Отправить">
-						<p class="form__politics">Нажимая на кнопку, вы даете свое согласие на обработку персональных данных. <a href="#">Узнать больше</a></p>
-					</div>
-				</form>
+				[!FormLister?
+					&formid=`ask_form`
+					&formTpl=`ask_form`
+					&subject=`Запрос обратного звонка с сайта`
+					&successTpl=`ask_success`
+					&parseDocumentSource=`1`
+				!]
 			</div>
 		</div>
 	</div>
@@ -614,47 +588,109 @@
 				</div>
 			</div>
 		</div>
+		<a href="#" class="up">
+			<img src="assets/images/up.png" alt="">
+		</a>
 	</div>
 </footer>
     </div>
     <div class="modals">
-		[!FormLister?
-		&formid=`form_callme`
-		&rules=`{"name":{"required":"Введите имя"},"phone":{"required":"Введите номер телефона","phone":"Введите номер правильно"}}`
-		&formTpl=`form_callme_tpl`
-		&messagesOuterTpl=`form_callme_outer`
-		&errorTpl=`form_callme_error_tpl`
-		&errorClass=` error`
-		&requiredClass=` error`
-		&to=`kazanzev2010@ya.ru`
-		&subject=`Запрос обратного звонка с сайта`
-		&successTpl=`form_callme_success`
-		&parseDocumentSource=`1`
-		!]
-        <div class="region modal" id="region">
-            <div class="modal__caption">
-                <h3 class="modal__title">Ваш регион</h3>
-                <div class="close"></div>
-            </div>
-            <div class="modal__body">
-                <div class="region__screen__start">
-                    <h4 class="region__mb">Ижевск</h4>
-                    <div class="btn__double">
-                        <a href="#" class="btn region__btn" id="regionYes">Да, всё верно</a>
-                        <a href="#" class="btn region__btn region__btn__grey" id="regionAny">Выбрать другой</a>
-                    </div>
-                </div>
-                <div class="region__screen__select">
-                    <form action="" method="POST" class="default__form">
-                        <div class="region__form__group">
-                            <input type="text" class="form__input region__input border__input" placeholder="Введите название города">
-                            <input type="text" class="btn region__btn" value="Выбрать">
-                        </div>
-                    </form>
-                </div>
-            </div>
+	<div class="callback modal" id="callback">
+		<div class="modal__caption">
+			<h3 class="modal__title">Обратный звонок</h3>
+			<div class="close" data-izimodal-close=""></div>
+		</div>
+		<div class="modal__body">
+			[!FormLister?
+				&formid=`form_callme`
+				&rules=`{"name":{"required":"Введите имя"},"phone":{"required":"Введите номер телефона"}}`
+				&formTpl=`form_modal_cb`
+				&subject=`Запрос обратного звонка с сайта`
+				&successTpl=`form_modal_cb_success`
+				&parseDocumentSource=`1`
+			!]
+		</div>
+	</div>
+	
+	<div class="region modal" id="region">
+		<div class="modal__caption">
+			<h3 class="modal__title">Ваш регион</h3>
+			<div class="close" data-izimodal-close=""></div>
+		</div>
+		<div class="modal__body">
+			<div class="region__screen__start">
+				<h4 class="region__mb">Ижевск</h4>
+				<div class="btn__double">
+					<a href="#" class="btn region__btn" id="regionYes">Да, всё верно</a>
+					<a href="#" class="btn region__btn region__btn__grey" id="regionAny">Выбрать другой</a>
+				</div>
+			</div>
+			<div class="region__screen__select">
+				<form action="" method="POST" class="default__form">
+					<div class="region__form__group">
+						<input type="text" class="form__input region__input border__input" placeholder="Введите название города">
+						<input type="text" class="btn region__btn" value="Выбрать">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal buy" id="buy">
+        <div class="modal__caption">
+            <h3 class="modal__title"></h3>
+            <div class="close" data-izimodal-close=""></div>
+        </div>
+        <div class="modal__body">
+            <p class="product__info"></p>
+             [!FormLister?
+				&formid=`form_product`
+				&formTpl=`form_product`
+				&subject=`Запрос обратного звонка с сайта`
+				&successTpl=`form_product_success`
+				&parseDocumentSource=`1`
+			!]
         </div>
     </div>
+
+    <div class="modal success" id="success">
+        <div class="modal__caption">
+            <h3 class="modal__title">Ваша заявка принята</h3>
+            <div class="close" data-izimodal-close=""></div>
+        </div>
+        <div class="modal__body">
+            <p class="modal__success__info">Ваша заявка принята, наш менеджер перезвонит вам в течении десяти минут.</p>
+            <a href="#" class="btn modal__succes__btn" data-izimodal-close="">Закрыть окно</a>
+        </div>
+    </div>
+	
+	<div class="modal error" id="error">
+        <div class="modal__caption">
+            <h3 class="modal__title">Ваша сообщение не отправлено</h3>
+            <div class="close" data-izimodal-close=""></div>
+        </div>
+        <div class="modal__body">При отправке произошла ошибка, попробуйте снова.</p>
+            <a href="#" class="btn modal__succes__btn" data-izimodal-close="">Закрыть окно</a>
+        </div>
+    </div>
+
+    <div class="modal production" id="production">
+        <div class="modal__caption">
+            <h3 class="modal__title">Заявка на продукцию</h3>
+            <div class="close" data-izimodal-close=""></div>
+        </div>
+        <div class="modal__body">
+            [!FormLister?
+				&formid=`production`
+				&formTpl=`production`
+				&subject=`Запрос обратного звонка с сайта`
+				&successTpl=`production_success`
+				&parseDocumentSource=`1`
+			!]   
+        </div>
+    </div>
+	
+</div>
 
     <script type="text/javascript" src="assets/js/app.js"></script>
 </body>

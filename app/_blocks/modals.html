@@ -38,4 +38,75 @@
             </form>    
         </div>
     </div>
+
+    <div class="modal buy" id="buy">
+        <div class="modal__caption">
+            <h3 class="modal__title"></h3>
+            <div class="close" data-izimodal-close=""></div>
+        </div>
+        <div class="modal__body">
+            <p class="product__info"></p>
+            <form action="" method="POST" class="callback__form form__default">
+                <div class="product__sum">
+                    <div class="result__count">
+                        <p class="caption__counter">Количество поддонов:</p>
+                        <div class="counter sumcounter">
+                            <span class="delCount"></span>
+                            <input type="text" name="count" min="1" value="1" disabled="">
+                            <span class="addCount"></span>
+                        </div>
+                    </div>
+                    <div class="result__sum">
+                        <p class="caption__counter">Итоговая стоимость:</p>
+                        <h3 class="result__sum__value">0,00</h3>
+                        <input type="hidden" name="result" class="result__input" value="0">
+                    </div>
+                </div>
+                <input type="text" class="form__input border__input" placeholder="Ваше имя">
+                <input type="text" class="form__input border__input" placeholder="Ваш номер телефона">
+                <input type="text" class="form__input border__input" placeholder="Ваш email">
+                <input type="text" class="form__input border__input" placeholder="Адрес доставки">
+                <textarea class="form__input ask__form__input" placeholder="Комментарий к заявке"></textarea>
+                <div class="form__btn__polit">
+                    <input class="btn buy__btn" type="submit" name="submit" value="Заказать">
+                    <p class="form__politics callback__polit">Нажимая на кнопку, вы даете свое согласие на обработку персональных данных. <a href="#">Узнать больше</a></p>
+                </div>
+            </form> 
+        </div>
+    </div>
+
+    <div class="modal success" id="success">
+        <div class="modal__caption">
+            <h3 class="modal__title">Ваша заявка принята</h3>
+            <div class="close" data-izimodal-close=""></div>
+        </div>
+        <div class="modal__body">
+            <p class="modal__success__info">Ваша заявка принята, наш менеджер перезвонит вам в течении десяти минут.</p>
+            <a href="#" class="btn modal__succes__btn" data-izimodal-close="">Закрыть окно</a>
+        </div>
+    </div>
+
+    <div class="modal production" id="production">
+        <div class="modal__caption">
+            <h3 class="modal__title">Заявка на продукцию</h3>
+            <div class="close" data-izimodal-close=""></div>
+        </div>
+        <div class="modal__body">
+            <form action="" method="POST" class="callback__form form__default">
+                <select name="production" id="" class="form__select form__input border__input">
+                    <option>Выберите нужную продукцию</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+                <input type="text" class="form__input border__input" placeholder="Ваше имя">
+                <input type="text" class="form__input border__input" placeholder="Ваш номер телефона">
+                <div class="form__btn__polit">
+                    <input class="btn callback__form__btn" type="submit" name="submit" value="Оставить заявку">
+                    <p class="form__politics callback__polit">Нажимая на кнопку, вы даете свое согласие на обработку персональных данных. <a href="#">Узнать больше</a></p>
+                </div>
+            </form>    
+        </div>
+    </div>
+
 </div>

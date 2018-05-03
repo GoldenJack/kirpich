@@ -130,6 +130,14 @@
     }
 }
 
+.plit {
+    .slick-track {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%!important;
+    }
+}
+
 
 //mobile 
 .c-hamburger {

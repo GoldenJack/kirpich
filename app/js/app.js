@@ -54,6 +54,11 @@ $(document).ready(function() {
     })
 
 
+    //success 
+    $('#success').iziModal({
+        width: 505,
+        padding: 30
+    });
 
     //modal region
 
@@ -73,6 +78,22 @@ $(document).ready(function() {
         $('.region__screen__select').show(500);
         $('#region').find('.modal__title').text('Выбрать регион');
     });
+    //production
+
+    $('#production').iziModal({
+        width: 505,
+        padding: 30
+    });
+
+    $('#error').iziModal({
+        width: 505,
+        padding: 30
+    });
+
+    $('.work__btn').click(function(e){
+        e.preventDefault();
+        $('#production').iziModal('open');
+    });
 
     //modal callback
 
@@ -84,6 +105,104 @@ $(document).ready(function() {
     $('.callback__btn').click(function(e){
         e.preventDefault();
         $('#callback').iziModal('open');
+    });
+
+    //modal buy
+
+    $('#buy').iziModal({
+        width: 505,
+        padding: 30
+    });
+
+    var stoneInfo = function(){
+        var stone = $('#stone');
+        var stoneSize = stone.find('.stone__size__elem.select__size').text();
+        var stoneColor = stone.find('.stone__color__elem.select__color > img').attr('title');
+        var stoneView = stone.find('.stone__view__elem.select__view > p').text();
+        var stoneForm = stone.find('.stone__form__elem.select__form > p').text();
+
+        if(!stoneSize) {
+            stoneSize = "<br>Выберите размер<br>"
+        }
+        if(!stoneColor) {
+            stoneColor = "<br>Выберите цвет<br>"
+        }
+        if(!stoneView) {
+            stoneSize = "<br>Выберите вид<br>"
+        }
+        if(!stoneForm) {
+            stoneForm = "<br>Выберите размер<br>"
+        }
+
+
+        return 'Кирпич ' + stoneSize + ' ' + stoneView + ' ' + stoneForm + ' ' + stoneColor;
+    }
+
+    var stonePrice = function(modal){
+        var count = modal.find('.counter');
+        var inputResult = modal.find('.result__input');
+        var valueNow = Number(count.find('input').val());
+        var stoneCount = Number($('.stoneCount').find('.stone__value').text());
+        var stonePriceOne = Number($('.stonePriceOne').text());
+
+        return modal.find('.result__sum__value').text(stoneCount * stonePriceOne * valueNow), 
+               inputResult.val(stoneCount * stonePriceOne * valueNow); 
+    }
+
+    var counter = function(){
+        var modal = $('#buy');
+        var count = modal.find('.counter');
+        var addCount = count.find('.addCount');
+        var delCount = count.find('.delCount');
+        var valueNow = Number(count.find('input').val());
+
+        addCount.click(function(){
+            count.find('input').val(valueNow+1);
+            stonePrice(modal);
+        })
+
+        delCount.click(function(){
+            if(valueNow > 1){
+                count.find('input').val(valueNow-1);
+                stonePrice(modal);
+            }
+        })
+    };
+
+    $('.counter').click(function(){
+        counter();
+    })
+
+    $('.btn__buy').click(function(e){
+        e.preventDefault();
+
+        var product = $(this).data('product');
+        var title = null;
+        var productInfo = null;
+        var modal = $('#buy');
+
+        if(product === '#stone') {
+            title = 'Заказать кирпич';
+            productInfo = stoneInfo();
+            stonePrice(modal);
+        }else if (product === '#plit') {
+            title = 'Заказать плитку';
+        };
+
+
+        modal.find('.modal__title').text(title);
+        modal.find('.product__info').html(productInfo);
+
+
+
+
+
+
+
+
+
+        $('#buy').iziModal('open');
+        return false;
     });
 
 
@@ -176,6 +295,12 @@ $(document).ready(function() {
         ]
     });
 
+    $('#plit__slider').slick({
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 1
+    });
+
 
 
 
@@ -222,5 +347,35 @@ $(document).ready(function() {
         var anchor = $(this).data('anchor');
         var anchorBlock = $(anchor).offset().top;
         $('html,body').animate({scrollTop: anchorBlock}, 1000);
+    })
+
+    $('.up').click(function(){
+        $('html,body').animate({scrollTop: 0}, 1500);
+    })
+
+
+    //ajax 
+
+    var ajaxForm = function(self){
+        var action = self[0].action;
+        var data = self.serializeArray();
+
+        console.log(action, data)
+        $.ajax({
+            url: action,
+            type: 'POST',
+            data: data,
+            success: function(){
+                $('#success').iziModal('open');
+            },
+            error: function(){
+                $('#error').iziModal('open');
+            }
+        })        
+    }
+
+    $('form').submit(function(e){
+        e.preventDefault();
+        ajaxForm($(this));
     })
 });
