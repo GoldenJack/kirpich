@@ -683,6 +683,7 @@ html, body {
     margin-bottom: 28px;
     @include font($rlight, 14px, #666);
     font-weight: 300;
+    overflow: hidden;
 }
 .offer__btn {
     @include btn(14px 0, $yellow);

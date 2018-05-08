@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Май 03 2018 г., 00:27
+-- Время создания: Май 08 2018 г., 16:24
 -- Версия сервера: 5.7.18
 -- Версия PHP: 7.1.3
 
@@ -28,7 +28,6 @@ SET time_zone = "+00:00";
 -- Структура таблицы `evo_active_users`
 --
 
-DROP TABLE IF EXISTS `evo_active_users`;
 CREATE TABLE `evo_active_users` (
   `sid` varchar(32) NOT NULL DEFAULT '',
   `internalKey` int(9) NOT NULL DEFAULT '0',
@@ -43,7 +42,7 @@ CREATE TABLE `evo_active_users` (
 --
 
 INSERT INTO `evo_active_users` (`sid`, `internalKey`, `username`, `lasthit`, `action`, `id`) VALUES
-('cdpo66arovbgnjd5du9ee8eteu', 1, 'admin', 1525307094, '67', 52);
+('cdpo66arovbgnjd5du9ee8eteu', 1, 'admin', 1525537597, '67', 59);
 
 -- --------------------------------------------------------
 
@@ -51,7 +50,6 @@ INSERT INTO `evo_active_users` (`sid`, `internalKey`, `username`, `lasthit`, `ac
 -- Структура таблицы `evo_active_user_locks`
 --
 
-DROP TABLE IF EXISTS `evo_active_user_locks`;
 CREATE TABLE `evo_active_user_locks` (
   `id` int(10) NOT NULL,
   `sid` varchar(32) NOT NULL DEFAULT '',
@@ -61,20 +59,12 @@ CREATE TABLE `evo_active_user_locks` (
   `lasthit` int(20) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Contains data about locked elements.';
 
---
--- Дамп данных таблицы `evo_active_user_locks`
---
-
-INSERT INTO `evo_active_user_locks` (`id`, `sid`, `internalKey`, `elementType`, `elementId`, `lasthit`) VALUES
-(246, 'cdpo66arovbgnjd5du9ee8eteu', 1, 3, 51, 1525307009);
-
 -- --------------------------------------------------------
 
 --
 -- Структура таблицы `evo_active_user_sessions`
 --
 
-DROP TABLE IF EXISTS `evo_active_user_sessions`;
 CREATE TABLE `evo_active_user_sessions` (
   `sid` varchar(32) NOT NULL DEFAULT '',
   `internalKey` int(9) NOT NULL DEFAULT '0',
@@ -87,7 +77,7 @@ CREATE TABLE `evo_active_user_sessions` (
 --
 
 INSERT INTO `evo_active_user_sessions` (`sid`, `internalKey`, `lasthit`, `ip`) VALUES
-('cdpo66arovbgnjd5du9ee8eteu', 1, 1525307094, '::1');
+('cdpo66arovbgnjd5du9ee8eteu', 1, 1525537596, '::1');
 
 -- --------------------------------------------------------
 
@@ -95,7 +85,6 @@ INSERT INTO `evo_active_user_sessions` (`sid`, `internalKey`, `lasthit`, `ip`) V
 -- Структура таблицы `evo_categories`
 --
 
-DROP TABLE IF EXISTS `evo_categories`;
 CREATE TABLE `evo_categories` (
   `id` int(11) NOT NULL,
   `category` varchar(45) NOT NULL DEFAULT '',
@@ -126,7 +115,6 @@ INSERT INTO `evo_categories` (`id`, `category`, `rank`) VALUES
 -- Структура таблицы `evo_documentgroup_names`
 --
 
-DROP TABLE IF EXISTS `evo_documentgroup_names`;
 CREATE TABLE `evo_documentgroup_names` (
   `id` int(10) NOT NULL,
   `name` varchar(245) NOT NULL DEFAULT '',
@@ -147,7 +135,6 @@ INSERT INTO `evo_documentgroup_names` (`id`, `name`, `private_memgroup`, `privat
 -- Структура таблицы `evo_document_groups`
 --
 
-DROP TABLE IF EXISTS `evo_document_groups`;
 CREATE TABLE `evo_document_groups` (
   `id` int(10) NOT NULL,
   `document_group` int(10) NOT NULL DEFAULT '0',
@@ -167,7 +154,6 @@ INSERT INTO `evo_document_groups` (`id`, `document_group`, `document`) VALUES
 -- Структура таблицы `evo_event_log`
 --
 
-DROP TABLE IF EXISTS `evo_event_log`;
 CREATE TABLE `evo_event_log` (
   `id` int(11) NOT NULL,
   `eventid` int(11) DEFAULT '0',
@@ -192,7 +178,6 @@ INSERT INTO `evo_event_log` (`id`, `eventid`, `createdon`, `type`, `user`, `user
 -- Структура таблицы `evo_jot_content`
 --
 
-DROP TABLE IF EXISTS `evo_jot_content`;
 CREATE TABLE `evo_jot_content` (
   `id` int(10) NOT NULL,
   `title` varchar(255) DEFAULT NULL,
@@ -236,7 +221,6 @@ INSERT INTO `evo_jot_content` (`id`, `title`, `tagid`, `published`, `uparent`, `
 -- Структура таблицы `evo_jot_subscriptions`
 --
 
-DROP TABLE IF EXISTS `evo_jot_subscriptions`;
 CREATE TABLE `evo_jot_subscriptions` (
   `id` mediumint(10) NOT NULL,
   `uparent` mediumint(10) NOT NULL DEFAULT '0',
@@ -250,7 +234,6 @@ CREATE TABLE `evo_jot_subscriptions` (
 -- Структура таблицы `evo_manager_log`
 --
 
-DROP TABLE IF EXISTS `evo_manager_log`;
 CREATE TABLE `evo_manager_log` (
   `id` int(10) NOT NULL,
   `timestamp` int(20) NOT NULL DEFAULT '0',
@@ -2100,7 +2083,11 @@ INSERT INTO `evo_manager_log` (`id`, `timestamp`, `internalKey`, `username`, `ac
 (1822, 1525307070, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
 (1823, 1525307076, 1, 'admin', 78, '52', 'production_success', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
 (1824, 1525307094, 1, 'admin', 79, '52', 'production_success', 'Saving Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
-(1825, 1525307094, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36');
+(1825, 1525307094, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1826, 1525537269, 1, 'admin', 27, '60', 'Сертификат 1', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1827, 1525537283, 1, 'admin', 76, '-', '-', 'Element management', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1828, 1525537289, 1, 'admin', 78, '25', 'sert_slider_elem', 'Editing Chunk (HTML Snippet)', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'),
+(1829, 1525537311, 1, 'admin', 27, '59', 'Сертификаты', 'Editing resource', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36');
 
 -- --------------------------------------------------------
 
@@ -2108,7 +2095,6 @@ INSERT INTO `evo_manager_log` (`id`, `timestamp`, `internalKey`, `username`, `ac
 -- Структура таблицы `evo_manager_users`
 --
 
-DROP TABLE IF EXISTS `evo_manager_users`;
 CREATE TABLE `evo_manager_users` (
   `id` int(10) NOT NULL,
   `username` varchar(100) NOT NULL DEFAULT '',
@@ -2128,7 +2114,6 @@ INSERT INTO `evo_manager_users` (`id`, `username`, `password`) VALUES
 -- Структура таблицы `evo_membergroup_access`
 --
 
-DROP TABLE IF EXISTS `evo_membergroup_access`;
 CREATE TABLE `evo_membergroup_access` (
   `id` int(10) NOT NULL,
   `membergroup` int(10) NOT NULL DEFAULT '0',
@@ -2141,7 +2126,6 @@ CREATE TABLE `evo_membergroup_access` (
 -- Структура таблицы `evo_membergroup_names`
 --
 
-DROP TABLE IF EXISTS `evo_membergroup_names`;
 CREATE TABLE `evo_membergroup_names` (
   `id` int(10) NOT NULL,
   `name` varchar(245) NOT NULL DEFAULT ''
@@ -2153,7 +2137,6 @@ CREATE TABLE `evo_membergroup_names` (
 -- Структура таблицы `evo_member_groups`
 --
 
-DROP TABLE IF EXISTS `evo_member_groups`;
 CREATE TABLE `evo_member_groups` (
   `id` int(10) NOT NULL,
   `user_group` int(10) NOT NULL DEFAULT '0',
@@ -2166,7 +2149,6 @@ CREATE TABLE `evo_member_groups` (
 -- Структура таблицы `evo_site_content`
 --
 
-DROP TABLE IF EXISTS `evo_site_content`;
 CREATE TABLE `evo_site_content` (
   `id` int(10) NOT NULL,
   `type` varchar(20) NOT NULL DEFAULT 'document',
@@ -2312,7 +2294,6 @@ INSERT INTO `evo_site_content` (`id`, `type`, `contentType`, `pagetitle`, `longt
 -- Структура таблицы `evo_site_htmlsnippets`
 --
 
-DROP TABLE IF EXISTS `evo_site_htmlsnippets`;
 CREATE TABLE `evo_site_htmlsnippets` (
   `id` int(10) NOT NULL,
   `name` varchar(100) NOT NULL DEFAULT '',
@@ -2383,7 +2364,6 @@ INSERT INTO `evo_site_htmlsnippets` (`id`, `name`, `description`, `editor_type`,
 -- Структура таблицы `evo_site_modules`
 --
 
-DROP TABLE IF EXISTS `evo_site_modules`;
 CREATE TABLE `evo_site_modules` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL DEFAULT '',
@@ -2418,7 +2398,6 @@ INSERT INTO `evo_site_modules` (`id`, `name`, `description`, `editor_type`, `dis
 -- Структура таблицы `evo_site_module_access`
 --
 
-DROP TABLE IF EXISTS `evo_site_module_access`;
 CREATE TABLE `evo_site_module_access` (
   `id` int(10) UNSIGNED NOT NULL,
   `module` int(11) NOT NULL DEFAULT '0',
@@ -2431,7 +2410,6 @@ CREATE TABLE `evo_site_module_access` (
 -- Структура таблицы `evo_site_module_depobj`
 --
 
-DROP TABLE IF EXISTS `evo_site_module_depobj`;
 CREATE TABLE `evo_site_module_depobj` (
   `id` int(11) NOT NULL,
   `module` int(11) NOT NULL DEFAULT '0',
@@ -2445,7 +2423,6 @@ CREATE TABLE `evo_site_module_depobj` (
 -- Структура таблицы `evo_site_plugins`
 --
 
-DROP TABLE IF EXISTS `evo_site_plugins`;
 CREATE TABLE `evo_site_plugins` (
   `id` int(10) NOT NULL,
   `name` varchar(50) NOT NULL DEFAULT '',
@@ -2492,7 +2469,6 @@ INSERT INTO `evo_site_plugins` (`id`, `name`, `description`, `editor_type`, `cat
 -- Структура таблицы `evo_site_plugin_events`
 --
 
-DROP TABLE IF EXISTS `evo_site_plugin_events`;
 CREATE TABLE `evo_site_plugin_events` (
   `pluginid` int(10) NOT NULL,
   `evtid` int(10) NOT NULL DEFAULT '0',
@@ -2596,7 +2572,6 @@ INSERT INTO `evo_site_plugin_events` (`pluginid`, `evtid`, `priority`) VALUES
 -- Структура таблицы `evo_site_snippets`
 --
 
-DROP TABLE IF EXISTS `evo_site_snippets`;
 CREATE TABLE `evo_site_snippets` (
   `id` int(10) NOT NULL,
   `name` varchar(50) NOT NULL DEFAULT '',
@@ -2636,7 +2611,6 @@ INSERT INTO `evo_site_snippets` (`id`, `name`, `description`, `editor_type`, `ca
 -- Структура таблицы `evo_site_templates`
 --
 
-DROP TABLE IF EXISTS `evo_site_templates`;
 CREATE TABLE `evo_site_templates` (
   `id` int(10) NOT NULL,
   `templatename` varchar(100) NOT NULL DEFAULT '',
@@ -2678,7 +2652,6 @@ INSERT INTO `evo_site_templates` (`id`, `templatename`, `description`, `editor_t
 -- Структура таблицы `evo_site_tmplvars`
 --
 
-DROP TABLE IF EXISTS `evo_site_tmplvars`;
 CREATE TABLE `evo_site_tmplvars` (
   `id` int(11) NOT NULL,
   `type` varchar(50) NOT NULL DEFAULT '',
@@ -2735,7 +2708,6 @@ INSERT INTO `evo_site_tmplvars` (`id`, `type`, `name`, `caption`, `description`,
 -- Структура таблицы `evo_site_tmplvar_access`
 --
 
-DROP TABLE IF EXISTS `evo_site_tmplvar_access`;
 CREATE TABLE `evo_site_tmplvar_access` (
   `id` int(10) NOT NULL,
   `tmplvarid` int(10) NOT NULL DEFAULT '0',
@@ -2748,7 +2720,6 @@ CREATE TABLE `evo_site_tmplvar_access` (
 -- Структура таблицы `evo_site_tmplvar_contentvalues`
 --
 
-DROP TABLE IF EXISTS `evo_site_tmplvar_contentvalues`;
 CREATE TABLE `evo_site_tmplvar_contentvalues` (
   `id` int(11) NOT NULL,
   `tmplvarid` int(10) NOT NULL DEFAULT '0' COMMENT 'Template Variable id',
@@ -2835,7 +2806,6 @@ INSERT INTO `evo_site_tmplvar_contentvalues` (`id`, `tmplvarid`, `contentid`, `v
 -- Структура таблицы `evo_site_tmplvar_templates`
 --
 
-DROP TABLE IF EXISTS `evo_site_tmplvar_templates`;
 CREATE TABLE `evo_site_tmplvar_templates` (
   `tmplvarid` int(10) NOT NULL DEFAULT '0' COMMENT 'Template Variable id',
   `templateid` int(11) NOT NULL DEFAULT '0',
@@ -2877,7 +2847,6 @@ INSERT INTO `evo_site_tmplvar_templates` (`tmplvarid`, `templateid`, `rank`) VAL
 -- Структура таблицы `evo_system_eventnames`
 --
 
-DROP TABLE IF EXISTS `evo_system_eventnames`;
 CREATE TABLE `evo_system_eventnames` (
   `id` int(10) NOT NULL,
   `name` varchar(50) NOT NULL DEFAULT '',
@@ -3028,7 +2997,6 @@ INSERT INTO `evo_system_eventnames` (`id`, `name`, `service`, `groupname`) VALUE
 -- Структура таблицы `evo_system_settings`
 --
 
-DROP TABLE IF EXISTS `evo_system_settings`;
 CREATE TABLE `evo_system_settings` (
   `setting_name` varchar(50) NOT NULL DEFAULT '',
   `setting_value` text
@@ -3197,7 +3165,6 @@ INSERT INTO `evo_system_settings` (`setting_name`, `setting_value`) VALUES
 -- Структура таблицы `evo_user_attributes`
 --
 
-DROP TABLE IF EXISTS `evo_user_attributes`;
 CREATE TABLE `evo_user_attributes` (
   `id` int(10) NOT NULL,
   `internalKey` int(10) NOT NULL DEFAULT '0',
@@ -3241,7 +3208,6 @@ INSERT INTO `evo_user_attributes` (`id`, `internalKey`, `fullname`, `role`, `ema
 -- Структура таблицы `evo_user_messages`
 --
 
-DROP TABLE IF EXISTS `evo_user_messages`;
 CREATE TABLE `evo_user_messages` (
   `id` int(10) NOT NULL,
   `type` varchar(15) NOT NULL DEFAULT '',
@@ -3260,7 +3226,6 @@ CREATE TABLE `evo_user_messages` (
 -- Структура таблицы `evo_user_roles`
 --
 
-DROP TABLE IF EXISTS `evo_user_roles`;
 CREATE TABLE `evo_user_roles` (
   `id` int(10) NOT NULL,
   `name` varchar(50) NOT NULL DEFAULT '',
@@ -3353,7 +3318,6 @@ INSERT INTO `evo_user_roles` (`id`, `name`, `description`, `frames`, `home`, `vi
 -- Структура таблицы `evo_user_settings`
 --
 
-DROP TABLE IF EXISTS `evo_user_settings`;
 CREATE TABLE `evo_user_settings` (
   `user` int(11) NOT NULL,
   `setting_name` varchar(50) NOT NULL DEFAULT '',
@@ -3366,7 +3330,6 @@ CREATE TABLE `evo_user_settings` (
 -- Структура таблицы `evo_webgroup_access`
 --
 
-DROP TABLE IF EXISTS `evo_webgroup_access`;
 CREATE TABLE `evo_webgroup_access` (
   `id` int(10) NOT NULL,
   `webgroup` int(10) NOT NULL DEFAULT '0',
@@ -3386,7 +3349,6 @@ INSERT INTO `evo_webgroup_access` (`id`, `webgroup`, `documentgroup`) VALUES
 -- Структура таблицы `evo_webgroup_names`
 --
 
-DROP TABLE IF EXISTS `evo_webgroup_names`;
 CREATE TABLE `evo_webgroup_names` (
   `id` int(10) NOT NULL,
   `name` varchar(245) NOT NULL DEFAULT ''
@@ -3406,7 +3368,6 @@ INSERT INTO `evo_webgroup_names` (`id`, `name`) VALUES
 -- Структура таблицы `evo_web_groups`
 --
 
-DROP TABLE IF EXISTS `evo_web_groups`;
 CREATE TABLE `evo_web_groups` (
   `id` int(10) NOT NULL,
   `webgroup` int(10) NOT NULL DEFAULT '0',
@@ -3426,7 +3387,6 @@ INSERT INTO `evo_web_groups` (`id`, `webgroup`, `webuser`) VALUES
 -- Структура таблицы `evo_web_users`
 --
 
-DROP TABLE IF EXISTS `evo_web_users`;
 CREATE TABLE `evo_web_users` (
   `id` int(10) NOT NULL,
   `username` varchar(100) NOT NULL DEFAULT '',
@@ -3447,7 +3407,6 @@ INSERT INTO `evo_web_users` (`id`, `username`, `password`, `cachepwd`) VALUES
 -- Структура таблицы `evo_web_user_attributes`
 --
 
-DROP TABLE IF EXISTS `evo_web_user_attributes`;
 CREATE TABLE `evo_web_user_attributes` (
   `id` int(10) NOT NULL,
   `internalKey` int(10) NOT NULL DEFAULT '0',
@@ -3491,7 +3450,6 @@ INSERT INTO `evo_web_user_attributes` (`id`, `internalKey`, `fullname`, `role`, 
 -- Структура таблицы `evo_web_user_settings`
 --
 
-DROP TABLE IF EXISTS `evo_web_user_settings`;
 CREATE TABLE `evo_web_user_settings` (
   `webuser` int(11) NOT NULL,
   `setting_name` varchar(50) NOT NULL DEFAULT '',
@@ -3779,7 +3737,7 @@ ALTER TABLE `evo_web_user_settings`
 -- AUTO_INCREMENT для таблицы `evo_active_user_locks`
 --
 ALTER TABLE `evo_active_user_locks`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=249;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=252;
 --
 -- AUTO_INCREMENT для таблицы `evo_categories`
 --
@@ -3814,7 +3772,7 @@ ALTER TABLE `evo_jot_subscriptions`
 -- AUTO_INCREMENT для таблицы `evo_manager_log`
 --
 ALTER TABLE `evo_manager_log`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1826;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1830;
 --
 -- AUTO_INCREMENT для таблицы `evo_manager_users`
 --

@@ -187,3 +187,20 @@
 .c-hamburger span::after {
   bottom: -10px;
 }
+
+#tooltip{
+        background:#333;
+        color:#f3f3f3;
+        font-family: $rreg;
+        text-align:center;
+        padding:6px 0;
+        position:absolute;
+        max-width:250px;
+        z-index:9999;
+        display:none;
+        border-radius:3px;
+        box-shadow:4px 4px 8px rgba(0, 0, 0, 0.3);
+        padding:5px 8px;
+        font-size:14px;
+        text-shadow:none;
+}

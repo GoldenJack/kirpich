@@ -2496,6 +2496,24 @@ h5 {
 .c-hamburger span::after {
   bottom: -10px; }
 
+#tooltip {
+  background: #333;
+  color: #f3f3f3;
+  font-family: "RubickReg";
+  text-align: center;
+  padding: 6px 0;
+  position: absolute;
+  max-width: 250px;
+  z-index: 9999;
+  display: none;
+  -webkit-border-radius: 3px;
+          border-radius: 3px;
+  -webkit-box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+          box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+  padding: 5px 8px;
+  font-size: 14px;
+  text-shadow: none; }
+
 .main {
   max-width: 1920px;
   width: 100%;
@@ -3642,7 +3660,8 @@ input[type="submit"] {
   font-family: "RubickLight";
   font-size: 14px;
   color: #666;
-  font-weight: 300; }
+  font-weight: 300;
+  overflow: hidden; }
 
 .offer__btn {
   padding: 14px 0;
