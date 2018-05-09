@@ -16,18 +16,6 @@ $(document).ready(function() {
         // todo animation
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
     $('.products__menu').on('click', 'a', function(e){
         e.preventDefault();
         switchTab($(this), 'active__products');

@@ -283,23 +283,12 @@ html, body {
     justify-content: space-between;
     margin-top: 17px;
 }
-.select__color {
-    border: 1px solid #555555;
-    box-shadow: 0px 8px 13px 0px rgba(244, 215, 115, 0.6);
-    &:after {
-        content: ' ';
-        background: url(../images/chk.svg) no-repeat;
-        position: absolute;
-        top: 19px;
-        left: 7px;
-        width: 22px;
-        height: 22px;
-    }
-}
+
 //colors select
 .stone__color__elem {
     display: flex;
     position: relative;
+    border: 1px solid transparent;
 }
 .stone__color__elem:nth-child(1) {
     background: #f4d773;
@@ -331,6 +320,19 @@ html, body {
 .stone__color__elem:nth-child(10) {
     background: #ecb678;
 }
+.select__color {
+    border: 1px solid #555555;
+    box-shadow: 0px 8px 13px 0px rgba(244, 215, 115, 0.6);
+    &:after {
+        content: ' ';
+        background: url(../images/chk.svg) no-repeat;
+        position: absolute;
+        top: 19px;
+        left: 7px;
+        width: 22px;
+        height: 22px;
+    }
+}
 
 //end colors select
 
@@ -351,6 +353,9 @@ html, body {
     justify-content: center;
     text-align: center;
     cursor: pointer;
+    &.--disabled{
+        opacity: 0.4;
+    }
 }
 .stone__view__img-close {
     position: absolute;
@@ -389,6 +394,9 @@ html, body {
     justify-content: flex-end;
     align-items: center;
     cursor: pointer;
+    &.--disabled{
+        opacity: 0.4;
+    }
 }
 .stone__img__wrap {
     position: relative;
