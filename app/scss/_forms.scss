@@ -71,3 +71,33 @@ input[type="submit"] {
     }
 
 }
+
+.counter {
+    max-width: 160px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    background: $yellow;
+    border-radius: 3px;
+    @include font($rblack, 16px);
+    .addCount, .delCount {
+        width: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        height: 100%;
+    }
+    .addCount:after {
+        content: '+';
+    }
+    .delCount:after {
+        content: '-';
+    }
+    input {
+        width: 80px;
+        height: 36px;
+        @include font($rblack, 16px);
+        text-align: center;
+    }
+}

@@ -1,4 +1,7 @@
 @media screen and (max-width: 1200px) {
+    .header__kirp__form {
+        left: 46px;
+    }
     .menu__btn {
         display: flex;
         align-items: center;
@@ -46,7 +49,11 @@
 }
 @media screen and (max-width: 992px) {
     .content__caption {
-        margin-bottom: 50px;
+        margin-bottom: 150px;
+        text-align: center;
+    }
+    .header__kirp__form {
+        left: 160px;
     }
     .stone__demo__slider__caption {
         text-align: center;
@@ -73,6 +80,9 @@
     }
 }
 @media screen and (max-width: 767px) {
+    .header__kirp__form {
+        left: 60px;
+    }
     .products__punkt {
         width: 150px;
     }
@@ -87,6 +97,9 @@
     }
 }
 @media screen and (max-width: 480px) {
+    .header__form__wrap {
+        padding: 0;
+    }
     .logo__box {
         max-width: 100%;
         flex: 0 0 90%;

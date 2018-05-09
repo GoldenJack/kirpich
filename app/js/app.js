@@ -23,12 +23,14 @@ $(document).ready(function() {
 
     $('.stone__color__box').on('click', 'a', function(e){
         e.preventDefault();
-        selectStat($(this), 'select__color');
+        if (!$(this).hasClass('--disabled'))
+            selectStat($(this), 'select__color');
     });
 
     $('.stone__size__box').on('click', 'a', function(e){
         e.preventDefault();
-        selectStat($(this), 'select__size');
+        if (!$(this).hasClass('--disabled'))
+            selectStat($(this), 'select__size');
     });
 
     $('.stone__form__box').on('click', '.stone__form__elem', function(e){
@@ -391,7 +393,7 @@ $(document).ready(function() {
 
     //colors 
     $(".stone__color__elem > img").each(function(b) {//работа с элементом (ссылка)
-        console.log(this.title)
+        // console.log(this.title)
         if (this.title) {
             var c = this.title;
             var x = 0;//расположение по горизонтали(left)
