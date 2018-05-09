@@ -27,35 +27,35 @@
 //slider
 
 //slick global
-    .slick-initialized .slick-slide {
-        display: flex;
-    }
-    .slick-prev {
-        width: 50px;
-        height: 50px;
-        z-index: 999;
-        left: 0;
-    }
-    .slick-next {
-        width: 50px;
-        height: 50px;
-        z-index: 999;
-        right: 0;
-    }
-    .slick-prev:before {
-        content: ' ';
-        background: url(../images/left.svg);
-        width: 50px;
-        height: 50px;
-        display: block;
-    }
-    .slick-next:before {
-        content: ' ';
-        background: url(../images/right.svg);
-        width: 50px;
-        height: 50px;
-        display: block;
-    }
+.slick-initialized .slick-slide {
+    display: flex;
+}
+.slick-prev {
+    width: 50px;
+    height: 50px;
+    z-index: 999;
+    left: 0;
+}
+.slick-next {
+    width: 50px;
+    height: 50px;
+    z-index: 999;
+    right: 0;
+}
+.slick-prev:before {
+    content: ' ';
+    background: url(../images/left.svg);
+    width: 50px;
+    height: 50px;
+    display: block;
+}
+.slick-next:before {
+    content: ' ';
+    background: url(../images/right.svg);
+    width: 50px;
+    height: 50px;
+    display: block;
+}
 //end slick
 
 .slider {
@@ -157,7 +157,7 @@
   width: 100%;
   background-color: #fff;
 }
- 
+
 .c-hamburger span::before,
 .c-hamburger span::after {
   position: absolute;
@@ -168,11 +168,28 @@
   background-color: #fff;
   content: "";
 }
- 
+
 .c-hamburger span::before {
   top: -10px;
 }
- 
+
 .c-hamburger span::after {
   bottom: -10px;
+}
+
+#tooltip{
+    background:#333;
+    color:#f3f3f3;
+    font-family: $rreg;
+    text-align:center;
+    padding:6px 0;
+    position:absolute;
+    max-width:250px;
+    z-index:9999;
+    display:none;
+    border-radius:3px;
+    box-shadow:4px 4px 8px rgba(0, 0, 0, 0.3);
+    padding:5px 8px;
+    font-size:14px;
+    text-shadow:none;
 }
