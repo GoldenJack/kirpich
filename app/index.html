@@ -130,13 +130,13 @@
                 </div>
                 <div class="col-12 products__content">
                     <div class="stone" id="stone">
-                        <div class="row justify-content-center">
+                        <div class="row justify-content-center" id="filter">
                             <div class="col-12">
                                 <h2 class="products__caption">Облицовочный камень</h2>
                             </div>
                             <div class="col-xl-6 col-md-8 col stone__demo">
                                 <div class="stone__image">
-                                    <img src="images/bricks.jpg" class="stone__img">
+                                    <img v-bind:src="selectProduct.image" class="stone__img">
                                 </div>
                                 <div class="stone__demo__slider">
                                     <h4 class="stone__demo__slider__caption">Как можно использовать нашу продукцию</h4>
@@ -150,19 +150,11 @@
                                 </div>
                             </div>
                             
-
-
-
-
-
-
-
-
-                            <div class="col-xl-6 col-md-8 col stone__info" id="filter">
+                            <div class="col-xl-6 col-md-8 col stone__info">
                                 <div class="stone__size">
                                     <h5>Выберите размер</h5>
                                     <div class="stone__size__box">
-                                        <a v-on:click="getSize(size)" v-bind:class="{ select__size: size.in }" v-for="(size, index) in sizes" href="#" class="stone__size__elem">
+                                        <a v-on:click="getSize(size)" v-bind:class="{ select__size: size.in, '--disabled': size.disabled }" v-for="(size, index) in sizes" href="#" class="stone__size__elem">
                                             <span class="stone__size__bold" v-text="size.num"></span>
                                             <span class="stone__size__name" v-text="size.value"></span>
                                         </a>
@@ -171,7 +163,7 @@
                                 <div class="stone__color">
                                     <h5>Выберите цвет</h5>
                                     <div class="stone__color__box">
-                                        <a v-on:click="getColor(color)" v-bind:class="{ select__color: color.in }" v-for="(color, index) in colors" href="#" class="stone__color__elem">
+                                        <a v-on:click="getColor(color)" v-bind:class="{ select__color: color.in, '--disabled': color.disabled }" v-for="(color, index) in colors" href="#" class="stone__color__elem">
                                             <img src="images/brick_light_shadow.png" v-bind:alt="color.value" v-bind:title="color.value">
                                         </a>
                                     </div>
@@ -188,6 +180,7 @@
                                 </div>
                                 <div class="stone__form">
                                     <h5>Выберите форму</h5>
+                                    <p>Слева появится образец кирпича</p>
                                     <div class="row stone__form__box">
                                         <div v-on:click="getForm(form)" v-bind:class="{ select__form: form.in, '--disabled': form.disabled }" v-for="(form, index) in forms" class="stone__form__elem col-sm-3 col-6">
                                             <div class="stone__img__wrap">
@@ -200,44 +193,48 @@
                                 </div>
                                 <div class="stone__type">
                                     <h5>Тех. характеристики:</h5>
-                                    <table class="stone__type__table">
+                                    <table class="stone__type__table" v-if="seen">
                                         <tr class="stoneWeight">
                                             <td><p class="stone__name">Вес(кг):</p></td>
-                                            <td><p class="stone__value">4,0</p></td>
+                                            <td><p class="stone__value" v-text="selectProduct.stoneWeight">4,0</p></td>
                                         </tr>
                                         <tr class="stoneMark">
                                             <td><p class="stone__name">Марка прочности:</p></td>
-                                            <td><p class="stone__value">200</p></td>
+                                            <td><p class="stone__value" v-text="selectProduct.stoneDurability">200</p></td>
                                         </tr>
                                         <tr class="stoneQu">
                                             <td><p class="stone__name">Морозостойкость:</p></td>
-                                            <td>100</td>
+                                            <td><p class="stone__value" v-text="selectProduct.stoneFrostResistance">100</p></td>
                                         </tr>
                                         <tr class="stoneWater">
                                             <td><p class="stone__name">Влагопоглощение (%):</p></td>
-                                            <td><p class="stone__value">до 8%</p></td>
+                                            <td><p class="stone__value" v-text="selectProduct.stoneMoistureAbsorption">до 8%</p></td>
                                         </tr>
                                         <tr class="stoneFire">
                                             <td><p class="stone__name">Теплопроводимость (вт/м°с):</p></td>
-                                            <td><p class="stone__value">0,84 вт/м°с</p></td>
+                                            <td><p class="stone__value" v-text="selectProduct.stoneTranscalency">0,84 вт/м°с</p></td>
                                         </tr>
                                         <tr class="stoneCount">
                                             <td><p class="stone__name">Кол-во на поддоне (шт):</p></td>
-                                            <td><p class="stone__value">336</p></td>
+                                            <td><p class="stone__value" v-text="selectProduct.stoneCountPallet">336</p></td>
                                         </tr>
                                         <tr class="stoneWeightP">
                                             <td><p class="stone__name">Вес поддона:</p></td>
-                                            <td><p class="stone__value">1350</p></td>
+                                            <td><p class="stone__value" v-text="selectProduct.stoneWeightPallet">1350</p></td>
                                         </tr>
                                         <tr class="stoneColor">
                                             <td><p class="stone__name">Цвет:</p></td>
-                                            <td><p class="stone__value">персиковый</p></td>
+                                            <td><p class="stone__value" v-text="selectProduct.stoneColor">персиковый</p></td>
                                         </tr>
                                     </table>
+                                    <h5 v-else>Выберите все параметры кирпича</h5>
                                 </div>
                                 <div class="stone__total">
                                     <div class="stone__price">
-                                        <h3><span class="stonePriceOne">24.00</span> <span class="price__low">руб./шт</span></h3>
+                                        <h3 v-if="seen">
+                                            <span class="stonePriceOne" v-text="selectProduct.price"></span> 
+                                            <span class="price__low">руб./шт</span>
+                                        </h3>
                                     </div>
                                     <a href="#" class="btn stone__total__btn btn__buy" data-product="#stone">ЗАКАЗАТЬ</a>
                                 </div>
@@ -248,83 +245,121 @@
 
 
 
-                    <script type="text/javascript" src="assets/js/vue.min.js"></script>
+                    <script src="assets/js/vue.min.js"></script>
+                    <script src="assets/js/vue-resource.js"></script>
                     <script>
                         var filter = new Vue({
                             el: '#filter',
                             data: {
+                                selectProduct: {
+                                    price: 0,
+                                    stoneColor: '',
+                                    stoneWeightPallet: '',
+                                    stoneCountPallet: '',
+                                    stoneTranscalency: '',
+                                    stoneMoistureAbsorption: '',
+                                    stoneFrostResistance: '',
+                                    stoneDurability: '',
+                                    stoneWeight: '',
+                                    image: 'assets/images/bricks.jpg'
+                                },
+                                seen: false,
+                                selected: {
+                                    stoneSize: 0,
+                                    stoneColor: '', 
+                                    stoneView: '',
+                                    stoneForm: ''
+                                },
                                 sizes: [
                                 {
+                                    id: 4,
                                     num: 1.4,
                                     value: 'полуторный',
-                                    in: true
+                                    in: false,
+                                    disabled: true
                                 },
                                 {
+                                    id: 3,
                                     num: (1).toFixed(1),
                                     value: 'одинарный',
-                                    in: false
+                                    in: false,
+                                    disabled: true
                                 },
                                 {
+                                    id: 2,
                                     num: 0.7,
                                     value: 'брусок полуторный',
-                                    in: false
+                                    in: false,
+                                    disabled: true
                                 },
                                 {
+                                    id: 1,
                                     num: 0.5,
                                     value: 'брусок одинарный',
-                                    in: false
+                                    in: false,
+                                    disabled: true
                                 }
                                 ],
                                 colors: [
                                 {
                                     code: '#f4d773',
-                                    value: 'Светло золотой',
-                                    in: true
+                                    value: 'Желтый',
+                                    in: false,
+                                    disabled: true
                                 },
                                 {
                                     code: '#c7b65c',
-                                    value: '2',
-                                    in: false
+                                    value: 'Горчичный',
+                                    in: false,
+                                    disabled: true
                                 },
                                 {
                                     code: '#9b7f69',
                                     value: '3',
-                                    in: false
+                                    in: false,
+                                    disabled: true
                                 },
                                 {
                                     code: '#8c6d58',
                                     value: '4',
-                                    in: false
+                                    in: false,
+                                    disabled: true
                                 },
                                 {
                                     code: '#ede1b9',
                                     value: '5',
-                                    in: false
+                                    in: false,
+                                    disabled: true
                                 },
                                 {
                                     code: '#545452',
                                     value: '6',
-                                    in: false
+                                    in: false,
+                                    disabled: true
                                 },
                                 {
                                     code: '#b25840',
                                     value: '7',
-                                    in: false
+                                    in: false,
+                                    disabled: true
                                 },
                                 {
                                     code: '#95a26a',
                                     value: '8',
-                                    in: false
+                                    in: false,
+                                    disabled: true
                                 },
                                 {
                                     code: '#c6c5ba',
                                     value: '9',
-                                    in: false
+                                    in: false,
+                                    disabled: true
                                 },
                                 {
                                     code: '#ecb678',
                                     value: '10',
-                                    in: false
+                                    in: false,
+                                    disabled: true
                                 }
                                 ],
                                 views: [
@@ -332,22 +367,22 @@
                                     value: 'Полнотелый',
                                     img_act: 'images/polnotel_act.png',
                                     img_no_act: 'images/polnotel_no_act.png',
-                                    in: true,
-                                    disabled: false
+                                    in: false,
+                                    disabled: true
                                 },
                                 {
                                     value: 'Пустотелый',
                                     img_act: 'images/pustotel_act.png',
                                     img_no_act: 'images/pustotel_no_act.png',
                                     in: false,
-                                    disabled: false
+                                    disabled: true
                                 },
                                 {
                                     value: 'Фасонный',
                                     img_act: 'images/fason_act.png',
                                     img_no_act: 'images/fason_no_act.png',
                                     in: false,
-                                    disabled: false
+                                    disabled: true
                                 }
                                 ],
                                 forms: [
@@ -355,132 +390,271 @@
                                     value: 'Угловой',
                                     img_act: 'images/ugol_act.png',
                                     img_no_act: 'images/ugol_no_act.png',
-                                    in: true,
-                                    disabled: false
+                                    in: false,
+                                    disabled: true
                                 },
                                 {
                                     value: 'Брусок угловой',
                                     img_act: 'images/brus_act.png',
                                     img_no_act: 'images/brus_no_act.png',
                                     in: false,
-                                    disabled: false
+                                    disabled: true
                                 },
                                 {
                                     value: 'Двусторонный',
                                     img_act: 'images/doubleside_act.png',
                                     img_no_act: 'images/doubleside_no_act.png',
                                     in: false,
-                                    disabled: false
+                                    disabled: true
                                 },
                                 {
                                     value: 'Фигурный №1',
                                     img_act: 'images/fig1_act.png',
                                     img_no_act: 'images/fig1_no_act.png',
                                     in: false,
-                                    disabled: false
+                                    disabled: true
                                 },
                                 {
                                     value: 'Фигурный №2',
                                     img_act: 'images/fig2_act.png',
                                     img_no_act: 'images/fig2_no_act.png',
                                     in: false,
-                                    disabled: false
+                                    disabled: true
                                 },
                                 {
                                     value: 'Трапеция №1',
                                     img_act: 'images/trap1_act.png',
                                     img_no_act: 'images/trap1_no_act.png',
                                     in: false,
-                                    disabled: false
+                                    disabled: true
                                 },
                                 {
                                     value: 'Трапеция №2',
                                     img_act: 'images/trap2_act.png',
                                     img_no_act: 'images/trap2_no_act.png',
                                     in: false,
-                                    disabled: false
+                                    disabled: true
                                 },
                                 {
                                     value: 'Трапеция №3',
                                     img_act: 'images/trap3_act.png',
                                     img_no_act: 'images/trap3_no_act.png',
                                     in: false,
-                                    disabled: false
+                                    disabled: true
                                 }
-                                ]
+                                ],
+                                url: '/api.php'
                             },
                             methods: {
                                 getSize: function (e) {
-                                    if(e.num == 1)
-                                        this.forms[1].disabled = true;
-                                    else
-                                        this.forms[1].disabled = false;
+                                    if (e.disabled === true) return;
+                                    this.cleanColors();
+                                    e.disabled = false;
+                                    e.in = true;
+
+                                    this.$http.post(this.url, {
+                                        stoneSize: e.id
+                                    }).then(function(response) {
+                                        var stoneColor = response.body.stoneColor;
+                                        this.colors.filter(function(item) {
+                                            if(stoneColor.indexOf(item.value) != -1 )
+                                                item.disabled = false;
+                                        });
+                                    });
+
+
                                 },
                                 getColor: function (e) {
-                                    console.log(e.value);
+                                    if (e.disabled === true) return;
+                                    this.cleanViews();
+                                    e.in = true;
+
+                                    this.$http.post(this.url, {
+                                        stoneColor: e.value
+                                    }).then(function(response) {
+                                        var stoneView = response.body.stoneView;
+                                        this.views.filter(function(item) {
+                                            if(stoneView.indexOf(item.value) != -1 )
+                                                item.disabled = false;
+                                        });
+                                    });
                                 },
                                 getView: function (e) {
                                     if (e.disabled === true) return;
-                                    console.log(e.value);
+                                    this.cleanForms();
+                                    e.in = true;
+
+                                    this.$http.post(this.url, {
+                                        stoneView: e.value
+                                    }).then(function(response) {
+                                        var stoneForm = response.body.stoneForm;
+                                        this.forms.filter(function(item) {
+                                            if(stoneForm.indexOf(item.value) != -1 )
+                                                item.disabled = false;
+                                        });
+                                    });
                                 },
                                 getForm: function (e) {
                                     if (e.disabled === true) return;
-                                    console.log(e.value);
-                                }
-                            }
-                        })
-                    </script>
+                                    this.forms.filter(function(item) {
+                                        item.in = false;
+                                    });
+                                    this.seen = true;
+                                    e.in = true;
+                                    this.getSelectProduct();
+                                    console.log(this.selected);
 
 
-                    
-                    <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col">
-                        <div class="plit__elem">
-                            <img src="images/plit_1.png" class="plit__elem__img">
-                            <h5 class="plit__elem__caption">Цокольная плитка</h5>
-                            <p class="plit__elem__stat">
-                                Цвет: Серый <br>
-                                Размер: 250x20x120 мм <br>
-                                Вес: 1,7 кг <br>
-                                В поддоне: 576 шт <br>
-                                Вес поддона: 950 <br>
-                            </p>
-                            <h4>544,00 <span class="price__low">руб./м2</span></h4>
-                            <a href="" class="plit__elem__btn btn">ЗАКАЗАТЬ</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <h4 class="plit__slider__caption">Как можно использовать нашу продукцию</h4>
-                    </div>
-                </div>
-                <div class="slider">
-                    <div class="slider__controls plit__slider__controls">
-                        <a class="slider__left" href="#"><img src="images/left.svg" alt=""></a>
-                        <a class="slider__right" href="#"><img src="images/right.svg" alt=""></a>
-                    </div>
-                    <div class="row slider__content">
-                        <div class="col-3">
-                            <img  class="plit__slider__image" src="images/plit_slider_1.png" alt="/">
-                        </div>
-                        <div class="col-3">
-                            <img  class="plit__slider__image" src="images/plit_slider_2.png" alt="/">
-                        </div>
-                        <div class="col-3">
-                            <img  class="plit__slider__image" src="images/plit_slider_3.png" alt="/">
-                        </div>
-                        <div class="col-3">
-                            <img  class="plit__slider__image" src="images/plit_slider_4.png" alt="/">
-                        </div>
+                                },
+                                getSelectProduct: function(e){
+
+                                    var self = this;
+
+                                    this.sizes.filter(function(item) {
+                                        if(item.in)
+                                            self.selected.stoneSize = item.id;
+                                    });
+                                    this.colors.filter(function(item) {
+                                        if(item.in)
+                                            self.selected.stoneColor = item.value;
+                                    });
+                                    this.views.filter(function(item) {
+                                        if(item.in)
+                                            self.selected.stoneView = item.value;
+                                    });
+                                    this.forms.filter(function(item) {
+                                        if(item.in)
+                                            self.selected.stoneForm = item.value;
+                                    });
+                                    
+                                    console.log(this.selected);
+
+                                    this.$http.post(this.url, this.selected, {emulateJSON:true}).then(function(response) {
+                                        
+                                        var res = response.body.rows["0"];
+                                        console.log(res);
+
+                                        self.selectProduct.price                    = res.tv_price;
+                                        self.selectProduct.stoneColor               = res.tv_stoneColor;
+                                        self.selectProduct.stoneWeightPallet        = res.tv_stoneWeightPallet;
+                                        self.selectProduct.stoneCountPallet         = res.tv_stoneCountPallet;
+                                        self.selectProduct.stoneTranscalency        = res.tv_stoneTranscalency;
+                                        self.selectProduct.stoneMoistureAbsorption  = res.tv_stoneMoistureAbsorption;
+                                        self.selectProduct.stoneFrostResistance     = res.tv_stoneFrostResistance;
+                                        self.selectProduct.stoneDurability          = res.tv_stoneDurability;
+                                        self.selectProduct.stoneWeight              = res.tv_stoneWeight;
+                                        self.selectProduct.image                    = res.tv_stoneImg;
+
+                                    });
+                                    
+
+                                },
+                                getAvilable: function(e){
+
+                                    this.$http.post(this.url).then(function(response) {
+
+                                        var stoneSize = response.body.stoneSize;
+
+                                        this.sizes.filter(function(item) {
+                                            if(stoneSize.indexOf(item.id) != -1 )
+                                                item.disabled = false;
+                                        });
+
+                                    });
+
+
+
+                                },
+                                cleanFilter: function(){
+                                    this.sizes.filter(function(item) {
+                                        item.disabled = true;
+                                        item.in = false;
+                                    });
+                                    this.cleanColors();
+                                    this.getAvilable();
+                                },
+                                cleanColors: function(){
+                                    this.colors.filter(function(item) {
+                                        item.disabled = true;
+                                        item.in = false;
+                                    });
+                                    this.cleanViews();
+
+                                },
+                                cleanViews: function(){
+                                    this.views.filter(function(item) {
+                                        item.disabled = true;
+                                        item.in = false;
+                                    });
+                                    this.cleanForms();
+                                },
+                                cleanForms: function(){
+                                    this.forms.filter(function(item) {
+                                        item.disabled = true;
+                                        item.in = false;
+                                    });
+                                this.seen = false; // информация не актуальна
+                                this.selectProduct.image = 'assets/images/bricks.jpg';
+                            },
+
+                        },
+                        created: function(){
+                            this.getAvilable();
+                        }
+                    });
+
+                </script>
+
+
+                
+                <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col">
+                    <div class="plit__elem">
+                        <img src="images/plit_1.png" class="plit__elem__img">
+                        <h5 class="plit__elem__caption">Цокольная плитка</h5>
+                        <p class="plit__elem__stat">
+                            Цвет: Серый <br>
+                            Размер: 250x20x120 мм <br>
+                            Вес: 1,7 кг <br>
+                            В поддоне: 576 шт <br>
+                            Вес поддона: 950 <br>
+                        </p>
+                        <h4>544,00 <span class="price__low">руб./м2</span></h4>
+                        <a href="" class="plit__elem__btn btn">ЗАКАЗАТЬ</a>
                     </div>
                 </div>
             </div>
-            <div class="elements" id="elements">
-                
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="plit__slider__caption">Как можно использовать нашу продукцию</h4>
+                </div>
+            </div>
+            <div class="slider">
+                <div class="slider__controls plit__slider__controls">
+                    <a class="slider__left" href="#"><img src="images/left.svg" alt=""></a>
+                    <a class="slider__right" href="#"><img src="images/right.svg" alt=""></a>
+                </div>
+                <div class="row slider__content">
+                    <div class="col-3">
+                        <img  class="plit__slider__image" src="images/plit_slider_1.png" alt="/">
+                    </div>
+                    <div class="col-3">
+                        <img  class="plit__slider__image" src="images/plit_slider_2.png" alt="/">
+                    </div>
+                    <div class="col-3">
+                        <img  class="plit__slider__image" src="images/plit_slider_3.png" alt="/">
+                    </div>
+                    <div class="col-3">
+                        <img  class="plit__slider__image" src="images/plit_slider_4.png" alt="/">
+                    </div>
+                </div>
             </div>
         </div>
-        
+        <div class="elements" id="elements">
+            
+        </div>
     </div>
+    
+</div>
 </div>
 </section>
 <section class="sertifics" id="sertifics">
